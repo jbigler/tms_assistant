@@ -1,0 +1,22 @@
+!!!
+%html
+  %head
+    %title<
+      TMS Assistant
+      = " - " + yield( :title ) if content_for? :title
+    = csrf_meta_tag
+    = stylesheet_link_tag "application"
+    = stylesheet_link_tag "jquery-ui", :media => "screen"
+    = javascript_include_tag "application"
+    = javascript_include_tag "datatables"
+    = yield :head
+  %body
+    #container
+      = render :partial => "shared/header"
+      = yield
+      #footer
+        .block
+          %p
+            Copyright &copy; 
+            = Time.now.year
+            Saturn Studio.

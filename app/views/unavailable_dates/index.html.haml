@@ -1,0 +1,23 @@
+- content_for :sidebar do
+  #calendar
+    = render :partial => 'shared/calendar'
+
+#unavailable_dates
+  %h1= "Unavailable Dates for #{ @student.display_name }"
+
+  %table#unavailable_dates_data.table.data
+    %thead
+      %tr
+        %th Start Date
+        %th End Date
+        %th Reason
+        %th
+        %th
+    %tbody
+      - @unavailable_dates.each do |ud|
+        %tr
+          %td= ud.start_date.to_s
+          %td= ud.end_date.to_s
+          %td= ud.reason
+          %td= link_to 'Show', congregation_student_unavailable_date_path( @student.congregation, @student, ud )
+          %td= link_to 'Edit', edit_congregation_student_unavailable_date_path( @student.congregation, @student, ud )

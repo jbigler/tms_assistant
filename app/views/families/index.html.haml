@@ -1,0 +1,19 @@
+%h1 Listing Families
+
+%table#family_data.table.data
+  %thead
+    %tr
+      %th Name
+      %th First name
+      %th
+      %th
+  %tbody
+    - @families.each do |family|
+      %tr
+        %td= link_to family.name, congregation_family_path( @congregation, family )
+        %td= family.first_name
+        %td= link_to "Edit", edit_congregation_family_path( @congregation, family )
+        %td= link_to "Delete", congregation_family_path( @congregation, family ), :confirm => "Are you sure?", :method => :delete
+%p
+  = link_to "Add Family", new_congregation_family_path( @congregation )
+    

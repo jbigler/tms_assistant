@@ -1,0 +1,10 @@
+%h2 Edit student
+-#= form_for [:congregation, @student], :url => congregation_student_url( @congregation ) do |f|
+= form_for [:congregation, @student], :validate => true do |f|
+  = render "shared/error_messages", :target => @student
+  = render :partial => "form_all", :locals => { :f => f }
+  .submit= f.submit "Update"
+%p
+  = link_to "Show", congregation_student_path( @congregation, @student )
+  |
+  = link_to "Back", congregation_students_url( @congregation )

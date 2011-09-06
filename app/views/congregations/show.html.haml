@@ -1,0 +1,15 @@
+%p= @congregation.name + " : Dashboard"
+%p 
+  Meeting Day: 
+  - if @congregation.meeting_day
+    = t( 'date.day_names' )[ @congregation.meeting_day ]
+%p= link_to "Schedule", language_schedules_path( @congregation.language )
+%p= link_to 'Lesson Sources', language_lesson_sources_path( @congregation.language )
+%p= link_to 'Setting Sources', language_setting_sources_path( @congregation.language )
+%p= link_to "School Sessions", congregation_school_sessions_path( @congregation )
+%p= link_to "Special Dates", congregation_special_dates_path( @congregation )
+%p= link_to "Students", congregation_students_path( @congregation )
+%p= link_to "Families", congregation_families_path( @congregation )
+-#.calendar
+  -#-@congregation.school_sessions.each do |session|
+    -#%p= session.week_of

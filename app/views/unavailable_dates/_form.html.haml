@@ -1,0 +1,12 @@
+= form_for [@congregation, @student, @unavailable_date], :validate => true do |f|
+  = render "shared/error_messages", :target => @unavailable_date
+  %fieldset
+    %legend= "Beginning #{ @unavailable_date.start_date.to_s }"
+    %br/
+    = f.label :end_date
+    = f.date_select :end_date
+    %br/
+    = f.label :reason
+    = f.text_field :reason
+  .actions
+    .submit= f.submit 'Save'

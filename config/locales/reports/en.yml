@@ -1,0 +1,16 @@
+en:
+  reports:
+    slips:
+      header: "TALK IN THEOCRATIC MINISTRY SCHOOL"
+      student: "Student: "
+      talk_no: "Talk No: "
+      date: "Date: "
+      assistant: "Assistant: "
+      source: "Source: "
+      title: "Title: "
+      setting: "Setting: "
+      school: "School No: "
+      footer1: "xxxx"
+      footer2: "xxxxx xxxxx <b>%{lesson}</b> xxxx x x x xxxx xxxxx"
+      footer3: "xxxxxxxxxxxx xxxxxxxxxxxx xxxxxxxxxxx xxxxxxxxx x x x xxxxxxxxxxx"
+      footer4: "S-89-EN          6/03"

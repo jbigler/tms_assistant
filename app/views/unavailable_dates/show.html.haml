@@ -1,0 +1,8 @@
+- content_for :sidebar do
+  #calendar
+    = render :partial => 'shared/calendar'
+
+#unavailable_date
+  %p= "Start Date: #{ @unavailable_date.start_date }"
+  %p= "End Date: #{ @unavailable_date.end_date }"
+  %p= "Reason: #{ @unavailable_date.reason }"

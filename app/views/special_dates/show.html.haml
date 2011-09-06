@@ -1,0 +1,26 @@
+- content_for :sidebar do
+  #calendar
+    = render :partial => 'shared/calendar'
+
+#schedule
+  %p#notice= notice
+  %p
+    %strong Week of:
+    = @special_date.week_of
+  %p
+    %strong Event:
+    = @special_date.event
+  %p
+    %strong Description:
+    = @special_date.description
+  %p
+    %strong School Cancelled?
+    = @special_date.is_cancelled?
+  %p
+    %strong Review Postponed?
+    = @special_date.is_review_postponed?
+
+  %p
+    = link_to 'Edit', edit_congregation_special_date_path( @congregation, @special_date )
+    \|
+    = link_to 'Back', congregation_special_dates_path( @congregation )

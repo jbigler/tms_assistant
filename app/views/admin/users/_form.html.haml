@@ -1,0 +1,21 @@
+= form_for([:admin, @user])  do |f|
+  .form_errors
+    = render "shared/error_messages", :target => @user
+  %fieldset#user_form
+    .form_row
+      = f.label :name
+      = f.text_field :name
+    .form_row
+      = f.label :email
+      = f.text_field :email
+    .form_row
+      = f.label :password
+      = f.password_field :password
+    .form_row
+      = f.label :password_confirmation
+      = f.password_field :password_confirmation
+    .form_row
+      = f.label :admin
+      = f.check_box :admin
+    .form_row.form_row_button
+      = f.submit "Save"

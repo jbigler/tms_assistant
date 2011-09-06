@@ -1,0 +1,15 @@
+- content_for :sidebar do
+  #calendar
+    = render :partial => 'shared/calendar'
+
+#schedule
+  %h1 Listing School Sessions
+  %table
+    %tr
+      %th Week of
+    - @school_sessions.each do |school_session|
+      %tr
+        %td= h school_session.week_of
+        %td= link_to 'Show', congregation_school_session_path( @congregation, school_session )
+        %td= link_to 'Edit', edit_congregation_school_session_url( @congregation, school_session )
+  %br/

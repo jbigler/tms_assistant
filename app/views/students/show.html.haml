@@ -1,0 +1,45 @@
+%p
+  %strong Is active:
+  = @student.is_active
+%p
+  %strong First name:
+  = @student.first_name
+%p
+  %strong Middle name:
+  = @student.middle_name
+%p
+  %strong Last name:
+  = @student.last_name
+%p
+  %strong Display name:
+  = @student.display_name
+%p
+  %strong Telephone:
+  = @student.telephone
+%p
+  %strong Email:
+  = @student.email
+%p
+  %strong Notes:
+  = @student.notes
+%p
+  %strong Is adult:
+  = @student.use_for_adult
+%p
+  %strong Is advanced:
+  = @student.use_for_advanced
+%p
+  %strong Use in main school:
+  = @student.use_in_main_school
+%p
+  %strong Use in secondary school:
+  = @student.use_in_secondary_school
+%p
+  %strong Use for no3:
+  = @student.use_for_no3
+%p
+  = link_to "Unavailable Dates", congregation_student_unavailable_dates_path( @congregation, @student )
+  \|
+  = link_to 'Edit', edit_congregation_student_path( @congregation, @student )
+  \|
+  = link_to 'Back', congregation_students_path( @congregation )

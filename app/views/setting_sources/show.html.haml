@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Number:
+  = @setting_source.number
+%p
+  %b Description:
+  = @setting_source.description
+
+= link_to 'Edit', edit_language_setting_source_path( @language, @setting_source )
+\|
+= link_to 'Back', language_setting_sources_path( @language )

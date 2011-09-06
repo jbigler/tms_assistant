@@ -1,0 +1,20 @@
+= form_for [@congregation, @special_date], :validate => true do |f|
+  = render "shared/error_messages", :target => @special_date
+  %fieldset
+    %legend= "Week of #{ @special_date.week_of.to_s }"
+    %br/
+    = f.label :event
+    = f.select( :event, SPECIAL_DATE_EVENTS )
+    %br/
+    #special_date_details
+      = f.label :description
+      = f.text_field :description, :class => "text"
+      .checkbox_pair
+        = f.check_box :is_cancelled
+        = f.label :is_cancelled
+      .checkbox_pair
+        = f.check_box :is_review_postponed
+        = f.label :is_review_postponed
+      = f.hidden_field :week_of
+  .actions
+    .submit= f.submit 'Save'

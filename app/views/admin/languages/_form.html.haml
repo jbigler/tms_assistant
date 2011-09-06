@@ -1,0 +1,13 @@
+= form_for ([:admin, @language]) do |f|
+  = render "shared/error_messages", :target => @language
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :display_name
+    = f.text_field :display_name
+  .field
+    = f.label :code
+    = f.text_field :code
+  .actions
+    = f.submit 'Save'

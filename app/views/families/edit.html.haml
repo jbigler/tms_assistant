@@ -1,0 +1,6 @@
+%h2 Edit Family
+- form_for [@congregation, @family], :html => { :class => "bp" } do |f|
+  = render "shared/error_messages", :target => @family
+  = render :partial => "form", :locals => { :f => f }
+  = f.submit "Save Changes"
+= link_to "Back", congregation_families_path( @congregation )
