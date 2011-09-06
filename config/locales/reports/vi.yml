@@ -1,0 +1,17 @@
+vi:
+  reports:
+    slips:
+      header: "BÀI GIẢNG TRƯỜNG THÁNH CHỨC"
+      student: "Tên: "
+      talk_no: "Bài giảng số: "
+      date: "Ngày: " 
+      assistant: "Người phụ tá: "
+      source: "Nguồn tài liệu: "
+      title: "Chủ đề: "
+      setting: "Khung cảnh: "
+      school: "Giảng ở phòng: "
+      footer1: "Xin học viên lưu ý: "
+      footer2: "Trước khi sửa soạn bài giảng, xin xem xét bài học <b>%{lesson}</b> trong sách <i>Được lợi ích nhờ sự giáo dục của Trường Thánh Chức Thần Quyền</i> để giúp bạn hiểu và áp dụng điểm bạn được chỉ định luyện tập. Hãy làm bài thực tập được đề nghị nơi phần cuối của bài học được chỉ định. <b>Xin mang theo sách giáo khoa đến Trường Thánh Chức.</b> "
+      footer3: "Nếu làm bài giảng dưới hình thức trình diễn và không có khung cảnh nào được chỉ định, hãy chọn một khung cảnh trong bảng liệt kê nơi trang 82 của sách giáo khoa rồi điền số khung cảnh đó vào chỗ trống ở trên. Hãy đưa phiếu này cho anh giám thị trước khi chương trình trường học bắt đầu vào ngày bạn cho bài giảng. "
+      footer4: "S-89-VT     6/03"
+

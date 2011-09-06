@@ -1,0 +1,24 @@
+- content_for :sidebar do
+  #calendar
+    = render :partial => 'shared/calendar'
+
+#schedule
+  %h2 Listing Special Dates
+
+  %table
+    %tr
+      %th Week of
+      %th Event
+      %th Description
+      %th
+      %th
+      %th
+    - @special_dates.each do |special_date|
+      %tr
+        %td= special_date.week_of
+        %td= special_date.event
+        %td= special_date.description
+        %td= link_to 'Show', [@congregation, special_date]
+        %td= link_to 'Edit', edit_congregation_special_date_path( @congregation, special_date )
+        %td= link_to 'Destroy', congregation_special_date_path( @congregation, special_date ), :confirm => 'Are you sure?', :method => :delete
+  %br

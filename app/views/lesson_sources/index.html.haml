@@ -1,0 +1,26 @@
+%h1 Listing Lesson Sources 
+
+%table#lesson_source_data.table.data
+  %thead
+    %tr
+      %th Chapter
+      %th Description
+      %th Page number
+      %th Use for reading
+      %th Use for demonstration
+      %th Use for discourse
+      %th Notes
+      %th
+      %th
+  %tbody
+    - @lesson_sources.each do |lesson_source|
+      %tr
+        %td= lesson_source.chapter
+        %td= lesson_source.description
+        %td= lesson_source.page_number
+        %td= lesson_source.use_for_reading
+        %td= lesson_source.use_for_demonstration
+        %td= lesson_source.use_for_discourse
+        %td= lesson_source.notes
+        %td= link_to 'Show', language_lesson_source_path( @language, lesson_source )
+        %td= link_to 'Edit', edit_language_lesson_source_path( lesson_source.language_id, lesson_source )

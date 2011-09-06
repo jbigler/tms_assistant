@@ -1,0 +1,8 @@
+- content_for :sidebar do
+  #calendar
+    = render :partial => 'shared/calendar'
+
+#special_date
+  %h2 New Special Date
+  = render 'form'
+  %p= link_to 'Back', congregation_special_dates_path( @congregation )

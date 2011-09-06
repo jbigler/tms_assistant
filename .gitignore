@@ -1,0 +1,14 @@
+.bundle
+.DS_Store
+log/*.log
+tmp/*
+config/database.yml
+db/*.sqlite3
+public/system/**/**/**/*
+.idea/*
+.sass-cache/**/*
+*.swp
+.rake_tasks~
+help/**/*
+vendor/ruby
+backup/*

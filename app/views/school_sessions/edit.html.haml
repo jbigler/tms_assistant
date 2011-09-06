@@ -1,0 +1,14 @@
+- content_for :sidebar do
+  #calendar
+    = render :partial => 'shared/calendar'
+
+#schedule
+  - if @school_session.cancelled?
+    %h2 School Session Cancelled
+  - else
+    %h2 Editing Session for #{@school_session.week_of.to_s}
+    = form_for [@congregation, @school_session], :html => { :class => "form" } do |f|
+      = render "shared/error_messages", :target => @school_session
+      = render :partial => "form", :locals => { :f => f }
+      = hidden_field_tag "step_2", "1"
+      .submit= f.submit "Continue"

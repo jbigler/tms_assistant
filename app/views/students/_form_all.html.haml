@@ -1,0 +1,58 @@
+#student_info
+  %fieldset
+    %legend Student Information
+    .checkbox_pair
+      = f.label :is_active, "Is Active", :class => "checkbox"
+      = f.check_box :is_active, :class => "checkbox"
+    %br/
+    = f.label :first_name
+    = f.text_field :first_name, :class => "text"
+    %br/
+    = f.label :middle_name
+    = f.text_field :middle_name, :class => "text"
+    %br/
+    = f.label :last_name
+    = f.text_field :last_name, :class => "text"
+    %br/
+    = f.label :display_name
+    = f.text_field :display_name, :class => "text"
+    %br/
+    - unless @student.family
+      .checkbox_pair
+        %label.checkbox{ :for => "new_family" } Create family
+        = check_box_tag "new_family", "1", false
+    %label{ :for => "family" } Family:
+    = f.select( :family_id, @families, { :include_blank => true } )
+    %br/
+    = f.label :telephone
+    = f.text_field :telephone, :class => "text"
+    %br/
+    = f.label :email
+    = f.text_field :email, :class => "text"
+    %br/
+    = f.label :notes
+    = f.text_area :notes
+#student_roles
+  %fieldset
+    %legend Use as
+    .checkbox_pair
+      = f.label :use_for_adult, "Adult"
+      = f.check_box :use_for_adult
+    .checkbox_pair
+      = f.label :use_for_advanced, "Advanced"
+      = f.check_box :use_for_advanced
+  %fieldset
+    %legend Use in
+    .checkbox_pair
+      = f.label :use_in_main_school, "Main School"
+      = f.check_box :use_in_main_school
+    .checkbox_pair
+      = f.label :use_in_secondary_school, "Secondary School"
+      = f.check_box :use_in_secondary_school
+  %fieldset
+    %legend Use for
+    - if @student.kind_of?(Brother)
+      = render :partial => "form_brother", :locals => { :f => f }
+    - if @student.kind_of?(Sister)
+      = render :partial => "form_sister", :locals => { :f => f }
+

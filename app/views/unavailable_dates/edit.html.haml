@@ -1,0 +1,13 @@
+- content_for :sidebar do
+  #calendar
+    = render :partial => 'shared/calendar'
+
+#schedule
+  %h1 Editing Unavailable Date
+
+  = render 'form'
+
+  %p
+    = link_to 'Show', [@congregation, @student, @unavailable_date]
+    \|
+    = link_to 'Back', congregation_student_unavailable_dates_path( @congregation, @student )

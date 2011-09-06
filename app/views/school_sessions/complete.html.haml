@@ -1,0 +1,100 @@
+- content_for :sidebar do
+  #calendar
+    = render :partial => 'shared/calendar'
+
+#schedule
+  %h2 Completing Session for #{@school_session.week_of.to_s}
+  = form_for [@congregation, @school_session], :url => { :action => "finalize" }, :html => { :class => "bp" }  do |f|
+    = render "shared/error_messages", :target => @school_session
+    %fieldset
+      %legend= t :bh
+      = f.fields_for :bible_highlights do |bh|
+        = bh.label :student_id
+        = bh.object.student.display_name
+        = bh.radio_button :completed_by, 'student', :checked => true
+        = bh.label :completed_by_student
+        = bh.radio_button :completed_by, 'substitute'
+        = bh.label :completed_by_substitute
+        = bh.select( :substitute_id, bh.object.find_eligible_substitutes.collect {|i| [i.display_name, i.id] }, { :include_blank => true } )
+    - if @school_session.reader
+      = f.fields_for :reader do |a|
+        = a.label :student_id
+        = a.object.student.display_name
+        = a.radio_button :completed_by, 'student', :checked => true
+        = a.label :completed_by_student
+        = a.radio_button :completed_by, 'substitute'
+        = a.label :completed_by_substitute
+        = a.select( :substitute_id, a.object.find_eligible_substitutes.collect {|i| [i.display_name, i.id] }, { :include_blank => true } )
+    - else
+      = f.fields_for :schools do |school_form|
+        %fieldset
+          %legend= "School #{school_form.object.position}"
+          %fieldset
+            %legend Talk No 1
+            = school_form.fields_for :talk_no1 do |a|
+              - if a.object.cancelled?
+                Cancelled
+              - else
+                = a.label :student_id
+                = a.object.student.display_name
+                = a.radio_button :completed_by, 'student', :checked => true
+                = a.label :completed_by_student
+                = a.radio_button :completed_by, 'substitute'
+                = a.label :completed_by_substitute
+                = a.select( :substitute_id, a.object.find_eligible_substitutes.collect {|i| [i.display_name, i.id] }, { :include_blank => true } )
+                = a.radio_button :lesson_status, 'complete', :checked => true
+                = a.label :lesson_status_complete
+                = a.label :lesson_next
+                = a.select( :lesson_next, prepare_lesson_select( a.object.student.find_eligible_lessons( a.object ) ) )
+                = a.radio_button :lesson_status, 'incomplete'
+                = a.label :lesson_status_incomplete
+                %br
+          %fieldset
+            %legend Talk No 2
+            = school_form.fields_for :talk_no2 do |a|
+              - if a.object.cancelled?
+                Cancelled
+              - else
+                = a.label :student_id
+                = a.object.student.display_name
+                = a.radio_button :completed_by, 'student', :checked => true
+                = a.label :completed_by_student
+                = a.radio_button :completed_by, 'substitute'
+                = a.label :completed_by_substitute
+                = a.select( :substitute_id, a.object.find_eligible_substitutes.collect {|i| [i.display_name, i.id] }, { :include_blank => true } )
+                = a.radio_button :lesson_status, 'complete', :checked => true
+                = a.label :lesson_status_complete
+                = a.label :lesson_next
+                = a.select( :lesson_next, prepare_lesson_select( a.object.student.find_eligible_lessons( a.object ) ) )
+                = a.radio_button :lesson_status, 'incomplete'
+                = a.label :lesson_status_incomplete
+                - if a.object.student.type == "Sister"
+                  = a.label :assistant_id
+                  = a.select( :assistant_id, a.object.find_eligible_assistants.collect { |i| [i.display_name, i.id] }, { :include_blank => true } )
+                  = a.label :setting_number
+                  = a.select( :setting_number, prepare_setting_select( a.object.student.find_eligible_settings ), { :include_blank => true } )
+          %fieldset
+            %legend Talk No 3
+            = school_form.fields_for :talk_no3 do |a|
+              - if a.object.cancelled?
+                Cancelled
+              - else
+                = a.label :student_id
+                = a.object.student.display_name
+                = a.radio_button :completed_by, 'student', :checked => true
+                = a.label :completed_by_student
+                = a.radio_button :completed_by, 'substitute'
+                = a.label :completed_by_substitute
+                = a.select( :substitute_id, a.object.find_eligible_substitutes.collect {|i| [i.display_name, i.id] }, { :include_blank => true } )
+                = a.radio_button :lesson_status, 'complete', :checked => true
+                = a.label :lesson_status_complete
+                = a.label :lesson_next
+                = a.select( :lesson_next, prepare_lesson_select( a.object.student.find_eligible_lessons( a.object ) ) )
+                = a.radio_button :lesson_status, 'incomplete'
+                = a.label :lesson_status_incomplete
+                - if a.object.student.type == "Sister"
+                  = a.label :assistant_id
+                  = a.select( :assistant_id, a.object.find_eligible_assistants.collect { |i| [i.display_name, i.id] }, { :include_blank => true } )
+                  = a.label :setting_number
+                  = a.select( :setting_number, prepare_setting_select( a.object.student.find_eligible_settings ), { :include_blank => true } )
+    %p= submit_tag "Complete"

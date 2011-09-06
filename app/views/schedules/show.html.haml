@@ -1,0 +1,43 @@
+- content_for :sidebar do
+  #calendar
+    = render :partial => 'shared/calendar'
+
+#schedule
+  %p
+    %b Week of:
+    = @schedule.week_of
+  %p
+    %b Has review:
+    = @schedule.has_review
+  %p
+    %b Bible Highlights:
+    = @schedule.bible_highlights.source
+  - unless @schedule.has_review
+    %p
+      %b Talk No 1:
+      %ul
+        %li
+          %b Source:
+          = @schedule.talk_no1.source
+    %p
+      %b Talk No 2:
+      %ul
+        %li 
+          %b Title:
+          = @schedule.talk_no2.title
+        %li 
+          %b Source:
+          = @schedule.talk_no2.source
+    %p
+      %b Talk No 3:
+      %ul
+        %li 
+          %b Title:
+          = @schedule.talk_no3.title
+        %li 
+          %b Source:
+          = @schedule.talk_no3.source
+
+  = link_to 'Edit', edit_language_schedule_path( @language, @schedule )
+  \|
+  = link_to 'Back', language_schedules_path( @language )

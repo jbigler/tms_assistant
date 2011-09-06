@@ -1,0 +1,24 @@
+= form_for [@language, @lesson_source], :validate => true do |f|
+  = render "shared/error_messages", :target => @lesson_source
+  %fieldset
+    %legend= "Chapter #{ f.object.chapter.to_s }"
+    = f.label :description
+    = f.text_field :description
+    %br/
+    = f.label :page_number
+    = f.text_field :page_number
+    %br/
+    .checkbox_pair
+      = f.label :use_for_reading
+      = f.check_box :use_for_reading
+    .checkbox_pair
+      = f.label :use_for_demonstration
+      = f.check_box :use_for_demonstration
+    .checkbox_pair
+      = f.label :use_for_discourse
+      = f.check_box :use_for_discourse
+    %br/
+    = f.label :notes
+    = f.text_area :notes
+    %br/
+    .submit= f.submit 'Save'

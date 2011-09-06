@@ -1,0 +1,26 @@
+%h1 Listing languages
+
+%table
+  %tr
+    %th Name
+    %th Display name
+    %th Code
+    %th
+    %th
+    %th
+
+  - @languages.each do |language|
+    %tr
+      %td= language.name
+      %td= language.display_name
+      %td= language.code
+      %td= link_to 'Show', admin_language_path( language )
+      %td= link_to 'Edit', edit_admin_language_path( language )
+      %td= link_to 'Destroy', admin_language_path( language ), :confirm => 'Are you sure?', :method => :delete
+      %td= link_to 'Manage Schedule', language_schedules_path( language )
+      %td= link_to 'Manage Lessons', language_lesson_sources_path( language )
+      %td= link_to 'Manage Settings', language_setting_sources_path( language )
+
+%br
+
+= link_to 'New Language', new_admin_language_path

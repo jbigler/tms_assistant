@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @language.name
+%p
+  %b Display name:
+  = @language.display_name
+%p
+  %b Code:
+  = @language.code
+
+= link_to 'Edit', edit_admin_language_path(@language)
+\|
+= link_to 'Back', admin_languages_path

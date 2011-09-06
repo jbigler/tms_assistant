@@ -1,0 +1,10 @@
+- content_for :sidebar do
+  #calendar
+    = render :partial => 'shared/calendar'
+
+#schedule
+  %h3= @schedule.week_of.strftime( "Week of %B %e, %Y" )
+  = form_for( [@language, @schedule], :html => { :method => :put }) do |f|
+    = render "shared/error_messages", :target => @schedule
+    = render :partial => "form", :locals => { :f => f }
+    .submit= submit_tag "Save Changes"

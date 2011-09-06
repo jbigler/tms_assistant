@@ -1,0 +1,44 @@
+%p
+  %b Family name:
+  = @family.name
+%p
+  %b First name:
+  = @family.first_name
+
+= link_to "Edit", edit_congregation_family_path( @congregation, @family )
+\|
+= link_to "Back", congregation_families_path( @congregation )
+
+%h2 Students
+
+%table
+  %tr
+    %th Last name
+    %th First name
+    %th Sex
+    %th Adult
+    %th Advanced
+    %th BH
+    %th No 1
+    %th No 2
+    %th No 3
+    %th Ass't
+    %th
+    %th
+  - @family.students.each do |student|
+    %tr
+      %td= student.last_name
+      %td= link_to student.first_name, congregation_student_url( @congregation, student )
+      %td= student.type == "Brother" ? "M" : "F"
+      %td= "Y" if student.use_for_adult?
+      %td= "Y" if student.use_for_advanced?
+      %td= "Y" if student.type == "Brother" && student.use_for_bh?
+      %td= "Y" if student.type == "Brother" && student.use_for_no1?
+      %td= "Y" if student.type == "Sister" && student.use_for_no2?
+      %td= "Y" if student.use_for_no3?
+      %td= "Y" if student.type == "Sister" && student.use_for_assistant?
+      %td= link_to 'Edit', edit_congregation_student_url( @congregation, student )
+      %td= link_to 'Delete', congregation_student_url( @congregation, student ), :confirm => 'Are you sure?', :method => :delete
+%br/
+= link_to 'Add brother', :controller => "students", :action => "new", :type => "Brother", :family => @family, :congregation => @congregation
+= link_to 'Add sister', :controller => "students", :action => "new", :type => "Sister", :family => @family, :congregation => @congregation

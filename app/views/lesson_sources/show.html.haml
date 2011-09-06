@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b Chapter:
+  = @lesson_source.chapter
+%p
+  %b Description:
+  = @lesson_source.description
+%p
+  %b Page number:
+  = @lesson_source.page_number
+%p
+  %b Use for reading:
+  = @lesson_source.use_for_reading
+%p
+  %b Use for demonstration:
+  = @lesson_source.use_for_demonstration
+%p
+  %b Use for discourse:
+  = @lesson_source.use_for_discourse
+%p
+  %b Notes:
+  = @lesson_source.notes
+
+= link_to 'Edit', edit_language_lesson_source_path(@lesson_source.language_id, @lesson_source)
+\|
+= link_to 'Back', language_lesson_sources_path( @lesson_source.language_id )

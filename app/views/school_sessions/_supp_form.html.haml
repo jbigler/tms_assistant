@@ -1,0 +1,96 @@
+%fieldset
+  %legend= t :bh
+  = f.fields_for :bible_highlights do |bh|
+    - if bh.object.student
+      = bh.label :student_id
+      = bh.object.student.display_name
+    - else
+      Unassigned
+    .source[@school_session.bible_highlights]
+      %a.sourceLink{ :href => "#" } View Source Material
+      %p
+        %strong Source : 
+        = @school_session.bible_highlights.source
+- if @school_session.reader
+  = f.fields_for :reader do |a|
+    - if a.object.student
+      = a.label "Reader"
+      = a.object.student.display_name
+- else
+  #schools
+    %ul
+      - @school_session.schools.each do |school|
+        %li= link_to "School " + school.position.to_s, "#school_" + school.position.to_s
+    = f.fields_for :schools do |school_form|
+      %div{ :id => "school_" + school_form.object.position.to_s }
+        %fieldset
+          %legend= "School #{school_form.object.position}"
+          = school_form.fields_for :talk_no1 do |a|
+            %fieldset
+              %legend Talk No 1
+              - if a.object.student
+                = a.label :student_id
+                = a.object.student.display_name
+                %br/
+                = a.label "Lesson"
+                = a.select( :lesson_chapter, prepare_lesson_select( a.object.student.find_eligible_lessons( a.object ) ) )
+              - else
+                Unassigned
+              .source[a.object]
+                %a.sourceLink{ :href => "#" } View Source Material
+                %p
+                  %strong Source: 
+                  = a.object.source
+                  = link_to "Edit", edit_language_schedule_path( @school_session.congregation.language )
+          = school_form.fields_for :talk_no2 do |a|
+            %fieldset
+              %legend Talk No 2
+              - if a.object.student
+                = a.label :student_id
+                = a.object.student.display_name
+                %br/
+                = a.label "Lesson"
+                = a.select( :lesson_chapter, prepare_lesson_select( a.object.student.find_eligible_lessons( a.object ) ) )
+                %br/
+                - if a.object.student.type == "Sister"
+                  = a.label :assistant_id
+                  = select_eligible_assistants( a )
+                  %br/
+                  = a.label "Setting"
+                  = a.select( :setting_number, prepare_setting_select( a.object.student.find_eligible_settings ), { :include_blank => true } )
+              - else
+                Unassigned
+              .source[a.object]
+                %a.sourceLink{ :href => "#" } View Source Material
+                %p
+                  %strong Title: 
+                  = a.object.title
+                %p
+                  %strong Source: 
+                  = a.object.source
+          = school_form.fields_for :talk_no3 do |a|
+            %fieldset
+              %legend Talk No 3
+              - if a.object.student
+                = a.label :student_id
+                = a.object.student.display_name
+                %br/
+                = a.label "Lesson"
+                = a.select( :lesson_chapter, prepare_lesson_select( a.object.student.find_eligible_lessons( a.object ) ) )
+                %br/
+                - if a.object.student.type == "Sister"
+                  = a.label :assistant_id
+                  = select_eligible_assistants( a )
+                  %br/
+                  = a.label "Setting"
+                  = a.select( :setting_number, prepare_setting_select( a.object.student.find_eligible_settings ), { :include_blank => true } )
+              - else
+                Unassigned
+              .source[a.object]
+                %a.sourceLink{ :href => "#" } View Source Material
+                %p
+                  %strong Title: 
+                  = a.object.title
+                %p
+                  %strong Source: 
+                  = a.object.source

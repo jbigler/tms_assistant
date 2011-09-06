@@ -1,0 +1,16 @@
+%h1 Listing Setting Sources 
+
+%table#setting_source_data.table.data
+  %thead
+    %tr
+      %th Number
+      %th Description
+      %th
+      %th
+  %tbody
+    - @setting_sources.each do |setting_source|
+      %tr
+        %td= setting_source.number
+        %td= setting_source.description
+        %td= link_to 'Show', [@language, setting_source]
+        %td= link_to 'Edit', edit_language_setting_source_path( @language, setting_source )

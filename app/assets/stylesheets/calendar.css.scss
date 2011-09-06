@@ -1,0 +1,110 @@
+/*
+A grey based theme, inspired by Blinksale and their ColorBurn widget. http://firewheeldesign.com
+AUTHOR: Geoffrey Grosenbach http://nubyonrails.com
+Colors:
+dk: 787888
+lt: 4f4f5b
+lter: a8a8a8
+white: ffffff
+*/
+
+$dark: #2f427a;
+$light: #bbccff;
+$lighter: #ffffdd;
+
+/* TODO */
+
+.calendar {
+  margin: auto;
+  color: white;
+  text-align: center;
+  width: 90%;
+
+  a {
+    display: block;
+    width: 100%;
+    color: white;
+    text-decoration: none;
+    &:visited {
+      color: white;
+      text-decoration: none; }
+    &:hover {
+      text-decoration: none;
+      color: black; } }
+
+  .monday {
+    color: white;
+    background-color: $dark;
+    border-bottom: 1px solid #111111;
+    &:hover {
+      color: black;
+      background-color: white; 
+      a { color: black; }
+    }
+  }
+
+  thead tr {
+    color: black; }
+
+  th.monthName {
+    font-weight: bold;
+    font-size: larger;
+    text-align: center;
+    background-color: $dark;
+    padding-top: 0.5em;
+    /*padding-bottom: 0.7em;*/
+    color: white; }
+
+  .dayName th {
+    font-size: 0.7em;
+    padding-top: 0.6em;
+    padding-bottom: 0.3em;
+    background-color: black;
+    color: white;
+    border-bottom: 1px solid white; }
+
+  .otherMonth, .day, .specialDay, .monday, .selectedDate {
+    /*padding: 0.7em 1em;*/
+    text-align: center;
+    padding-top: 0.7em;
+    padding-bottom: 0.7em;
+    border-right: 1px solid #111111; }
+
+  .otherMonth {
+    color: #999999;
+    background-color: #4f4f5b; }
+
+  .day, .weekendDay {
+    border-bottom: 1px solid #111111;
+    background-color: #333333; }
+
+  .specialDay {
+    border-bottom: 1px solid #111111;
+    background-color: #333333;
+    background-color: $lighter;
+    color: black;
+  }
+
+  .selectedDate {
+    border-bottom: 1px solid #111111;
+    background-color: green;
+    color: black;
+    font-weight: bold;
+  }
+
+  .today {
+    background-color: black;
+    color: white; }
+}
+
+#calendar_back {
+  margin-left: 1em;
+  margin-bottom: 1em;
+  float: left;
+}
+
+#calendar_forward {
+  margin-right: 1em;
+  margin-bottom: 1em;
+  float: right;
+}
