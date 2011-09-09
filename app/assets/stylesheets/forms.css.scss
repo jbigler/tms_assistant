@@ -28,6 +28,18 @@
         padding-top: 0.5em;
         text-align: right;
       }
+      
+      div {
+        clear: both;
+        display: block;
+        margin: 0.5em;
+
+        .text {
+          clear: none;
+          padding-top: 0.5em;
+          font-weight: bold;
+        }
+      }
 
       input {
         margin: 0.2em 0.5em;

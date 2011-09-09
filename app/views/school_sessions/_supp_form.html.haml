@@ -2,8 +2,9 @@
   %legend= t :bh
   = f.fields_for :bible_highlights do |bh|
     - if bh.object.student
-      = bh.label :student_id
-      = bh.object.student.display_name
+      %div
+        = bh.label :student_id
+        .text= bh.object.student.display_name
     - else
       Unassigned
     .source[@school_session.bible_highlights]
@@ -11,6 +12,7 @@
       %p
         %strong Source : 
         = @school_session.bible_highlights.source
+        = link_to "Edit", new_language_schedule_path( @school_session.congregation.language, :edit_date => @school_session.week_of )
 - if @school_session.reader
   = f.fields_for :reader do |a|
     - if a.object.student
@@ -29,11 +31,12 @@
             %fieldset
               %legend Talk No 1
               - if a.object.student
-                = a.label :student_id
-                = a.object.student.display_name
-                %br/
-                = a.label "Lesson"
-                = a.select( :lesson_chapter, prepare_lesson_select( a.object.student.find_eligible_lessons( a.object ) ) )
+                %div
+                  = a.label :student_id
+                  .text= a.object.student.display_name
+                %div
+                  = a.label "Lesson"
+                  = a.select( :lesson_chapter, prepare_lesson_select( a.object.student.find_eligible_lessons( a.object ) ) )
               - else
                 Unassigned
               .source[a.object]
@@ -41,23 +44,24 @@
                 %p
                   %strong Source: 
                   = a.object.source
-                  = link_to "Edit", edit_language_schedule_path( @school_session.congregation.language )
+                  = link_to "Edit", new_language_schedule_path( @school_session.congregation.language, :edit_date => a.object.week_of )
           = school_form.fields_for :talk_no2 do |a|
             %fieldset
               %legend Talk No 2
               - if a.object.student
-                = a.label :student_id
-                = a.object.student.display_name
-                %br/
-                = a.label "Lesson"
-                = a.select( :lesson_chapter, prepare_lesson_select( a.object.student.find_eligible_lessons( a.object ) ) )
-                %br/
+                %div
+                  = a.label :student_id
+                  .text= a.object.student.display_name
+                %div
+                  = a.label "Lesson"
+                  = a.select( :lesson_chapter, prepare_lesson_select( a.object.student.find_eligible_lessons( a.object ) ) )
                 - if a.object.student.type == "Sister"
-                  = a.label :assistant_id
-                  = select_eligible_assistants( a )
-                  %br/
-                  = a.label "Setting"
-                  = a.select( :setting_number, prepare_setting_select( a.object.student.find_eligible_settings ), { :include_blank => true } )
+                  %div
+                    = a.label :assistant_id
+                    = select_eligible_assistants( a )
+                  %div
+                    = a.label "Setting"
+                    = a.select( :setting_number, prepare_setting_select( a.object.student.find_eligible_settings ), { :include_blank => true } )
               - else
                 Unassigned
               .source[a.object]
@@ -68,22 +72,24 @@
                 %p
                   %strong Source: 
                   = a.object.source
+                  = link_to "Edit", new_language_schedule_path( @school_session.congregation.language, :edit_date => a.object.week_of )
           = school_form.fields_for :talk_no3 do |a|
             %fieldset
               %legend Talk No 3
               - if a.object.student
-                = a.label :student_id
-                = a.object.student.display_name
-                %br/
-                = a.label "Lesson"
-                = a.select( :lesson_chapter, prepare_lesson_select( a.object.student.find_eligible_lessons( a.object ) ) )
-                %br/
+                %div
+                  = a.label :student_id
+                  .text= a.object.student.display_name
+                %div
+                  = a.label "Lesson"
+                  = a.select( :lesson_chapter, prepare_lesson_select( a.object.student.find_eligible_lessons( a.object ) ) )
                 - if a.object.student.type == "Sister"
-                  = a.label :assistant_id
-                  = select_eligible_assistants( a )
-                  %br/
-                  = a.label "Setting"
-                  = a.select( :setting_number, prepare_setting_select( a.object.student.find_eligible_settings ), { :include_blank => true } )
+                  %div
+                    = a.label :assistant_id
+                    = select_eligible_assistants( a )
+                  %div
+                    = a.label "Setting"
+                    = a.select( :setting_number, prepare_setting_select( a.object.student.find_eligible_settings ), { :include_blank => true } )
               - else
                 Unassigned
               .source[a.object]
@@ -94,3 +100,4 @@
                 %p
                   %strong Source: 
                   = a.object.source
+                  = link_to "Edit", new_language_schedule_path( @school_session.congregation.language, :edit_date => a.object.week_of )
