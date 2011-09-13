@@ -28,6 +28,7 @@ group :production do
 end
 
 group :development do
+  gem 'active_reload'
   gem 'pry'
   gem "heroku"
   gem "taps"
@@ -46,6 +47,7 @@ end
 group :test do
   gem "autotest-standalone"
   gem "autotest-rails-pure"
+  gem "autotest-notification"
   gem "launchy"
   gem "timecop"
   gem "shoulda-matchers"
