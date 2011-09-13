@@ -1,5 +1,9 @@
 class User < ActiveRecord::Base
 
+  # The has_and_belongs_to_many relationship causes rake assets:precompile
+  # to hit the database, preventing automatic asset generation on heroku.
+  # The devise_for line in routes.rb causes this file to be processed 
+  # during the loading of the environment.
   has_and_belongs_to_many :congregations
   belongs_to :default_congregation, :class_name => "Congregation", :foreign_key => :default_congregation_id
 

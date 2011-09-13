@@ -53,9 +53,9 @@ GEM
       open4
     client_side_validations (3.1.0)
     coderay (0.9.8)
-    coffee-rails (3.1.0)
+    coffee-rails (3.1.1)
       coffee-script (>= 2.2.0)
-      railties (~> 3.1.0.rc1)
+      railties (~> 3.1.0)
     coffee-script (2.2.0)
       coffee-script-source
       execjs
@@ -166,10 +166,11 @@ GEM
       sexp_processor (~> 3.0)
     rubyzip (0.9.4)
     sass (3.1.7)
-    sass-rails (3.1.0)
+    sass-rails (3.1.1)
       actionpack (~> 3.1.0)
       railties (~> 3.1.0)
       sass (>= 3.1.4)
+      tilt (~> 1.3.2)
     sequel (3.20.0)
     sexp_processor (3.0.6)
     shoulda-matchers (1.0.0.beta3)
@@ -224,7 +225,7 @@ DEPENDENCIES
   calendar_helper
   client_side_validations
   coffee-rails (~> 3.1)
-  devise (>= 1.4.4)
+  devise (~> 1.4)
   factory_girl_rails
   friendly_id (~> 3.1)
   haml
