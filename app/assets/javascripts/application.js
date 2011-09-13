@@ -8,4 +8,5 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require rails.validations
+//= require jquery-plugins
 //= require_tree .
