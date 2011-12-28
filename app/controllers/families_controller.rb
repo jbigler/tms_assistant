@@ -1,6 +1,7 @@
 class FamiliesController < ApplicationController
 
   before_filter :authenticate_user!, :require_congregation
+  layout "application-single"
 
   def index
     @families = @congregation.families.order( "name" )

@@ -26,33 +26,33 @@
             .type Talk No 1
             .student
               %strong Student:
-              = h school.talk_no1.student.display_name if school.talk_no1.student
+              = school.talk_no1.student.display_name if school.talk_no1.student
             .lesson
               %strong Lesson:
-              = h school.talk_no1.lesson.display
+              = school.talk_no1.lesson.display
           .assignment
             .type Talk No 2
             .student
               %strong Student:
-              = h school.talk_no2.student.display_name if school.talk_no2.student
+              = school.talk_no2.student.display_name if school.talk_no2.student
             .lesson
               %strong Lesson:
-              = h school.talk_no2.lesson.display
+              = school.talk_no2.lesson.display
             .student
               %strong Assistant:
-              = h school.talk_no2.assistant.display_name if school.talk_no2.assistant
+              = school.talk_no2.assistant.display_name if school.talk_no2.assistant
           .assignment
             .type Talk No 3
             .student
               %strong Student:
-              = h school.talk_no3.student.display_name if school.talk_no3.student
+              = school.talk_no3.student.display_name if school.talk_no3.student
             .lesson
               %strong Lesson:
-              = h school.talk_no3.lesson.display
+              = school.talk_no3.lesson.display
             -if school.talk_no3.assistant
               .student
                 %strong Assistant:
-                = h school.talk_no3.assistant.display_name
+                = school.talk_no3.assistant.display_name
   = link_to 'Edit', edit_congregation_school_session_url( @congregation, @school_session )
   |
   = link_to 'Cancel School', new_congregation_special_date_path( @congregation, :edit_date => @school_session.week_of )

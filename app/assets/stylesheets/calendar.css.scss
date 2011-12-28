@@ -1,13 +1,3 @@
-/*
-A grey based theme, inspired by Blinksale and their ColorBurn widget. http://firewheeldesign.com
-AUTHOR: Geoffrey Grosenbach http://nubyonrails.com
-Colors:
-dk: 787888
-lt: 4f4f5b
-lter: a8a8a8
-white: ffffff
-*/
-
 $dark: #2f427a;
 $light: #bbccff;
 $lighter: #ffffdd;
@@ -42,9 +32,24 @@ $lighter: #ffffdd;
       a { color: black; }
     }
   }
+}
 
-  thead tr {
-    color: black; }
+table.calendar {
+  thead tr.dayName {
+    background-color: black;
+    color: white; 
+
+    th {
+      font-size: 0.7em;
+      padding-top: 0.6em;
+      padding-bottom: 0.3em;
+      border-bottom: 1px solid white; 
+    }
+
+    abbr {
+      color: white;
+    }
+  }
 
   th.monthName {
     font-weight: bold;
@@ -55,13 +60,6 @@ $lighter: #ffffdd;
     /*padding-bottom: 0.7em;*/
     color: white; }
 
-  .dayName th {
-    font-size: 0.7em;
-    padding-top: 0.6em;
-    padding-bottom: 0.3em;
-    background-color: black;
-    color: white;
-    border-bottom: 1px solid white; }
 
   .otherMonth, .day, .specialDay, .monday, .selectedDate {
     /*padding: 0.7em 1em;*/
@@ -75,6 +73,7 @@ $lighter: #ffffdd;
     background-color: #4f4f5b; }
 
   .day, .weekendDay {
+    color: white;
     border-bottom: 1px solid #111111;
     background-color: #333333; }
 

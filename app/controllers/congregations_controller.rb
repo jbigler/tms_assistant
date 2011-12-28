@@ -1,6 +1,7 @@
 class CongregationsController < ApplicationController 
 
   before_filter :authenticate_user!  
+  layout "application-single"
 
   def index
     @congregations = current_user.congregations
