@@ -1,5 +1,7 @@
 class SchoolSession < ActiveRecord::Base
 
+  scope :incomplete, lambda { where("state = 'assigned' and week_of <= ?", Date.today) }
+
   belongs_to :congregation
   belongs_to :reader, :dependent => :delete
   belongs_to :bible_highlights, :dependent => :delete

@@ -12,7 +12,7 @@
         %ul.nav-bar
           %li= link_to 'Dashboard', root_path
           - if session[:congregation_id]
-            %li= link_to "Assignments", congregations_path
+            %li= link_to "Assignments", congregation_school_sessions_path( session[:congregation_id] ) 
             %li= link_to "Students", congregation_students_path( session[:congregation_id] ) 
             %li Reports
             %li Tools
