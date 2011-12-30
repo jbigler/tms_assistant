@@ -178,6 +178,10 @@ class Assignment < ActiveRecord::Base
     self.lesson_next = nil
     self.lesson_notes = nil
     self.completed_by = nil
+    if lesson.date_started == week_of
+      self.lesson.destroy
+    end
+    self.lesson = nil
   end
 
   def state_requires_student
