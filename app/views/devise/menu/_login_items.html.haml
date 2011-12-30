@@ -1,17 +1,14 @@
 - if user_signed_in?
-  %li
-    = link_to('Logout', destroy_user_session_path)
+  = link_to('Logout', destroy_user_session_path)
 - else
-  %li
-    = link_to('Login', new_user_session_path)
-  %li
-    = link_to('Register', new_user_registration_path)
-%li
-  User:
-  - if current_user
-    = link_to( current_user.name, edit_user_registration_path )
-  - else
-    (not logged in)
+  = link_to('Login', new_user_session_path)
+  |
+  = link_to('Register', new_user_registration_path)
+| User:
+- if current_user
+  = link_to( current_user.name, edit_user_registration_path )
+- else
+  (not logged in)
 - if current_user && current_user.admin?
-  %li
-    = link_to "Admin", admin_path
+  |
+  = link_to "Admin", admin_path

@@ -2,6 +2,7 @@ class StudentsController < ApplicationController
 
   before_filter :authenticate_user!, :require_congregation
   before_filter :validate_student_type, :only => [:new]
+  layout "application-single"
 
   # GET /students
   # GET /students.xml

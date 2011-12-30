@@ -127,9 +127,10 @@ class StudentAssignment < Assignment
     end
 
     def prepare_lesson
-      if (not student) && lesson
+      if (self.student_id_changed? and self.student_id_was != nil) or ((not student) and lesson)
         if lesson.date_started == school( true ).school_session.week_of
-          lesson.date_started = nil
+          lesson.destroy
+        else
           lesson.date_completed = nil
           lesson.save
         end

@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 
 gem "rails", "~> 3.1"
 gem "thin"
-gem "devise", ">= 1.4.4"
+gem "devise", "~> 1.4"
 gem "state_machine"
 gem "friendly_id", "~> 3.1"
 gem "haml"
@@ -15,9 +15,10 @@ gem 'prawn'
 
 group :assets do
   gem "haml-rails"
-  gem 'sass-rails', "  ~> 3.1"
-  gem 'coffee-rails', "~> 3.1"
-  gem 'uglifier'
+  gem 'sass-rails', "  ~> 3.1.5"
+  gem 'coffee-rails', "~> 3.1.1"
+  gem 'uglifier', ">= 1.0.3"
+  gem 'zurb-foundation'
 end
 
 gem 'jquery-rails'
@@ -28,6 +29,7 @@ group :production do
 end
 
 group :development do
+  gem 'active_reload'
   gem 'pry'
   gem "heroku"
   gem "taps"
@@ -46,7 +48,10 @@ end
 group :test do
   gem "autotest-standalone"
   gem "autotest-rails-pure"
+  gem "autotest-notification"
   gem "launchy"
   gem "timecop"
   gem "shoulda-matchers"
+  # Pretty printed test output
+  gem "turn", "0.8.2", :require => false
 end

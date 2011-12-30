@@ -1,13 +1,18 @@
-#header
-  %h1
-    %a{:href => "/"} TMS Assistant
-  #main-navigation
-    - if current_user
-      %ul.wat-cf
-        %li= link_to 'Home', root_path
-        %li= link_to "Congregations", congregations_path
-        - if session[:congregation_id]
-          %li= link_to "Students", congregation_students_path( session[:congregation_id] ) 
-  #user-navigation
-    %ul.wat-cf
-      = render 'devise/menu/login_items'
+#header.container
+  .row
+    .four.columns
+      %h1
+        %a{:href => "/"} TMS Assistant
+    .eight.columns
+      #user-nav
+        = render 'devise/menu/login_items'
+  .row
+    .twelve.columns
+      - if current_user
+        %ul.nav-bar
+          %li= link_to 'Dashboard', root_path
+          - if session[:congregation_id]
+            %li= link_to "Assignments", congregation_school_sessions_path( session[:congregation_id] ) 
+            %li= link_to "Students", congregation_students_path( session[:congregation_id] ) 
+            %li Reports
+            %li Tools

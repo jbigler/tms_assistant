@@ -1,22 +1,32 @@
-!!!
-%html
+!!! 5
+!= cc_html(:lang => 'en') do
   %head
-    %title<
-      TMS Assistant
-      = " - " + yield( :title ) if content_for? :title
-    = csrf_meta_tag
-    = stylesheet_link_tag "application"
-    = stylesheet_link_tag "jquery-ui", :media => "screen"
+    %meta{:charset => "utf-8"}/
+    / Uncomment to make IE8 render like IE7
+    / <meta http-equiv="X-UA-Compatible" content="IE=7" />
+    / Set the viewport width to device width for mobile
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    %title= content_for?(:title) ? yield(:title) : "Untitled"
+    / Included CSS Files
+    = stylesheet_link_tag    "application"
+    / Included JS Files
     = javascript_include_tag "application"
-    = javascript_include_tag "datatables"
+    = csrf_meta_tags
     = yield :head
   %body
-    #container
-      = render :partial => "shared/header"
-      = yield
-      #footer
-        .block
-          %p
-            Copyright &copy; 
-            = Time.now.year
-            Saturn Studio.
+    = render :partial => "shared/header"
+    #content.container
+      .row
+        #main.ten.columns.centered
+          #flash.flash
+            - if flash[:alert]
+              .message.error
+                %p= flash[:alert]
+            - if flash[:notice]
+              .message.notice
+                %p= flash[:notice]
+          = yield
+    #footer.container
+      .row
+        .four.columns.centered
+          = render :partial => "shared/footer"

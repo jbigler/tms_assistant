@@ -89,14 +89,35 @@ describe TalkNo1 do
           no1.should_not be_valid
         end
 
+        it "should delete the lesson if cancelled" do
+          lambda do
+            no1.cancel
+          end.should change(Lesson, :count).by(-1)
+        end
+
         context "and is then unassigned" do
           before( :each ) do
             no1.unassign
           end
 
-          it "should ve valid without a student" do
+
+          it "should be valid without a student" do
             no1.student = nil
             no1.should be_valid
+          end
+          
+          it "should delete the lesson if the student is cleared" do
+            lambda do
+              no1.student = nil
+              no1.save
+            end.should change(Lesson, :count).by(-1)
+          end
+
+          it "should delete the lesson if the student is changed" do
+            lambda do
+              no1.student = FactoryGirl.create(:brother, :congregation => first_school.school_session.congregation)  
+              no1.save
+            end.should change(Lesson, :count).by(-1)
           end
 
           it "should be valid without a lesson" do

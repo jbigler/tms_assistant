@@ -63,18 +63,18 @@ class AssignmentSlipReport
       pdf.font_size 12
 
       header = I18n.t( 'reports.slips.header' )
-      student = [{ :text => I18n.t( 'reports.slips.student' ) }, { :text => assignment.student.display_name, :styles => [:bold] } ]# + assignment.schedule_item.source
-      talk_no = [{ :text => I18n.t( 'reports.slips.talk_no' ) }, { :text => assignment.abbrev, :styles => [:bold] } ]# + assignment.schedule_item.source
-      day = [{ :text => I18n.t( 'reports.slips.date' ) }, { :text => determine_date( assignment.week_of ), :styles => [:bold] } ]# + assignment.schedule_item.source
+      student = [{ :text => I18n.t( 'reports.slips.student' ) }, { :text => assignment.student.display_name, :styles => [:bold] } ]
+      talk_no = [{ :text => I18n.t( 'reports.slips.talk_no' ) }, { :text => assignment.abbrev, :styles => [:bold] } ]
+      day = [{ :text => I18n.t( 'reports.slips.date' ) }, { :text => determine_date( assignment.week_of ), :styles => [:bold] } ]
       if assignment.class.method_defined? :assistant and  assignment.assistant
-        assistant = [{ :text => I18n.t( 'reports.slips.assistant' ) }, { :text => assignment.assistant.display_name, :styles => [:bold] } ]# + assignment.schedule_item.source
+        assistant = [{ :text => I18n.t( 'reports.slips.assistant' ) }, { :text => assignment.assistant.display_name, :styles => [:bold] } ]
       else
-        assistant = [{ :text => I18n.t( 'reports.slips.assistant' ) }, { :text => "", :styles => [:bold] } ]# + assignment.schedule_item.source
+        assistant = [{ :text => I18n.t( 'reports.slips.assistant' ) }, { :text => "", :styles => [:bold] } ]
       end
       if assignment.schedule_item.source
-        source = [{ :text => I18n.t( 'reports.slips.source' ) }, { :text => assignment.schedule_item.source, :styles => [:bold] } ]# + assignment.schedule_item.source
+        source = [{ :text => I18n.t( 'reports.slips.source' ) }, { :text => assignment.schedule_item.source, :styles => [:bold] } ]
       else
-        source = [{ :text => I18n.t( 'reports.slips.source' ) }, { :text => "", :styles => [:bold] } ]# + assignment.schedule_item.source
+        source = [{ :text => I18n.t( 'reports.slips.source' ) }, { :text => "", :styles => [:bold] } ]
       end
       if assignment.schedule_item.title
         title = [{ :text => I18n.t( 'reports.slips.title' ) }, { :text => assignment.schedule_item.title, :styles => [:bold] } ]
