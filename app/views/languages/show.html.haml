@@ -13,3 +13,6 @@
 = link_to 'Edit', edit_language_path(@language)
 \|
 = link_to 'Back', languages_path
+%p= link_to "Edit Lessons", language_lesson_sources_path(@language)
+%p= link_to "Edit Settings", language_setting_sources_path(@language)
+%p= link_to "Edit Schedule", language_schedules_path(@language)

@@ -8,4 +8,4 @@
   %h4 School Sessions Pending Completion
   - @school_sessions = @congregation.school_sessions.incomplete
   - @school_sessions.each do |school_session|
-    %p= school_session.week_of
+    = link_to school_session.week_of.to_s, congregation_school_session_path(@congregation, school_session)

@@ -1,6 +1,6 @@
 class StudentAssignment < Assignment
 
-  belongs_to :lesson
+  belongs_to :lesson, :autosave => true
 
   validates_presence_of :substitute, :if => :state_requires_substitute
   validates_presence_of :lesson, :if => :state_requires_lesson
@@ -123,6 +123,7 @@ class StudentAssignment < Assignment
       lesson.lesson_histories.create( :assignment_date => week_of, :notes => lesson_notes )
       if lesson_next && lesson_next.to_i <= LESSON_SOURCES_COUNT
         self.student.next_lesson = lesson_next
+        self.student.save
       end
     end
 

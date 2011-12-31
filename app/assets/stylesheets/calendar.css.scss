@@ -68,10 +68,6 @@ table.calendar {
     padding-bottom: 0.7em;
     border-right: 1px solid #111111; }
 
-  .otherMonth {
-    color: #999999;
-    background-color: #4f4f5b; }
-
   .day, .weekendDay {
     color: white;
     border-bottom: 1px solid #111111;
@@ -83,6 +79,10 @@ table.calendar {
     background-color: $lighter;
     color: black;
   }
+
+  .otherMonth {
+    color: #999999;
+    background-color: #4f4f5b; }
 
   .selectedDate {
     border-bottom: 1px solid #111111;

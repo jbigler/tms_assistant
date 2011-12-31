@@ -3,6 +3,7 @@
     = render :partial => 'shared/calendar'
 
 #schedule
+  %h2 #{@language.name} Schedule
   %h3= @schedule.week_of.strftime( "Week of %B %e, %Y" )
   = form_for( [@language, @schedule], :html => { :method => :put }) do |f|
     = render "shared/error_messages", :target => @schedule
