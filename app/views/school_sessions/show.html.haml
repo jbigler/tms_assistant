@@ -53,7 +53,9 @@
               .student
                 %strong Assistant:
                 = school.talk_no3.assistant.display_name
-  = link_to 'Edit', edit_congregation_school_session_url( @congregation, @school_session )
+  - if @school_session.assigned?
+    %p= link_to "Print Assignment Slips", congregation_reports_show_path(@congregation, :week_of => @school_session.week_of)
+  = link_to 'Edit', edit_congregation_school_session_path( @congregation, @school_session )
   |
   = link_to 'Cancel School', new_congregation_special_date_path( @congregation, :edit_date => @school_session.week_of )
   |
