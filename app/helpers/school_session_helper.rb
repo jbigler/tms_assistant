@@ -2,10 +2,10 @@ module SchoolSessionHelper
 
   def prepare_lesson_select( lessons )
     lessons.all.collect do |lesson|
-      if lesson.date_started && !lesson.date_completed
-        [lesson.chapter.to_s + " - " + lesson.description + " Date Started: " + lesson.date_started, lesson.chapter]
-      elsif lesson.date_completed
+      if lesson.date_completed
         [lesson.chapter.to_s + " - " + lesson.description + " Date Completed: " + lesson.date_completed, lesson.chapter]
+      elsif lesson.date_started
+        [lesson.chapter.to_s + " - " + lesson.description + " Date Started: " + lesson.date_started, lesson.chapter]
       else
         [lesson.chapter.to_s + " - " + lesson.description, lesson.chapter]
       end

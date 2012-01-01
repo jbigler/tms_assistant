@@ -12,7 +12,14 @@
         %ul.nav-bar
           %li= link_to 'Dashboard', root_path
           - if session[:congregation_id]
-            %li= link_to "Assignments", congregation_school_sessions_path( session[:congregation_id] ) 
-            %li= link_to "Students", congregation_students_path( session[:congregation_id] ) 
+            - cong = current_user.congregations.find(session[:congregation_id])
+            %li= link_to "Assignments", congregation_school_sessions_path(cong) 
+            %li= link_to "Students", congregation_students_path(cong) 
             %li Reports
-            %li Tools
+            %li.has-flyout
+              = link_to "Language Data", language_path(cong.language)
+              .flyout.small
+                %ul
+                  %li= link_to "Edit Schedule", language_schedules_path(cong.language)
+                  %li= link_to "Edit Lessons", language_lesson_sources_path(cong.language)
+                  %li= link_to "Edit Settings", language_setting_sources_path(cong.language)

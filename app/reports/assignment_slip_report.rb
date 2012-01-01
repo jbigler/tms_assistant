@@ -32,7 +32,6 @@ class AssignmentSlipReport
     pdf.font "FreeSerifFamily", :size => 12
 
     assignment_no = 0
-    Rails.logger.info( "Number of pages: " + @no_pages.to_s )
     @no_pages.times do |page|
 
       pdf.define_grid( :columns => 2, :rows => 2, :gutter => 1.8.cm )
