@@ -1,0 +1,32 @@
+#footer.container {
+  background: #2F427A;
+  color: white;
+  margin-top: 10px;
+  p {
+    padding-top: 10px;
+  }
+}
+
+* {
+  margin: 0;
+}
+html, body {
+  height: 100%;
+}
+.wrapper {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -3em; /* the bottom margin is the negative value of the footer's height */
+}
+#footer {
+  height: 3em; /* .push must be the same height as .footer */
+  clear: both;
+  margin: 0 auto;
+}
+.push {
+  height: 3em; /* .push must be the same height as .footer */
+  clear: both;
+}
+
+

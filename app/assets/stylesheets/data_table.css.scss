@@ -27,62 +27,62 @@ div.dataTables_info {
 
 div.DataTables_sort_wrapper {
 
-    cursor: pointer;
-    *cursor: hand;
-  span {
-    float: right;
-  }
-}
+  cursor: pointer;
+          *cursor: hand;
+          span {
+            float: right;
+          }
+        }
 
-table.data {
-  clear: both;
-  margin-bottom: 0px;
-}
+        table.data {
+          clear: both;
+          margin-bottom: 0px;
+        }
 
-/* Self clearing - */
-div.dataTables_wrapper:after {
-  content: ".";
-  display: block;
-  clear: both;
-  visibility: hidden;
-  line-height: 0;
-  height: 0;
-}
-html[xmlns] .dataTables_wrapper { display: block; }
-* html .dataTables_wrapper { height: 1%; }
+        /* Self clearing - */
+        div.dataTables_wrapper:after {
+          content: ".";
+          display: block;
+          clear: both;
+          visibility: hidden;
+          line-height: 0;
+          height: 0;
+        }
+        html[xmlns] .dataTables_wrapper { display: block; }
+        * html .dataTables_wrapper { height: 1%; }
 
-/* Header cells */
-table.data thead th {
-  text-align: center;
-}
+        /* Header cells */
+        table.data thead th {
+          text-align: center;
+        }
 
-span.paginate_button,
-span.paginate_active {
-    margin-left: 2px;
-    cursor: pointer;
-    *cursor: hand;
-}
- 
-span.paginate_active {
-    background-color: transparent;
-    border: 1px solid black;
-}
- 
-span.paginate_button_disabled {
-    /*color: #3d6672;*/
-}
- 
-div.dataTables_paginate span {
-    width: 75px;
-    text-align: center;
-    font-weight: bold;
-}
+        span.paginate_button,
+        span.paginate_active {
+          margin-left: 2px;
+          cursor: pointer;
+                  *cursor: hand;
+                }
 
-div.dataTables_paginate span>span {
-    width: 20px;
-    text-align: center;
-}
- 
-div.dataTables_info {
-    padding: 9px 6px 6px 6px;
-}
+                span.paginate_active {
+                  background-color: transparent;
+                  border: 1px solid black;
+                }
+
+                span.paginate_button_disabled {
+                  /*color: #3d6672;*/
+                }
+
+                div.dataTables_paginate span {
+                  width: 75px;
+                  text-align: center;
+                  font-weight: bold;
+                }
+
+                div.dataTables_paginate span>span {
+                  width: 20px;
+                  text-align: center;
+                }
+
+                div.dataTables_info {
+                  padding: 9px 6px 6px 6px;
+                }

@@ -14,18 +14,20 @@
     = csrf_meta_tags
     = yield :head
   %body
-    = render :partial => "shared/header"
-    #content.container
-      .row
-        #main.ten.columns.centered
-          #flash.flash
-            - if flash[:alert]
-              .message.error
-                %p= flash[:alert]
-            - if flash[:notice]
-              .message.notice
-                %p= flash[:notice]
-          = yield
+    .wrapper
+      = render :partial => "shared/header"
+      #content.container
+        .row
+          #main.ten.columns.centered
+            #flash.flash
+              - if flash[:alert]
+                .message.error
+                  %p= flash[:alert]
+              - if flash[:notice]
+                .message.notice
+                  %p= flash[:notice]
+            = yield
+      .push
     #footer.container
       .row
         .four.columns.centered
