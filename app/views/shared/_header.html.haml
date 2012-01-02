@@ -15,7 +15,7 @@
             - cong = current_user.congregations.find(session[:congregation_id])
             %li= link_to "Assignments", congregation_school_sessions_path(cong) 
             %li= link_to "Students", congregation_students_path(cong) 
-            %li Reports
+            %li= link_to "Reports", "#"
             %li.has-flyout
               = link_to "Tools", "#"
               .flyout.small

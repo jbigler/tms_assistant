@@ -1,0 +1,48 @@
+#header.container {
+  background: #2F427A;
+  color: white;
+  margin-bottom: 1.5em;
+  a {
+    &:link {
+      color: white;
+    }
+    &:visited {
+      color: white;
+    }
+    &:hover {
+      color: #DADADA;
+    }
+    &:active {
+      color: white;
+    }
+  }
+
+  h1 {
+    font-size: 2em;
+    padding-top: 0.2em;
+  }
+
+  #user-nav {
+    float: right;
+    margin-top: 1em;
+    font-weight: bold;
+  }
+
+  ul.nav-bar {
+    background: #262626;
+    margin: 0px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+
+    li {
+      padding: 0em 1em;
+      vertical-align: middle;
+    }
+
+    .flyout {
+      background: #262626;
+      border-radius: 10px;
+    }
+  }
+}
+
