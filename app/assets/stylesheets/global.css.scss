@@ -60,22 +60,19 @@ body {
 .table {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 15px; }
-  .table th {
-    padding: 10px;
-    font-weight: bold;
-    text-align: left; }
-    .table th.first {
-      width: 30px; }
-    .table th.last {
-      width: 200px; }
-  .table .checkbox {
-    margin-left: 10px; }
-  .table td {
-    padding: 10px; }
-    .table td.last {
-      text-align: right; }
+margin-bottom: 15px; }
+.table th {
+  padding: 10px;
+  font-weight: bold;
+text-align: left; }
+.table th.first {
+width: 30px; }
+.table th.last {
+width: 200px; }
+.table .checkbox {
+margin-left: 10px; }
+.table td {
+padding: 10px; }
+.table td.last {
+text-align: right; }
 
-.dataTables_length select {
-  display: inline;
-}
