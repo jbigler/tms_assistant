@@ -21,11 +21,13 @@
           #main.ten.columns.centered
             #flash.flash
               - if flash[:alert]
-                .message.error
-                  %p= flash[:alert]
+                .alert-box.error
+                  = flash[:alert]
+                  %a{:href => ""} &times;
               - if flash[:notice]
-                .message.notice
-                  %p= flash[:notice]
+                .alert-box.success
+                  = flash[:notice]
+                  %a{:href => ""} &times;
             = yield
       .push
     #footer.container

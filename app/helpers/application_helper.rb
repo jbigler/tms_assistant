@@ -27,4 +27,12 @@ module ApplicationHelper
     end
   end
 
+  def active_icon(status)
+    if status
+      image_tag "active.png", :width => 24
+    else
+      image_tag "inactive.png", :width => 24
+    end
+  end
+
 end
