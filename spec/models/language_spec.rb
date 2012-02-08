@@ -10,12 +10,12 @@ describe Language do
   it "should create LessonSources for a new Language" do
     expect {
       FactoryGirl.create( :language )
-    }.to change{ LessonSource.count }.by( LESSON_SOURCES_COUNT )
+    }.to change{ LessonSource.count }.by( Constants::LESSON_SOURCES_COUNT )
   end
 
   it "should create SettingSources for a new Language" do
     expect {
       FactoryGirl.create( :language )
-    }.to change{ SettingSource.count }.by( SETTING_SOURCES_COUNT )
+    }.to change{ SettingSource.count }.by( Constants::SETTING_SOURCES_COUNT )
   end
 end

@@ -33,8 +33,11 @@ TmsAssistant::Application.configure do
   # See everything in the log (default is :info)
   # config.log_level = :debug
 
+  # Prepend all log lines with the following tags
+  # config.log_tags = [ :subdomain, :uuid ]
+
   # Use a different logger for distributed setups
-  # config.logger = SyslogLogger.new
+  # config.logger = ActiveSupport::TaggedLogging.new(SyslogLogger.new)
 
   # Use a different cache store in production
   # config.cache_store = :mem_cache_store
@@ -55,6 +58,13 @@ TmsAssistant::Application.configure do
   # the I18n.default_locale when a translation can not be found)
   config.i18n.fallbacks = true
 
+  # Send deprecation notices to registered listeners
+  config.active_support.deprecation = :notify
+
+  # Log the query plan for queries taking more than this (works
+  # with SQLite, MySQL, and PostgreSQL)
+  # config.active_record.auto_explain_threshold_in_seconds = 0.5
+
   ActionMailer::Base.smtp_settings = {
     :address        => "smtp.sendgrid.net",
     :port           => "25",
@@ -64,6 +74,4 @@ TmsAssistant::Application.configure do
     :domain         => ENV['SENDGRID_DOMAIN']
   }
 
-  # Send deprecation notices to registered listeners
-  config.active_support.deprecation = :notify
 end
