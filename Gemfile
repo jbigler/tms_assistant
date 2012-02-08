@@ -1,10 +1,10 @@
 source 'http://rubygems.org'
 
-gem "rails", "~> 3.1"
+gem "rails", "~> 3.2.0"
 gem "thin"
-gem "devise", "~> 1.4"
+gem 'devise', '~> 2.0.0'
 gem "state_machine"
-gem "friendly_id", "~> 3.1"
+gem "friendly_id", "~> 4.0.0"
 gem "haml"
 gem 'calendar_helper'
 gem 'acts_as_list', :git => 'git://github.com/swanandp/acts_as_list.git'
@@ -15,8 +15,8 @@ gem 'prawn'
 
 group :assets do
   gem "haml-rails"
-  gem 'sass-rails', "  ~> 3.1.5"
-  gem 'coffee-rails', "~> 3.1.1"
+  gem 'sass-rails', "  ~> 3.2.3"
+  gem 'coffee-rails', "~> 3.2.1"
   gem 'uglifier', ">= 1.0.3"
   gem 'zurb-foundation'
 end
@@ -29,7 +29,6 @@ group :production do
 end
 
 group :development do
-  gem 'active_reload'
   gem 'pry'
   gem "heroku"
   gem "taps"
@@ -52,6 +51,4 @@ group :test do
   gem "launchy"
   gem "timecop"
   gem "shoulda-matchers"
-  # Pretty printed test output
-  gem "turn", "0.8.2", :require => false
 end

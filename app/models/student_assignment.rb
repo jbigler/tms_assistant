@@ -31,7 +31,7 @@ class StudentAssignment < Assignment
 
     def lesson_chapter=( chapter )
       chapter = chapter.to_i if chapter
-      if chapter && student && ( chapter >= 1 && chapter <= LESSON_SOURCES_COUNT )
+      if chapter && student && ( chapter >= 1 && chapter <= Constants::LESSON_SOURCES_COUNT )
         lesson_source_id = student.congregation.language.lesson_sources.where( :chapter => chapter ).first.id
         pending_lesson = student.lessons.pending.where( :lesson_source_id => lesson_source_id ).first
         if pending_lesson
@@ -53,7 +53,7 @@ class StudentAssignment < Assignment
     def setting_number=( number )
       number = number.to_i if number
       if( number && 
-         number >= 1 && number <= SETTING_SOURCES_COUNT &&
+         number >= 1 && number <= Constants::SETTING_SOURCES_COUNT &&
          student && 
          student.instance_of?( Sister ) )
 
@@ -121,7 +121,7 @@ class StudentAssignment < Assignment
         lesson.date_completed = nil
       end
       lesson.lesson_histories.create( :assignment_date => week_of, :notes => lesson_notes )
-      if lesson_next && lesson_next.to_i <= LESSON_SOURCES_COUNT
+      if lesson_next && lesson_next.to_i <= Constants::LESSON_SOURCES_COUNT
         self.student.next_lesson = lesson_next
         self.student.save
       end

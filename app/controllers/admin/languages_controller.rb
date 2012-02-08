@@ -1,5 +1,7 @@
 class Admin::LanguagesController < Admin::BaseController
 
+  layout "application-single"
+
   def index
     @languages = Language.all
   end

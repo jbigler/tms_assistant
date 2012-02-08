@@ -1,81 +1,57 @@
 body {
   background: #F0F0EE;
-}
-
-#header.container {
-  background: #2F427A;
-  color: white;
-  a {
-    &:link {
-      color: white;
-    }
-    &:visited {
-      color: white;
-    }
-    &:hover {
-      color: #DADADA;
-    }
-    &:active {
-      color: white;
-    }
-  }
+  font-family:Verdana,Geneva,'DejaVu Sans',sans-serif;
+  color: black;
 
   h1 {
     font-size: 2em;
-    padding-top: 0.2em;
   }
-
-  #user-nav {
-    float: right;
-    margin-top: 1em;
+  h2 {
+    font-size: 1.75em;
   }
-
-  ul.nav-bar {
-    background: #262626;
-    margin: 0px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-
-    li {
-      padding: 0em 1em;
-      vertical-align: middle;
-    }
-
-    .flyout {
-      background: #262626;
-      border-radius: 10px;
-    }
+  h3 {
+    font-size: 1.5em;
+  }
+  h4 {
+    font-size: 1.25em;
   }
 }
 
-#footer.container {
-  background: #262626;
-  color: white;
-  margin-top: 10px;
-  p {
-    padding-top: 10px;
+.nice.tabs.vertical {
+  dd {
+    font-weight: bold;
+    a {
+      &:visited {
+        background-color: #2F427A;
+        color: white;
+      }
+      &:active {
+        background-color: #2F427A;
+      }
+    }
   }
 }
 
 .table {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 15px; }
-  .table th {
+  margin-bottom: 15px;
+  th {
     padding: 10px;
     font-weight: bold;
-    text-align: left; }
-    .table th.first {
-      width: 30px; }
-    .table th.last {
-      width: 200px; }
-  .table .checkbox {
-    margin-left: 10px; }
-  .table td {
-    padding: 10px; }
-    .table td.last {
-      text-align: right; }
-
-.dataTables_length select {
-  display: inline;
+    text-align: left;
+    .first {
+      width: 30px; 
+    }
+    .last {
+      width: 200px; 
+    }
+  }
+  td {
+    padding: 10px;
+    .last {
+      text-align: right; 
+    }
+  }
 }
+

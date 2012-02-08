@@ -1,73 +1,74 @@
-/*#main {*/
-  /*form {*/
-    /*.error { */
-      /*float: none; */
-      /*color: red; */
-      /*padding-left: .5em; */
-    /*}*/
-    /*.submit {*/
-      /*text-align: center;*/
-    /*}*/
-    /*fieldset {*/
-      /*clear: both;*/
-      /*padding: 1em;*/
-      /*margin: 1em;*/
+#main {
+  form {
+    .error { 
+      float: none; 
+      color: red; 
+      padding-left: .5em; 
+    }
+    .submit {
+      text-align: center;
+    }
+    fieldset {
+      clear: both;
+      padding: 1em;
+      margin: 1em;
 
-      /*legend {*/
-        /*padding: 0.1em 1em;*/
-        /*border:1px solid;*/
-        /*font-size: larger;*/
-        /*font-weight: bold;*/
-        /*}*/
+      legend {
+        padding: 0.1em 1em;
+        border:1px solid;
+        font-size: larger;
+        font-weight: bold;
+        }
 
-      /*label {*/
-        /*display: block;*/
-        /*float: left;*/
-        /*width: 20%;*/
-        /*margin-right: 1em;*/
-        /*padding-top: 0.5em;*/
-        /*text-align: right;*/
-      /*}*/
+      label {
+        display: block;
+        float: left;
+        width: 20%;
+        margin-right: 1em;
+        padding-top: 0.5em;
+        text-align: right;
+        clear: both;
+      }
       
-      /*div {*/
-        /*clear: both;*/
-        /*display: block;*/
-        /*margin: 0.5em;*/
+      div {
+        clear: both;
+        display: block;
+        margin: 0.5em;
 
-        /*.text {*/
-          /*clear: none;*/
-          /*padding-top: 0.5em;*/
-          /*font-weight: bold;*/
-        /*}*/
-      /*}*/
+        .text {
+          clear: none;
+          padding-top: 0.5em;
+          font-weight: bold;
+        }
+      }
 
-      /*input {*/
-        /*margin: 0.2em 0.5em;*/
-      /*}*/
-      /*textarea {*/
-        /*margin: 0.2em 0.5em;*/
-      /*}*/
-      /*select {*/
-        /*margin: 0.2em 0.5em;*/
-      /*}*/
+      input {
+        margin: 0.2em 0.5em;
+      }
+      textarea {
+        margin: 0.2em 0.5em;
+      }
+      select {
+        margin: 0.2em 0.5em;
+      }
 
-      /*.field_with_errors {*/
-        /*display: inline;*/
-        /*.message {  */
-          /*color: #D00;  */
-          /*padding-right: 4em;  */
-          /*float: right;*/
-          /*text-align: left;*/
-        /*}*/
-      /*}  */
-      /*.checkbox_pair {*/
-        /*clear: both;*/
+      .field_with_errors {
+        display: inline;
+        .message {  
+          color: #D00;  
+          padding-right: 4em;  
+          float: right;
+          text-align: left;
+        }
+      }  
+      .checkbox_pair {
+        clear: both;
 
-        /*input {*/
-          /*margin-top: 0.6em;*/
-        /*}*/
-      /*}*/
-    /*}*/
-  /*}*/
-/*}*/
+        input {
+          margin-top: 0.6em;
+        }
+      }
+    }
+  }
+}
 

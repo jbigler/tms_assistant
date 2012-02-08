@@ -4,7 +4,7 @@
     %legend= "Week of #{ @special_date.week_of.to_s }"
     %br/
     = f.label :event
-    = f.select( :event, SPECIAL_DATE_EVENTS )
+    = f.select( :event, Constants::SPECIAL_DATE_EVENTS )
     %br/
     #special_date_details
       = f.label :description

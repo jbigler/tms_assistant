@@ -4,9 +4,8 @@ $lighter: #ffffdd;
 
 /* TODO */
 
-.calendar {
+table.calendar {
   margin: auto;
-  color: white;
   text-align: center;
   width: 90%;
 
@@ -15,26 +14,19 @@ $lighter: #ffffdd;
     width: 100%;
     color: white;
     text-decoration: none;
-    &:visited {
-      color: white;
-      text-decoration: none; }
-    &:hover {
-      text-decoration: none;
-      color: black; } }
-
-  .monday {
-    color: white;
-    background-color: $dark;
-    border-bottom: 1px solid #111111;
-    &:hover {
-      color: black;
-      background-color: white; 
-      a { color: black; }
-    }
   }
-}
 
-table.calendar {
+  /*.monday {*/
+    /*color: white;*/
+    /*background-color: $dark;*/
+    /*border-bottom: 1px solid #111111;*/
+    /*&:hover {*/
+      /*color: black;*/
+      /*background-color: white; */
+      /*a { color: black; }*/
+    /*}*/
+  /*}*/
+
   thead tr.dayName {
     background-color: black;
     color: white; 
@@ -58,42 +50,59 @@ table.calendar {
     background-color: $dark;
     padding-top: 0.5em;
     /*padding-bottom: 0.7em;*/
-    color: white; }
+    color: white; 
+  }
 
 
-  .otherMonth, .day, .specialDay, .monday, .selectedDate {
+  td {
     /*padding: 0.7em 1em;*/
     text-align: center;
     padding-top: 0.7em;
     padding-bottom: 0.7em;
-    border-right: 1px solid #111111; }
-
-  .day, .weekendDay {
-    color: white;
+    border-right: 1px solid #111111; 
     border-bottom: 1px solid #111111;
-    background-color: #333333; }
+  }
+
+  /*.day, .weekendDay {*/
+    /*color: white;*/
+    /*border-bottom: 1px solid #111111;*/
+    /*background-color: #333333; }*/
 
   .specialDay {
-    border-bottom: 1px solid #111111;
-    background-color: #333333;
-    background-color: $lighter;
-    color: black;
+    /*background-color: #333333;*/
+    /*background-color: $lighter;*/
+    /*color: black;*/
   }
 
   .otherMonth {
     color: #999999;
-    background-color: #4f4f5b; }
+    background-color: #4f4f5b; 
+  }
 
   .selectedDate {
     border-bottom: 1px solid #111111;
     background-color: green;
-    color: black;
+    color: white;
     font-weight: bold;
   }
 
   .today {
-    background-color: black;
-    color: white; }
+    /*background-color: black;*/
+    /*color: white; */
+  }
+
+  tbody tr {
+    background-color: #333333;
+    color: white;
+    td {
+      color: white;
+    }
+
+  }
+  tbody tr.highlight {
+      background-color: green;
+      cursor: pointer;
+  }
 }
 
 #calendar_back {

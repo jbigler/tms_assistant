@@ -6,9 +6,9 @@
     = render :partial => 'shared/calendar'
 
 #schedule
-  %h2 #{@language.name} Schedules
+  %h1 #{@language.name} Schedule
   %h3= Date::MONTHNAMES[ @calendar_date.month ] + " " + @calendar_date.year.to_s
-  %table
+  %table.table
     %tr
       %th Week of
       %th Has review

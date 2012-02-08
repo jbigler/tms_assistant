@@ -42,9 +42,7 @@ class StudentsController < ApplicationController
       @student.family = @congregation.families.find( params[:family] )
     end
 
-    @families = @congregation.families.order( "name" ).collect do |family|
-      [family.name + " (" + family.first_name + ")", family.id]
-    end
+    @families = families
 
     respond_to do |format|
       format.html # new.html.erb
@@ -55,9 +53,7 @@ class StudentsController < ApplicationController
   # GET /students/1/edit
   def edit
     @student = @congregation.students.find(params[:id])
-    @families = @congregation.families.order( "name" ).collect do |family|
-      [family.name + " (" + family.first_name + ")", family.id]
-    end
+    @families = families
 
     respond_to do |format|
       format.html
@@ -100,9 +96,7 @@ class StudentsController < ApplicationController
   # PUT /students/1.xml
   def update
     @student = @congregation.students.find( params[:id] )
-    @families = @congregation.families.order( "name" ).collect do |family|
-      [family.name + " (" + family.first_name + ")", family.id]
-    end
+    @families = families
 
     if params[:new_family] == "1"
       family = @congregation.families.create( :name => @student.last_name )
@@ -140,4 +134,15 @@ class StudentsController < ApplicationController
       redirect_to :back
     end
   end
+
+  def families
+    if @congregation.families then
+      @congregation.families.order( "name" ).collect do |family|
+        [family.name + " (" + family.first_name + ")", family.id]
+      end
+    else
+      []
+    end
+  end
+
 end

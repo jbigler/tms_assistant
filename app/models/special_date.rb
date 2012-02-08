@@ -3,7 +3,7 @@ class SpecialDate < ActiveRecord::Base
   belongs_to :congregation
 
   validates_presence_of :event, :congregation_id, :week_of
-  validates_inclusion_of :event, :in => SPECIAL_DATE_EVENTS, :message => "Invalid event"
+  validates_inclusion_of :event, :in => Constants::SPECIAL_DATE_EVENTS, :message => "Invalid event"
   validates_presence_of :description, :if => Proc.new { |special_date| special_date.event == "Other" }
 
   validates_uniqueness_of :week_of, :scope => [:congregation_id]

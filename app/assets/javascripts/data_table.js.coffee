@@ -1,3 +1,4 @@
 jQuery ->
   $( 'table.data' ).dataTable
-    "bJQueryUI": true
+    "bJQueryUI": true,
+    "sPaginationType": "full_numbers"

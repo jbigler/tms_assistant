@@ -14,19 +14,19 @@ class Language < ActiveRecord::Base
 
   def create_associated_records
     if lesson_sources.empty?
-      LESSON_SOURCES_COUNT.times do |i|
+      Constants::LESSON_SOURCES_COUNT.times do |i|
         chapter = i + 1
         lesson_source = self.lesson_sources.build
         lesson_source.chapter = chapter
-        lesson_source.use_for_reading = true if READING_LESSONS.include?( chapter )
-        lesson_source.use_for_demonstration = true if DEMONSTRATION_LESSONS.include?( chapter )
-        lesson_source.use_for_discourse = true if DISCOURSE_LESSONS.include?( chapter )
+        lesson_source.use_for_reading = true if Constants::READING_LESSONS.include?( chapter )
+        lesson_source.use_for_demonstration = true if Constants::DEMONSTRATION_LESSONS.include?( chapter )
+        lesson_source.use_for_discourse = true if Constants::DISCOURSE_LESSONS.include?( chapter )
       end
       self.save
     end
 
     if setting_sources.empty?
-      SETTING_SOURCES_COUNT.times do |i|
+      Constants::SETTING_SOURCES_COUNT.times do |i|
         number = i + 1
         setting_source = self.setting_sources.build
         setting_source.number = number
