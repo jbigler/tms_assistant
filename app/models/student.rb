@@ -31,7 +31,8 @@ class Student < ActiveRecord::Base
     :use_for_no1,            
     :use_for_no2,            
     :use_for_no3,            
-    :use_for_assistant      
+    :use_for_assistant,
+    :type
 
   #Returns a collection of lessons applicable for
   #this student on the provided assignment.
