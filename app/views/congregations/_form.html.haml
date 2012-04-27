@@ -5,7 +5,7 @@
     = f.text_field :name
   .field
     = f.label :number_of_schools
-    = f.text_field :number_of_schools
+    = f.select(:number_of_schools, options_for_select([1,2,3], @congregation.number_of_schools))
   .field
     = f.label :language_id
     = f.select( "language_id", Language.all.collect {|r| [ r.name, r.id ] }, { :include_blank => false })
