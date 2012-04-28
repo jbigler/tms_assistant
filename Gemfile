@@ -29,7 +29,7 @@ group :production do
 end
 
 group :development do
-  gem 'pry'
+  gem 'pry-rails'
   gem "heroku"
   gem "taps"
   gem "annotate"

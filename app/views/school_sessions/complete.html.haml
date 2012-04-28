@@ -45,6 +45,10 @@
                   Cancelled
                 - else
                   %div
+                    .checkbox_pair
+                      = a.label :is_cancelled, "Cancel"
+                      = a.check_box :is_cancelled
+                  %div
                     = a.label :student_id
                     .text= a.object.student.display_name
                   %div
@@ -69,6 +73,10 @@
                   - if a.object.cancelled?
                     Cancelled
                   - else
+                    %div
+                      .checkbox_pair
+                        = a.label :is_cancelled, "Cancel"
+                        = a.check_box :is_cancelled
                     %div
                       = a.label :student_id
                       .text= a.object.student.display_name
@@ -101,6 +109,10 @@
                   - if a.object.cancelled?
                     Cancelled
                   - else
+                    %div
+                      .checkbox_pair
+                        = a.label :is_cancelled, "Cancel"
+                        = a.check_box :is_cancelled
                     %div
                       = a.label :student_id
                       .text= a.object.student.display_name

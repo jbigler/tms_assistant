@@ -117,7 +117,7 @@ describe SchoolSession do
       end
     end
 
-    context "with all the Assignments assigned to students" do
+    context "with a student for each Assignment" do
       before( :each ) do
         @session.bible_highlights.student = FactoryGirl.create( :elder, :congregation => @cong )
         school = @session.schools.first
@@ -152,9 +152,9 @@ describe SchoolSession do
           school.talk_no3.should be_assigned
         end
 
-        context "and is then unassigned" do
+        context "and is then undone" do
           before( :each ) do
-            @session.unassign
+            @session.undo
           end
           
           it "should put all the assignments in the unassigned state" do

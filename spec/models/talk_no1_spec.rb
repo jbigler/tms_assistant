@@ -34,12 +34,13 @@ describe TalkNo1 do
 
   context "with a student assigned" do
     before( :each ) do
-      no1.student = FactoryGirl.create( :brother, :congregation => first_school.school_session.congregation )  
+      @brother = FactoryGirl.create(:brother, :congregation => @congregation)
+      no1.student = @brother
     end
 
     it "should be the latest assignment for the student" do
       no1.save
-      no1.student.assignments.latest.first == no1
+      no1.student.assignments.latest.first.should eql(no1)
     end
 
     it "should not be able to be assigned" do
@@ -74,8 +75,8 @@ describe TalkNo1 do
           no1.lesson.date_started.should == no1.school_session.week_of
         end
 
-        it "should be able to be unassigned or completed" do
-          no1.can_unassign?.should be_true
+        it "should be able to be undone or completed" do
+          no1.can_undo?.should be_true
           no1.can_complete?.should be_true
         end
         
@@ -95,11 +96,10 @@ describe TalkNo1 do
           end.should change(Lesson, :count).by(-1)
         end
 
-        context "and is then unassigned" do
+        context "and is then undone" do
           before( :each ) do
-            no1.unassign
+            no1.undo
           end
-
 
           it "should be valid without a student" do
             no1.student = nil
@@ -139,7 +139,6 @@ describe TalkNo1 do
 
           context "and the assignment is completed" do
             before( :each ) do
-              @old_lesson = no1.lesson
               no1.complete
             end
 
@@ -147,12 +146,9 @@ describe TalkNo1 do
               no1.should be_substituted
             end
 
-            it "should no longer have a lesson assigned" do
-              no1.lesson.should be_nil
-            end
-
             it "should reset the start date of the old lesson" do
-              @old_lesson.date_started.should be_nil
+              no1.lesson.reload
+              no1.lesson.date_started.should be_nil
             end
           end
         end
