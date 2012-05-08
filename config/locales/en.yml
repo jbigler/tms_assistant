@@ -1,27 +1,43 @@
 # Sample localization file for English. Add more files in this directory for other locales.
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 en:
-  bh: Bible Highlights
+  dashboard:
+    title: Dashboard
+
+  record:
+    edit: Edit
+    delete: Delete
+    manage: Manage
 
   activerecord:
     models:
       assignment:
+        one: Assignment
         other: Assignments
       student:
+        one: Student
         other: Students
       lesson:
+        one: Lesson
         other: Lessons
       setting:
+        one: Setting
         other: Settings
       setting_source:
-        other: Setting sources
+        one: Setting Source
+        other: Setting Sources
       special_date:
-        other: Special dates
+        one: Special Date
+        other: Special Dates
       congregation:
+        one: Congregation
         other: Congregations
       school_session:
-        other: School sessions
+        one: School Session
+        other: School Sessions
       family:
+        one: Family
         other: Families
       lesson_source:
-        other: Lesson sources
+        one: Lesson Source
+        other: Lesson Sources

@@ -13,6 +13,24 @@ vi:
         other: "%{count} lỗi làm %{resource} này không lưu lại được:"
 
   devise:
+    forms:
+      confirmations:
+        submit: 'Gửi xác nhận tài khoản'
+      registrations:
+        sign_up: 'Đăng ký'
+        cancel: 'Xóa bỏ tài khoản'
+      sessions:
+        sign_in: Đăng nhập
+      password:
+        change: Thay đổi mật khẩu
+        submit_change: Thay đổi mật khẩu
+        submit_request: Gửi hướng dẫn
+    shared:
+      sign_in: Đăng nhập
+      sign_up: Đăng ký
+      forgot_password: Quên mật khẩu?
+      didnt_receive_confirmation: Chưa nhận được email hướng dẫn xác thực tài khoản?
+      didnt_receive_unlock: Chưa nhận được email hướng dẫn bỏ khóa tài khoản?
     failure:
       already_authenticated: 'Bạn đã đăng nhập rồi.'
       unauthenticated: 'Bạn cần đăng nhập hoặc đăng ký để có thẻ tiếp tục.'
