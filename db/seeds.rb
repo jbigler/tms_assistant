@@ -10,3 +10,5 @@ user = User.create! :name => "Jeff Bigler", :email => "jbigler@saturnstudio.com"
 user.confirmed_at = user.confirmation_sent_at
 user.admin = true
 user.save
+
+Language.create :name => "English", :display_name => "English", :code => "en"
