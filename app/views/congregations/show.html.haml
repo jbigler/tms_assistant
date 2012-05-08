@@ -1,15 +1,12 @@
-%p= @congregation.name + " : Dashboard"
+%p= @congregation.name + " : " + t('dashboard.title')
 %p 
-  Meeting Day: 
+  #{t 'congregation.meeting_day'}: 
   - if @congregation.meeting_day
-    = t( 'date.day_names' )[ @congregation.meeting_day ]
-%p= link_to "Schedule", language_schedules_path( @congregation.language )
-%p= link_to 'Lesson Sources', language_lesson_sources_path( @congregation.language )
-%p= link_to 'Setting Sources', language_setting_sources_path( @congregation.language )
-%p= link_to "School Sessions", congregation_school_sessions_path( @congregation )
-%p= link_to "Special Dates", congregation_special_dates_path( @congregation )
-%p= link_to "Students", congregation_students_path( @congregation )
-%p= link_to "Families", congregation_families_path( @congregation )
--#.calendar
-  -#-@congregation.school_sessions.each do |session|
-    -#%p= session.week_of
+    = t('date.day_names')[@congregation.meeting_day]
+%p= link_to (Schedule.model_name.human), language_schedules_path( @congregation.language )
+%p= link_to (LessonSource.model_name.human(:count => 2)), language_lesson_sources_path( @congregation.language )
+%p= link_to (SettingSource.model_name.human(:count => 2)), language_setting_sources_path( @congregation.language )
+%p= link_to (SchoolSession.model_name.human(:count => 2)), congregation_school_sessions_path( @congregation )
+%p= link_to (SpecialDate.model_name.human(:count => 2)), congregation_special_dates_path( @congregation )
+%p= link_to (Student.model_name.human(:count => 2)), congregation_students_path( @congregation )
+%p= link_to (Family.model_name.human(:count => 2)), congregation_families_path( @congregation )

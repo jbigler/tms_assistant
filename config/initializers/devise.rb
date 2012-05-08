@@ -4,7 +4,7 @@ Devise.setup do |config|
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class with default "from" parameter.
-  config.mailer_sender = "administrator@saturnstudio.com"
+  config.mailer_sender = "please-change-me-at-config-initializers-devise@example.com"
 
   # Configure the class responsible to send e-mails.
   # config.mailer = "Devise::Mailer"
@@ -46,9 +46,15 @@ Devise.setup do |config|
   config.strip_whitespace_keys = [ :email ]
 
   # Tell if authentication through request.params is enabled. True by default.
+  # It can be set to an array that will enable params authentication only for the
+  # given strategies, for example, `config.params_authenticatable = [:database]` will
+  # enable it only for database (email + password) authentication.
   # config.params_authenticatable = true
 
   # Tell if authentication through HTTP Basic Auth is enabled. False by default.
+  # It can be set to an array that will enable http authentication only for the
+  # given strategies, for example, `config.http_authenticatable = [:token]` will
+  # enable it only for token authentication.
   # config.http_authenticatable = false
 
   # If http headers should be returned for AJAX requests. True by default.
@@ -64,6 +70,9 @@ Devise.setup do |config|
 
   # By default Devise will store the user in session. You can skip storage for
   # :http_auth and :token_auth by adding those symbols to the array below.
+  # Notice that if you are skipping storage for all authentication paths, you
+  # may want to disable generating routes to Devise's sessions controller by
+  # passing :skip => :sessions to `devise_for` in your config/routes.rb
   config.skip_session_storage = [:http_auth]
 
   # ==> Configuration for :database_authenticatable
@@ -76,7 +85,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 10
 
   # Setup a pepper to generate the encrypted password.
-  # config.pepper = "ee3bd37d8723ce673b78817f1b91a5c2adba5f3d6b78bd0f83b1091e6d179d0b4fd9d7c065074beebc7a573e6cba8e0ec2f12999c8c4eb43cc2f67747eef3197"
+  # config.pepper = "982360111d7a124a7d1a3890438015a0d99c9c4ade20cb252daa0c25edec2afc606f278f265117eb52164cb11cd4c67c4d817cbaa259b3dc93a38b13243d80d8"
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
@@ -192,9 +201,8 @@ Devise.setup do |config|
   # If you have any extra navigational formats, like :iphone or :mobile, you
   # should add them to the navigational formats lists.
   #
-  # The :"*/*" and "*/*" formats below is required to match Internet
-  # Explorer requests.
-  # config.navigational_formats = [:"*/*", "*/*", :html]
+  # The "*/*" below is required to match Internet Explorer requests.
+  # config.navigational_formats = ["*/*", :html]
 
   # The default HTTP method used to sign out a resource. Default is :delete.
   config.sign_out_via = :delete

@@ -1,20 +1,18 @@
 class ApplicationController < ActionController::Base
 
   protect_from_forgery
-
-  layout :layout_by_resource
-
-  protected
-
-  def layout_by_resource
-    if devise_controller?
-      "devise"
-    else
-      "application"
-    end
-  end
+  before_filter :set_locale
 
   private
+
+  def set_locale
+    if session[:locale]
+      I18n.locale = session[:locale]
+    elsif current_user
+      session[:locale] = current_user.locale
+      I18n.locale = current_user.locale
+    end
+  end
 
   def require_congregation
     if params[:congregation_id]

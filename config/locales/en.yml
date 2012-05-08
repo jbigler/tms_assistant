@@ -3,3 +3,25 @@
 en:
   bh: Bible Highlights
 
+  activerecord:
+    models:
+      assignment:
+        other: Assignments
+      student:
+        other: Students
+      lesson:
+        other: Lessons
+      setting:
+        other: Settings
+      setting_source:
+        other: Setting sources
+      special_date:
+        other: Special dates
+      congregation:
+        other: Congregations
+      school_session:
+        other: School sessions
+      family:
+        other: Families
+      lesson_source:
+        other: Lesson sources

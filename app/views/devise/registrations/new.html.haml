@@ -10,6 +10,9 @@
     %br/
     = f.text_field :email
   %p
+    = f.label :locale
+    = f.select( :locale, Language.all.collect {|r| [ r.name, r.code ] }, { :include_blank => false })
+  %p
     = f.label :password
     %br/
     = f.password_field :password

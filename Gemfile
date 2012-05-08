@@ -12,6 +12,7 @@ gem 'kaminari'
 gem "yard"
 gem "bluecloth"
 gem 'prawn'
+gem 'rails-i18n'
 
 group :assets do
   gem "haml-rails"
