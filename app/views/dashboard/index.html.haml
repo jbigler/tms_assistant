@@ -4,4 +4,4 @@
   %h3= t 'dashboard.pending_completion'
   %ul
   - @school_sessions.each do |school_session|
-    %li= link_to school_session.week_of.to_s, congregation_school_session_path(@congregation, school_session)
+    %li= link_to l(school_session.week_of, :format => :short), congregation_school_session_path(@congregation, school_session)

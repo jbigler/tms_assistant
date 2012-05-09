@@ -1,8 +1,4 @@
 en:
-  default: Default
-  make_default: Make default
-  edit: Edit
-  edit_model: "Edit %{model}"
 
   home:
     welcome: "Welcome to TMS Assistant"
@@ -13,7 +9,11 @@ en:
     pending_completion: Sessions pending completion
 
   record:
+    make_default: Make default
     edit: Edit
+    edit_model: "Edit %{model}"
+    create: Create
+    create_model: "New %{model}"
     delete: Delete
     manage: Manage
 

@@ -13,7 +13,7 @@ gem "yard"
 gem "bluecloth"
 gem 'prawn'
 gem 'rails-i18n'
-gem 'foundation_rails_helper', :git => 'git://github.com/sgruhier/foundation_rails_helper.git'
+gem 'foundation_rails_helper', :git => 'git://github.com/jbigler/foundation_rails_helper.git', :branch => 'checkbox_label'
 
 group :assets do
   gem "haml-rails"

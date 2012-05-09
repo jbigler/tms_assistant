@@ -1,6 +1,7 @@
 GIT
-  remote: git://github.com/sgruhier/foundation_rails_helper.git
-  revision: 1a8330654b826691d1ec945b139e5de8e9d6ff85
+  remote: git://github.com/jbigler/foundation_rails_helper.git
+  revision: 87341316ddd8c696284193c49130f172590577f8
+  branch: checkbox_label
   specs:
     foundation_rails_helper (0.3.alpha)
       actionpack (~> 3.0)

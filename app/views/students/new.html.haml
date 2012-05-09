@@ -1,7 +1,6 @@
-%h2= "New " + @student.type.to_s
 - student_type = @student.kind_of?( Brother ) ? :brother : :sister
+%h2= t 'record.create_' + student_type.to_s
 = form_for [:congregation, @student], :as => student_type, :validate => true do |f|
-  = render "shared/error_messages", :target => @student
   = render :partial => "form_all", :locals => { :f => f }
-  .submit= f.submit "Create"
-%p= link_to 'Back', congregation_students_path( @congregation )
+  = f.submit
+%p= link_to t('nav.back'), congregation_students_path( @congregation )
