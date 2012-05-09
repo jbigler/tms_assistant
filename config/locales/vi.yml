@@ -78,5 +78,6 @@ vi:
         password: Mật khẩu
         locale: Ngôn ngữ
         password_confirmation: Xác nhận mật khẩu
+        remember_me: Nhớ tôi
         
         

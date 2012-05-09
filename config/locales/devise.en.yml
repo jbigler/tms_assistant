@@ -20,6 +20,7 @@ en:
         cancel: Cancel my account
       sessions:
         sign_in: Sign In
+        remember_me: Remember me
       password:
         change: Change Password
         submit_change: Change password

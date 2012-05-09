@@ -21,6 +21,7 @@ vi:
         cancel: 'Xóa bỏ tài khoản'
       sessions:
         sign_in: Đăng nhập
+        remember_me: Nhớ tôi
       password:
         change: Thay đổi mật khẩu
         submit_change: Thay đổi mật khẩu
