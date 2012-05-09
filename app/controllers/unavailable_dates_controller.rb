@@ -1,5 +1,8 @@
 class UnavailableDatesController < ApplicationController
-  before_filter :authenticate_user!, :require_congregation, :require_student, :prepare_calendar
+
+  before_filter :require_congregation, :require_student, :prepare_calendar
+
+  layout "application-double"
 
   def index
     @unavailable_dates = @student.unavailable_dates.all

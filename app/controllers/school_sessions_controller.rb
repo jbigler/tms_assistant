@@ -1,6 +1,7 @@
 class SchoolSessionsController < ApplicationController
 
-  before_filter :authenticate_user!, :require_congregation, :prepare_calendar
+  before_filter :require_congregation, :prepare_calendar
+  layout "application-double"
 
   def index
     next_month = @calendar_date >> 1

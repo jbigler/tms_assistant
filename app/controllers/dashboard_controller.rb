@@ -1,7 +1,5 @@
 class DashboardController < ApplicationController
 
-  before_filter :authenticate_user!  
-
   def index
     @congregations = current_user.congregations
 

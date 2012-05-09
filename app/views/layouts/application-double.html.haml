@@ -7,7 +7,9 @@
     / Set the viewport width to device width for mobile
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
     %title= content_for?(:title) ? yield(:title) : "TMS Assistant"
+    / Included CSS Files
     = stylesheet_link_tag    "application"
+    / Included JS Files
     = javascript_include_tag "application"
     = csrf_meta_tags
     = yield :head
@@ -16,19 +18,14 @@
       = render :partial => "shared/header"
       #content.container
         .row
-          #main.ten.columns.centered
+          #sidebar.four.columns
+            = yield :sidebar
+          #main.eight.columns
             #flash.flash
-              - if flash[:alert]
-                .alert-box.error
-                  = flash[:alert]
-                  %a{:href => ""} &times;
-              - if flash[:notice]
-                .alert-box.success
-                  = flash[:notice]
-                  %a{:href => ""} &times;
+              = display_flash_messages
             = yield
       .push
-    #footer.container
+    %footer.container
       .row
         .four.columns.centered
           = render :partial => "shared/footer"

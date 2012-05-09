@@ -1,7 +1,6 @@
 class SettingSourcesController < ApplicationController
 
-  before_filter :authenticate_user!, :initialize_language
-  layout "application-single"
+  before_filter :initialize_language
 
   # GET /setting_sources
   # GET /setting_sources.xml

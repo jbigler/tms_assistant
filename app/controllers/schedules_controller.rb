@@ -1,6 +1,8 @@
 class SchedulesController < ApplicationController
 
-  before_filter :authenticate_user!, :initialize_language, :prepare_calendar
+  before_filter :initialize_language, :prepare_calendar
+
+  layout "application-double"
 
   # GET /languages/1/schedules
   # GET /languages/1/schedules.xml

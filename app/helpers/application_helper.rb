@@ -1,4 +1,5 @@
 include CalendarHelper
+include FoundationRailsHelper::FlashHelper
 
 module ApplicationHelper
 

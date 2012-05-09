@@ -1,8 +1,10 @@
 GIT
-  remote: git://github.com/swanandp/acts_as_list.git
-  revision: 9df75e6e54d4bc5ec7cfc8e739739229c70c2794
+  remote: git://github.com/sgruhier/foundation_rails_helper.git
+  revision: 1a8330654b826691d1ec945b139e5de8e9d6ff85
   specs:
-    acts_as_list (0.1.6)
+    foundation_rails_helper (0.3.alpha)
+      actionpack (~> 3.0)
+      railties (~> 3.0)
 
 GEM
   remote: http://rubygems.org/
@@ -35,6 +37,7 @@ GEM
     activesupport (3.2.3)
       i18n (~> 0.6)
       multi_json (~> 1.0)
+    acts_as_list (0.1.6)
     addressable (2.2.8)
     annotate (2.4.0)
     arel (3.0.2)
@@ -232,7 +235,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  acts_as_list!
+  acts_as_list
   annotate
   autotest-notification
   autotest-rails-pure
@@ -243,6 +246,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   devise (~> 2.0.0)
   factory_girl_rails
+  foundation_rails_helper!
   friendly_id (~> 4.0.0)
   haml
   haml-rails

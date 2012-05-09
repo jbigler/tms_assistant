@@ -1,17 +1,20 @@
 class ApplicationController < ActionController::Base
 
   protect_from_forgery
-  before_filter :set_locale
+  before_filter :authenticate_user!, :set_locale
 
   private
 
   def set_locale
-    if session[:locale]
-      I18n.locale = session[:locale]
+    # params[:locale] is for override
+    if params[:locale]
+      session[:locale] = params[:locale]
     elsif current_user
       session[:locale] = current_user.locale
-      I18n.locale = current_user.locale
+    else
+      session[:locale] ||= I18n.default_locale
     end
+    I18n.locale = session[:locale]
   end
 
   def require_congregation

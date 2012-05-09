@@ -7,12 +7,13 @@ gem "state_machine"
 gem "friendly_id", "~> 4.0.0"
 gem "haml"
 gem 'calendar_helper'
-gem 'acts_as_list', :git => 'git://github.com/swanandp/acts_as_list.git'
+gem 'acts_as_list'
 gem 'kaminari'
 gem "yard"
 gem "bluecloth"
 gem 'prawn'
 gem 'rails-i18n'
+gem 'foundation_rails_helper', :git => 'git://github.com/sgruhier/foundation_rails_helper.git'
 
 group :assets do
   gem "haml-rails"

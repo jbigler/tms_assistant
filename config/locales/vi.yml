@@ -4,6 +4,14 @@ vi:
   edit: Điều chỉnh
   edit_model: "Điều chỉnh %{model}"
 
+  home:
+    welcome: "Chào mừng đến TMS Assistant"
+    languages: "Ngôn ngữ được ủng hộ"
+
+  dashboard:
+    title: Bàn quản lý
+    pending_completion: Kỳ họp trường chưa được hoàn thành
+
   record:
     edit: Điều chỉnh
     delete: Xóa bỏ
@@ -25,10 +33,6 @@ vi:
     back: Trở lại
     show: Xem
 
-  dashboard:
-    title: Bàn quản lý
-    pending_completion: Kỳ họp trường chưa được hoàn thành
-
   congregation:
     meeting_day: Ngày buổi họp
     name: Tên
@@ -36,13 +40,13 @@ vi:
     add: Thêm vào một hội thánh mới
     
   assignment:
-    bh: Các điểm Kính Thánh nổi bật
-    no1: Bài số 1
-    no2: Bài số 2
-    no3: Bài số 3
+    bh: "Các điểm Kính Thánh nổi bật"
+    no1: "Bài số 1"
+    no2: "Bài số 2"
+    no3: "Bài số 3"
 
   footer:
-    copywrite: Bản quyền
+    copyright: Bản quyền
 
   helpers:
     submit:
@@ -68,3 +72,11 @@ vi:
         number_of_schools: Số trường
         language_id: Ngôn ngữ
         meeting_day: Ngày sinh hoạt
+      user:
+        name: Tên
+        email: Địa chỉ email
+        password: Mật khẩu
+        locale: Ngôn ngữ
+        password_confirmation: Xác nhận mật khẩu
+        
+        

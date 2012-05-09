@@ -1,0 +1,7 @@
+%h2= t 'home.welcome'
+.panel
+  %h4= t 'home.languages'
+  %br/
+  %ul
+    %li= link_to 'English', root_path(:locale => "en")
+    %li= link_to 'Vietnamese', root_path(:locale => "vi")

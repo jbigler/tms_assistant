@@ -1,13 +1,57 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 en:
+  default: Default
+  make_default: Make default
+  edit: Edit
+  edit_model: "Edit %{model}"
+
+  home:
+    welcome: "Welcome to TMS Assistant"
+    languages: "Supported Languages"
+
   dashboard:
     title: Dashboard
+    pending_completion: Sessions pending completion
 
   record:
     edit: Edit
     delete: Delete
     manage: Manage
+
+  menu:
+    login: Login
+    logout: Logout
+    register: Register
+    user: User
+    not_logged_in: not logged in
+    admin: Admin
+    reports: Reports
+    tools: Tools
+    sessions: Sessions
+    students: Students
+
+  nav:
+    back: Back
+    show: Show
+
+  congregation:
+    meeting_day: Meeting day
+    name: Name
+    number_of_schools: Number of schools
+    add: Add congregation
+    
+  assignment:
+    bh: "Bible Highlights"
+    no1: "Talk No 1"
+    no2: "Talk No 2"
+    no3: "Talk No 3"
+
+  footer:
+    copyright: Copyright
+
+  helpers:
+    submit:
+      create: "Create %{model}"
+      update: "Update %{model}"
 
   activerecord:
     models:

@@ -1,7 +1,5 @@
 class LanguagesController < ApplicationController
   
-  layout "application-single"
-
   def index
     @languages = Language.all
   end
