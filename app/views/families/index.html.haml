@@ -15,5 +15,5 @@
         %td= link_to "Edit", edit_congregation_family_path( @congregation, family )
         %td= link_to "Delete", congregation_family_path( @congregation, family ), :confirm => "Are you sure?", :method => :delete
 %p
-  = link_to "Add Family", new_congregation_family_path( @congregation )
+  = link_to t("student.create_family"), new_congregation_family_path( @congregation )
     
