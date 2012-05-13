@@ -50,7 +50,7 @@ vi:
 
   nav:
     back: "Trở lại"
-
+    continue: "Tiếp tục"
 
   calendar:
     previous: "Trước"
@@ -75,9 +75,19 @@ vi:
       source: "Nguồn"
 
   school_sessions:
-    edit:
+    edit: &session_edit
       cancelled: "Trường này bị bỏ"
       title: "Điều chỉnh kỳ họp tuần lễ %{week_of}"
+    form: &session_form
+      school_no: "Trường %{no}"
+      view_source: "Xem nguồn tài liệu"
+      last_assignment: "Bài trước: "
+      last_used: "Lần trước: "
+      last_assisted: "Với: "
+    edit_supp:
+      <<: *session_edit
+    supp_form:
+      <<: *session_form
 
   special_dates:
     new:
@@ -125,6 +135,7 @@ vi:
       special_date: "Ngày đặc biệt"
       congregation: "Hội thánh"
       school_session: "Kỳ họp trường"
+      school: "Trường"
       family: "Gia đình"
       lesson_source: "Nguồn bài học"
     attributes:
@@ -193,7 +204,22 @@ vi:
         week_of: "Tuần lễ"
       assignment:
         student_id: "Học viên"
+        assistant_id: "Phụ tá"
+        substitute_id: "Người thay thế"
+        is_cancelled: "Xóa bỏ"
+        setting_number: "Khung cảnh"
+        lesson_chapter: "Bài học"
       language:
         name: "Tên"
         display_name: "Tên in ra"
         code: "Mã"
+
+  flash:
+    actions:
+      create:
+        notice: "%{model} được tạo nên."
+      update:
+        notice: "%{model} được cập nhật hóa."
+      destroy:
+        notice: "%{model} được xóa bỏ."
+        alert: "%{model} không thể được xóa bỏ."

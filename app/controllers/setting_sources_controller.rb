@@ -36,7 +36,7 @@ class SettingSourcesController < ApplicationController
 
     respond_to do |format|
       if @setting_source.update_attributes(params[:setting_source])
-        format.html { redirect_to([@language, @setting_source], :notice => 'Setting source was successfully updated.') }
+        format.html { redirect_to([@language, @setting_source], :notice => t("flash.actions.update.notice", :model => SettingSource.model_name.human)) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

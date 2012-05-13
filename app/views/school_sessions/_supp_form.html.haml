@@ -1,14 +1,14 @@
 %fieldset
-  %legend= t :bh
+  %legend= t "assignment.bh"
   = f.fields_for :bible_highlights do |bh|
     - if bh.object.student
       %div
         = bh.label :student_id
-        .text= bh.object.student.display_name
+        = bh.object.student.display_name
     - else
-      Unassigned
-    .source[@school_session.bible_highlights]
-      %a.sourceLink{ :href => "#" } View Source Material
+      = t "status.unassigned"
+    %details.source[bh.object]
+      %summary.sourceLink= t ".view_source"
       %p
         %strong Source : 
         = @school_session.bible_highlights.source
@@ -22,82 +22,73 @@
   #schools
     %ul
       - @school_session.schools.each do |school|
-        %li= link_to "School " + school.position.to_s, "#school_" + school.position.to_s
+        %li= link_to t(".school_no", :no => school.position), "#school_" + school.position.to_s
     = f.fields_for :schools do |school_form|
       %div{ :id => "school_" + school_form.object.position.to_s }
-        %fieldset
-          %legend= "School #{school_form.object.position}"
-          = school_form.fields_for :talk_no1 do |a|
-            %fieldset
-              %legend Talk No 1
-              - if a.object.student
+        = school_form.fields_for :talk_no1 do |a|
+          %fieldset
+            %legend= t "assignment.no1"
+            - if a.object.student
+              %div
+                = a.label :student_id
+                = a.object.student.display_name
+              %div
+                = a.select( :lesson_chapter, prepare_lesson_select( a.object.student.find_eligible_lessons( a.object ) ) )
+            - else
+              = t "status.unassigned"
+            %details.source[a.object]
+              %summary.sourceLink= t ".view_source"
+              %p
+                %strong Source: 
+                = a.object.source
+                = link_to t("record.edit"), new_language_schedule_path( @school_session.congregation.language, :edit_date => a.object.week_of )
+        = school_form.fields_for :talk_no2 do |a|
+          %fieldset
+            %legend= t "assignment.no2"
+            - if a.object.student
+              %div
+                = a.label :student_id
+                = a.object.student.display_name
+              %div
+                = a.select( :lesson_chapter, prepare_lesson_select( a.object.student.find_eligible_lessons( a.object ) ) )
+              - if a.object.student.type == "Sister"
                 %div
-                  = a.label :student_id
-                  .text= a.object.student.display_name
+                  = select_eligible_assistants( a )
                 %div
-                  = a.label "Lesson"
-                  = a.select( :lesson_chapter, prepare_lesson_select( a.object.student.find_eligible_lessons( a.object ) ) )
-              - else
-                Unassigned
-              .source[a.object]
-                %a.sourceLink{ :href => "#" } View Source Material
-                %p
-                  %strong Source: 
-                  = a.object.source
-                  = link_to "Edit", new_language_schedule_path( @school_session.congregation.language, :edit_date => a.object.week_of )
-          = school_form.fields_for :talk_no2 do |a|
-            %fieldset
-              %legend Talk No 2
-              - if a.object.student
+                  = a.select( :setting_number, prepare_setting_select( a.object.student.find_eligible_settings ), { :include_blank => true } )
+            - else
+              = t "status.unassigned"
+            %details.source[a.object]
+              %summary.sourceLink= t ".view_source"
+              %p
+                %strong Title: 
+                = a.object.title
+              %p
+                %strong Source: 
+                = a.object.source
+                = link_to t("record.edit"), new_language_schedule_path( @school_session.congregation.language, :edit_date => a.object.week_of )
+        = school_form.fields_for :talk_no3 do |a|
+          %fieldset
+            %legend= t "assignment.no3" 
+            - if a.object.student
+              %div
+                = a.label :student_id
+                = a.object.student.display_name
+              %div
+                = a.select( :lesson_chapter, prepare_lesson_select( a.object.student.find_eligible_lessons( a.object ) ) )
+              - if a.object.student.type == "Sister"
                 %div
-                  = a.label :student_id
-                  .text= a.object.student.display_name
+                  = select_eligible_assistants( a )
                 %div
-                  = a.label "Lesson"
-                  = a.select( :lesson_chapter, prepare_lesson_select( a.object.student.find_eligible_lessons( a.object ) ) )
-                - if a.object.student.type == "Sister"
-                  %div
-                    = a.label :assistant_id
-                    = select_eligible_assistants( a )
-                  %div
-                    = a.label "Setting"
-                    = a.select( :setting_number, prepare_setting_select( a.object.student.find_eligible_settings ), { :include_blank => true } )
-              - else
-                Unassigned
-              .source[a.object]
-                %a.sourceLink{ :href => "#" } View Source Material
-                %p
-                  %strong Title: 
-                  = a.object.title
-                %p
-                  %strong Source: 
-                  = a.object.source
-                  = link_to "Edit", new_language_schedule_path( @school_session.congregation.language, :edit_date => a.object.week_of )
-          = school_form.fields_for :talk_no3 do |a|
-            %fieldset
-              %legend Talk No 3
-              - if a.object.student
-                %div
-                  = a.label :student_id
-                  .text= a.object.student.display_name
-                %div
-                  = a.label "Lesson"
-                  = a.select( :lesson_chapter, prepare_lesson_select( a.object.student.find_eligible_lessons( a.object ) ) )
-                - if a.object.student.type == "Sister"
-                  %div
-                    = a.label :assistant_id
-                    = select_eligible_assistants( a )
-                  %div
-                    = a.label "Setting"
-                    = a.select( :setting_number, prepare_setting_select( a.object.student.find_eligible_settings ), { :include_blank => true } )
-              - else
-                Unassigned
-              .source[a.object]
-                %a.sourceLink{ :href => "#" } View Source Material
-                %p
-                  %strong Title: 
-                  = a.object.title
-                %p
-                  %strong Source: 
-                  = a.object.source
-                  = link_to "Edit", new_language_schedule_path( @school_session.congregation.language, :edit_date => a.object.week_of )
+                  = a.select( :setting_number, prepare_setting_select( a.object.student.find_eligible_settings ), { :include_blank => true } )
+            - else
+              = t "status.unassigned"
+              %details.source[a.object]
+                %summary.sourceLink= t ".view_source"
+              %p
+                %strong Title: 
+                = a.object.title
+              %p
+                %strong Source: 
+                = a.object.source
+                = link_to t("record.edit"), new_language_schedule_path( @school_session.congregation.language, :edit_date => a.object.week_of )
