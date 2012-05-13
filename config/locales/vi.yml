@@ -4,6 +4,12 @@ vi:
     positive: "Có"
     negative: "Không"
 
+  status:
+    assigned: "Được bổ nhiệm"
+    unassigned: "Chưa được bổ nhiệm"
+    cancelled: "Xóa bỏ"
+    completed: "Hoàn thành"
+
   sex:
     title: "Giới tính"
     male: "Nam"

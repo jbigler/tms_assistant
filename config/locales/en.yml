@@ -4,6 +4,17 @@ en:
     positive: "Yes"
     negative: "No"
 
+  status:
+    assigned: "Assigned"
+    unassigned: "Unassigned"
+    cancelled: "Cancelled"
+    completed: "Completed"
+
+  sex:
+    title: "Sex"
+    male: "M"
+    female: "F"
+
   home:
     welcome: "Welcome to TMS Assistant"
     languages: "Supported Languages"
