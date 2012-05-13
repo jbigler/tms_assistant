@@ -2,8 +2,8 @@
 
 %table.table
   %tr
-    %th.first= t 'congregation.name'
-    %th= t 'congregation.number_of_schools'
+    %th.first= t '.name'
+    %th= t '.number_of_schools'
     %th
     %th
     %th
@@ -18,8 +18,8 @@
       %td= link_to t('record.delete'), congregation, :confirm => 'Are you sure?', :method => :delete
       %td
         - if congregation == @current_user.default_congregation
-          = t 'default'
+          = t '.default'
         - else
-          = link_to t('make_default'), set_default_congregation_user_path( @current_user, :default_congregation => congregation )
+          = link_to t('.make_default'), set_default_congregation_user_path( @current_user, :default_congregation => congregation )
 
-%p= link_to t('congregation.add'), new_congregation_path
+%p= link_to t('.add'), new_congregation_path

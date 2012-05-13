@@ -1,25 +1,24 @@
-%p#notice= notice
-%h2 #{@language.name} Lesson Source 
+%h2= LessonSource.model_name.human + ": " + @language.display_name
 %p
-  %b Chapter:
+  %strong= LessonSource.human_attribute_name("chapter") + ": "
   = @lesson_source.chapter
 %p
-  %b Description:
+  %strong= LessonSource.human_attribute_name("description") + ": "
   = @lesson_source.description
 %p
-  %b Page number:
+  %strong= LessonSource.human_attribute_name("page_number") + ": "
   = @lesson_source.page_number
 %p
-  %b Use for reading:
-  = @lesson_source.use_for_reading
+  %strong= LessonSource.human_attribute_name("use_for_reading") + ": "
+  = b @lesson_source.use_for_reading
 %p
-  %b Use for demonstration:
-  = @lesson_source.use_for_demonstration
+  %strong= LessonSource.human_attribute_name("use_for_demonstration") + ": "
+  = b @lesson_source.use_for_demonstration
 %p
-  %b Use for discourse:
-  = @lesson_source.use_for_discourse
+  %strong= LessonSource.human_attribute_name("use_for_discourse") + ": "
+  = b @lesson_source.use_for_discourse
 %p
-  %b Notes:
+  %strong= LessonSource.human_attribute_name("notes") + ": "
   = @lesson_source.notes
 
 = link_to 'Edit', edit_language_lesson_source_path(@lesson_source.language_id, @lesson_source)

@@ -36,4 +36,20 @@ module ApplicationHelper
     end
   end
 
+  def b(value, options = {})
+    options = {
+      :true => :positive,
+      :false => :negative,
+      :scope => [:boolean],
+      :locale => I18n.locale, # <- It makes easy to avoid conditional run
+    }.merge options
+    
+    # avoid passing nil, or some desctructive value
+    # what can be easily happened
+    boolean = !!(value || false)
+    key = boolean.to_s.to_sym
+
+    t(options[key], :scope => options[:scope], :locale => options[:locale])
+  end
+
 end

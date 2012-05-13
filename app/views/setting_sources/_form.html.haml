@@ -1,8 +1,5 @@
 = form_for [@language, @setting_source], :validate => true do |f|
-  = render "shared/error_messages", :target => @setting_source
   %fieldset
-    %legend= "Setting number #{ f.object.number.to_s }"
-    = f.label :description
+    %legend= SettingSource.human_attribute_name("number") + " " + f.object.number.to_s
     = f.text_field :description
-    %br/
-    .submit= f.submit 'Save'
+  = f.submit

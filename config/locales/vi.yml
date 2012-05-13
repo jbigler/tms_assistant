@@ -1,5 +1,14 @@
 vi:
 
+  boolean:
+    positive: "Có"
+    negative: "Không"
+
+  sex:
+    title: Giới tính
+    male: Nam
+    female: Nứ
+
   home:
     welcome: "Chào mừng đến TMS Assistant"
     languages: "Ngôn ngữ được ủng hộ"
@@ -17,7 +26,9 @@ vi:
     create_brother: "Học viên nam mới"
     create_sister: "Học viên nữ mới"
     delete: "Xóa bỏ"
+    confirm: "Có chắc chắn không?"
     manage: "Quản lý"
+    show: Xem
 
   menu:
     login: Đăng nhập
@@ -33,13 +44,38 @@ vi:
 
   nav:
     back: Trở lại
-    show: Xem
 
-  congregation:
-    meeting_day: Ngày buổi họp
-    name: Tên
-    number_of_schools: Số trường
-    add: Thêm vào một hội thánh mới
+
+  calendar:
+    previous: Trước
+    next: Tiếp
+
+  congregations:
+    index:
+      name: Tên
+      number_of_schools: Số trường
+      add: Thêm vào hội thánh mới
+      default: Đương nhiên
+      make_default: Làm đương nhiên
+    show:
+      meeting_day: Ngày buổi họp
+
+  schedules:
+    title: Chương trình trường học
+    index:
+      week_of: Tuần lễ
+      has_review: Có bài ôn
+    edit:
+      source: Nguồn
+
+  school_sessions:
+    edit:
+      cancelled: "Trường này bị bỏ"
+      title: "Điều chỉnh kỳ họp tuần lễ %{week_of}"
+
+  special_dates:
+    new:
+      title: "Ngày đặc biệt mới"
 
   student:
     brother: Anh
@@ -64,6 +100,11 @@ vi:
       create: "Tạo nên %{model}"
       update: "Cập nhật hóa %{model}"
 
+  date:
+    formats:
+      month_year: "%B %Y"
+      week_of: "Tuần bắt đầu ngày %d/%m/%Y"
+
   activerecord:
     models:
       assignment: Bài giảng
@@ -73,7 +114,7 @@ vi:
       lesson: Bài học
       schedule: Chương trình
       setting: Khung cảnh
-      setting_source: Nguồn khung cảnh
+      setting_source: "Nguồn khung cảnh"
       special_date: Ngày đặc biệt
       congregation: Hội thánh
       school_session: Kỳ họp trường
@@ -112,9 +153,36 @@ vi:
         use_for_no2: "Bài số 2"
         use_for_no3: "Bài số 3"
         use_for_assistant: "Phụ giúp"
-        congregation_id: Hội thánh
-        family_id: Gia đình
-        next_lesson: Bài kế tiếp
-        
-        
-        
+        congregation_id: "Hội thánh"
+        family_id: "Gia đình"
+        next_lesson: "Bài kế tiếp"
+      schedule:
+        has_review: "Có bài ôn"
+        week_of: "Tuần lễ"
+      schedule_item:
+        title: "Đề tài"
+        source: "Nguồn tài liệu"
+        for_brother_only: "Dành cho một anh"
+        for_adult_only: "Dành cho người lớn"
+        for_advanced_only: "Dành cho người có khả năng cao"
+      lesson_source:
+        chapter: "Chương"
+        description: "Chủ đề"
+        page_number: "Trang số"
+        use_for_reading: "Bài đọc"
+        use_for_demonstration: "Trình diễn"
+        use_for_discourse: "Bài giảng"
+        notes: "Ghi chú"
+      setting_source:
+        number: "Số"
+        description: "Sự miêu tả"
+      special_date:
+        week_of: "Tuần lễ"
+        event: "Biến cố"
+        description: "Sự miêu tả"
+        is_cancelled: "Bỏ trường"
+        is_review_postponed: "Hoãn bài ôn"
+      school_session:
+        week_of: "Tuần lễ"
+      assignment:
+        student_id: "Học viên"

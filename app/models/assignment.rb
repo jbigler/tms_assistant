@@ -78,7 +78,6 @@ class Assignment < ActiveRecord::Base
           (
             select x.student_id, max(x.week_of) as latest_date
             from assignments x
-            where completed_by = 'student' or completed_by is null
             group by x.student_id
           ) a
           join assignments b

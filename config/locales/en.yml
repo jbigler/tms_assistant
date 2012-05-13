@@ -1,5 +1,9 @@
 en:
 
+  boolean:
+    positive: "Yes"
+    negative: "No"
+
   home:
     welcome: "Welcome to TMS Assistant"
     languages: "Supported Languages"
@@ -14,8 +18,12 @@ en:
     edit_model: "Edit %{model}"
     create: Create
     create_model: "New %{model}"
+    create_brother: "Add brother"
+    create_sister: "Add sister"
     delete: Delete
+    confirm: "Are you sure?"
     manage: Manage
+    show: Show
 
   menu:
     login: Login
@@ -33,12 +41,41 @@ en:
     back: Back
     show: Show
 
-  congregation:
-    meeting_day: Meeting day
-    name: Name
-    number_of_schools: Number of schools
-    add: Add congregation
-    
+  calendar:
+    previous: "Previous"
+    next: "Next"
+
+  congregations:
+    index:
+      name: "Name"
+      number_of_schools: "Number of schools"
+      add: "Add Congregation"
+      default: "Default"
+      make_default: "Make default"
+    show:
+      meeting_day: "Meeting Day"
+
+  schedules:
+    title: "School Schedule"
+    index:
+      week_of: "Week of"
+      has_review: "Has review"
+    edit:
+      source: "Source"
+
+  special_dates:
+    new:
+      title: "New Special Date"
+
+  student:
+    brother: "Brother"
+    sister: "Sister"
+    create_family: "Create family"
+    info: "Student Information"
+    use_as: "Use as"
+    use_in: "Use in"
+    use_for: "Use for"
+
   assignment:
     bh: "Bible Highlights"
     no1: "Talk No 1"
@@ -52,6 +89,11 @@ en:
     submit:
       create: "Create %{model}"
       update: "Update %{model}"
+
+  date:
+    formats:
+      month_year: "%B %Y"
+      week_of: "Week of %m/%d/%Y"
 
   activerecord:
     models:

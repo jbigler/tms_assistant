@@ -2,12 +2,8 @@
   #calendar
     = render :partial => 'shared/calendar'
 
-#special_date
-  %h1 Editing Special Date
-
-  = render 'form'
-
-  %p
-    = link_to 'Show', [@congregation, @special_date]
-    \|
-    = link_to 'Back', congregation_special_dates_path( @congregation )
+%h2= SpecialDate.model_name.human
+= render 'form'
+= link_to t("record.show"), [@congregation, @special_date]
+\|
+= link_to t("nav.back"), congregation_special_dates_path( @congregation )

@@ -1,6 +1,6 @@
 %h3= @congregation.name
 %p 
-  #{t 'congregation.meeting_day'}: 
+  #{t '.meeting_day'}: 
   - if @congregation.meeting_day
     = t('date.day_names')[@congregation.meeting_day]
 %p= link_to (Schedule.model_name.human), language_schedules_path( @congregation.language )

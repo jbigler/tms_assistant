@@ -1,7 +1,5 @@
-%h2 #{@language.name} Setting Source
-
+%h2= SettingSource.model_name.human + ": " + @language.display_name
 = render 'form'
-
-= link_to 'Show', [@language, @setting_source]
+= link_to t("record.show"), [@language, @setting_source]
 \|
-= link_to 'Back', language_setting_sources_path( @language )
+= link_to t("nav.back"), language_setting_sources_path( @language )
