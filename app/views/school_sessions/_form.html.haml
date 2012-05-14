@@ -1,69 +1,58 @@
 %fieldset
-  %legend= t :bh
+  %legend= t "assignment.bh"
   = f.fields_for :bible_highlights do |bh|
-    = bh.label :student_id
     = select_eligible_students( bh )
-    .source[@school_session.bible_highlights]
-      %a.sourceLink{ :href => "#" } View Source Material
+    %details.source[bh.object]
+      %summary.sourceLink{ :href => "#" }= t ".view_source"
       %p
-        %strong Source : 
+        %strong Source: 
         = @school_session.bible_highlights.source
 - if @school_session.reader
   %fieldset
     %legend= t :reader
     = f.fields_for :reader do |a|
-      = a.label :student_id
       = select_eligible_students( a )
 - else
   #schools
     %ul
       - @school_session.schools.each do |school|
-        %li= link_to "School " + school.position.to_s, "#school_" + school.position.to_s
+        %li= link_to t(".school_no", :no => school.position), "#school_" + school.position.to_s
     = f.fields_for :schools do |school_form|
       %div{ :id => "school_" + school_form.object.position.to_s }
         = school_form.fields_for :talk_no1 do |a|
           %fieldset
-            %legend Talk No 1
-            = a.label :student_id
+            %legend= t "assignment.no1"
             = select_eligible_students( a )
-            .source[a.object]
-              %a.sourceLink{ :href => "#" } View Source Material
+            = a.check_box :is_cancelled
+            %details.source[a.object]
+              %summary.sourceLink= t ".view_source"
               %p
                 %strong Source: 
                 = a.object.source
                 = link_to "Edit", edit_language_schedule_path( @school_session.congregation.language )
-            .checkbox_pair
-              = a.label :is_cancelled, "Cancel"
-              = a.check_box :is_cancelled
         = school_form.fields_for :talk_no2 do |a|
           %fieldset
-            %legend Talk No 2
-            = a.label :student_id
+            %legend= t "assignment.no2"
             = select_eligible_students( a )
-            .source[a.object]
-              %a.sourceLink{ :href => "#" } View Source Material
+            = a.check_box :is_cancelled
+            %details.source[a.object]
+              %summary.sourceLink{ :href => "#" }= t ".view_source"
               %p
                 %strong Title: 
                 = a.object.title
               %p
                 %strong Source: 
                 = a.object.source
-            .checkbox_pair 
-              = a.label :is_cancelled, "Cancel"
-              = a.check_box :is_cancelled
         = school_form.fields_for :talk_no3 do |a|
           %fieldset
-            %legend Talk No 3
-            = a.label :student_id
+            %legend= t "assignment.no3"
             = select_eligible_students( a )
-            .source[a.object]
-              %a.sourceLink{ :href => "#" } View Source Material
+            = a.check_box :is_cancelled
+            %details.source[a.object]
+              %summary.sourceLink{ :href => "#" }= t ".view_source"
               %p
                 %strong Title: 
                 = a.object.title
               %p
                 %strong Source: 
                 = a.object.source
-            .checkbox_pair
-              = a.label :is_cancelled, "Cancel"
-              = a.check_box :is_cancelled

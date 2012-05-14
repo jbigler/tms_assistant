@@ -1,7 +1,5 @@
-%h2 #{@language.name} Lesson Source 
-
+%h2= LessonSource.model_name.human + ": " + @language.display_name
 = render 'form'
-
-= link_to 'Show', language_lesson_source_path( @language, @lesson_source )
+= link_to t("record.show"), language_lesson_source_path( @language, @lesson_source )
 \|
-= link_to 'Back', language_lesson_sources_path( @language )
+= link_to t("nav.back"), language_lesson_sources_path( @language )

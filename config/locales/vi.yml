@@ -1,44 +1,107 @@
 vi:
-  default: Đương nhiên
-  make_default: Làm đương nhiên
-  edit: Điều chỉnh
-  edit_model: "Điều chỉnh %{model}"
+
+  boolean:
+    positive: "Có"
+    negative: "Không"
+
+  status:
+    assigned: "Được bổ nhiệm"
+    unassigned: "Chưa được bổ nhiệm"
+    cancelled: "Xóa bỏ"
+    completed: "Hoàn thành"
+
+  sex:
+    title: "Giới tính"
+    male: "Nam"
+    female: "Nứ"
 
   home:
     welcome: "Chào mừng đến TMS Assistant"
     languages: "Ngôn ngữ được ủng hộ"
 
   dashboard:
-    title: Bàn quản lý
-    pending_completion: Kỳ họp trường chưa được hoàn thành
+    title: "Bàn quản lý"
+    pending_completion: "Kỳ họp trường chưa được hoàn thành"
 
   record:
-    edit: Điều chỉnh
-    delete: Xóa bỏ
-    manage: Quản lý
+    make_default: "Làm đương nhiên"
+    edit: "Điều chỉnh"
+    edit_model: "Điều chỉnh %{model}"
+    create: "Tạo nên"
+    create_model: "%{model} mới"
+    create_brother: "Học viên nam mới"
+    create_sister: "Học viên nữ mới"
+    delete: "Xóa bỏ"
+    confirm: "Có chắc chắn không?"
+    manage: "Quản lý"
+    show: "Xem"
 
   menu:
-    login: Đăng nhập
-    logout: Đăng xuất
-    register: Đăng ký
-    user: Người dùng
-    not_logged_in: chưa nhập vào
-    admin: quản lý
-    reports: Báo cáo
-    tools: Dụng cụ
-    sessions: Kỳ họp
-    students: Học viên
+    login: "Đăng nhập"
+    logout: "Đăng xuất"
+    register: "Đăng ký"
+    user: "Người dùng"
+    not_logged_in: "chưa nhập vào"
+    admin: "quản lý"
+    reports: "Báo cáo"
+    tools: "Dụng cụ"
+    sessions: "Kỳ họp"
+    students: "Học viên"
 
   nav:
-    back: Trở lại
-    show: Xem
+    back: "Trở lại"
+    continue: "Tiếp tục"
 
-  congregation:
-    meeting_day: Ngày buổi họp
-    name: Tên
-    number_of_schools: Số trường
-    add: Thêm vào một hội thánh mới
-    
+  calendar:
+    previous: "Trước"
+    next: "Tiếp"
+
+  congregations:
+    index:
+      name: "Tên"
+      number_of_schools: "Số trường"
+      add: "Thêm vào hội thánh mới"
+      default: "Đương nhiên"
+      make_default: "Làm đương nhiên"
+    show:
+      meeting_day: "Ngày buổi họp"
+
+  schedules:
+    title: "Chương trình trường học"
+    index:
+      week_of: "Tuần lễ"
+      has_review: "Có bài ôn"
+    edit:
+      source: "Nguồn"
+
+  school_sessions:
+    edit: &session_edit
+      cancelled: "Trường này bị bỏ"
+      title: "Điều chỉnh kỳ họp tuần lễ %{week_of}"
+    form: &session_form
+      school_no: "Trường %{no}"
+      view_source: "Xem nguồn tài liệu"
+      last_assignment: "Bài trước: "
+      last_used: "Lần trước: "
+      last_assisted: "Với: "
+    edit_supp:
+      <<: *session_edit
+    supp_form:
+      <<: *session_form
+
+  special_dates:
+    new:
+      title: "Ngày đặc biệt mới"
+
+  student:
+    brother: "Anh"
+    sister: "Chị"
+    create_family: "Làm gia đình mới"
+    info: "Tài liệu về học viên"
+    use_as: "Dùng với tư cách là"
+    use_in: "Dùng ở"
+    use_for: "Dùng làm"
+
   assignment:
     bh: "Các điểm Kính Thánh nổi bật"
     no1: "Bài số 1"
@@ -46,38 +109,117 @@ vi:
     no3: "Bài số 3"
 
   footer:
-    copyright: Bản quyền
+    copyright: "Bản quyền"
 
   helpers:
     submit:
       create: "Tạo nên %{model}"
       update: "Cập nhật hóa %{model}"
 
+  date:
+    formats:
+      month_year: "%B %Y"
+      week_of: "Tuần bắt đầu ngày %d/%m/%Y"
+
   activerecord:
     models:
-      assignment: Bài giảng
-      student: Học viên
-      lesson: Bài học
-      schedule: Chương trình
-      setting: Khung cảnh
-      setting_source: Nguồn khung cảnh
-      special_date: Ngày đặc biệt
-      congregation: Hội thánh
-      school_session: Kỳ họp trường
-      family: Gia đình
-      lesson_source: Nguồn bài học
+      language: "Ngôn ngữ"
+      assignment: "Bài giảng"
+      student: "Học viên"
+      brother: "Anh"
+      sister: "Chị"
+      lesson: "Bài học"
+      schedule: "Chương trình"
+      setting: "Khung cảnh"
+      setting_source: "Nguồn khung cảnh"
+      special_date: "Ngày đặc biệt"
+      congregation: "Hội thánh"
+      school_session: "Kỳ họp trường"
+      school: "Trường"
+      family: "Gia đình"
+      lesson_source: "Nguồn bài học"
     attributes:
       congregation:
-        name: Tên
-        number_of_schools: Số trường
-        language_id: Ngôn ngữ
-        meeting_day: Ngày sinh hoạt
+        name: "Tên"
+        number_of_schools: "Số trường"
+        language_id: "Ngôn ngữ"
+        meeting_day: "Ngày sinh hoạt"
+        default: "Đương nhiên"
       user:
-        name: Tên
-        email: Địa chỉ email
-        password: Mật khẩu
-        locale: Ngôn ngữ
-        password_confirmation: Xác nhận mật khẩu
-        remember_me: Nhớ tôi
-        
-        
+        name: "Tên"
+        email: "Địa chỉ email"
+        password: "Mật khẩu"
+        locale: "Ngôn ngữ"
+        password_confirmation: "Xác nhận mật khẩu"
+        remember_me: "Nhớ tôi"
+      student:
+        first_name: "Tên"
+        middle_name: "Chữ lót"
+        last_name: "Họ"
+        display_name: "Họ tên được in ra"
+        telephone: "Số điện thoại"
+        email: "Địa chỉ email"
+        notes: "Ghi chú"
+        is_active: "Hoặt động"
+        use_for_advanced: "Người có khả năng cao"
+        use_for_adult: "Người lớn"
+        use_in_main_school: "Trường chính"
+        use_in_secondary_school: "Trường phụ"
+        use_for_reader: "Đọc cho bài ôn"
+        use_for_bh: "Các điểm Kinh Thánh nổi bật"
+        use_for_no1: "Bài số 1"
+        use_for_no2: "Bài số 2"
+        use_for_no3: "Bài số 3"
+        use_for_assistant: "Phụ giúp"
+        congregation_id: "Hội thánh"
+        family_id: "Gia đình"
+        next_lesson: "Bài kế tiếp"
+      schedule:
+        has_review: "Có bài ôn"
+        week_of: "Tuần lễ"
+      schedule_item:
+        title: "Đề tài"
+        source: "Nguồn tài liệu"
+        for_brother_only: "Dành cho một anh"
+        for_adult_only: "Dành cho người lớn"
+        for_advanced_only: "Dành cho người có khả năng cao"
+      lesson_source:
+        chapter: "Chương"
+        description: "Chủ đề"
+        page_number: "Trang số"
+        use_for_reading: "Bài đọc"
+        use_for_demonstration: "Trình diễn"
+        use_for_discourse: "Bài giảng"
+        notes: "Ghi chú"
+      setting_source:
+        number: "Số"
+        description: "Sự miêu tả"
+      special_date:
+        week_of: "Tuần lễ"
+        event: "Biến cố"
+        description: "Sự miêu tả"
+        is_cancelled: "Bỏ trường"
+        is_review_postponed: "Hoãn bài ôn"
+      school_session:
+        week_of: "Tuần lễ"
+      assignment:
+        student_id: "Học viên"
+        assistant_id: "Phụ tá"
+        substitute_id: "Người thay thế"
+        is_cancelled: "Xóa bỏ"
+        setting_number: "Khung cảnh"
+        lesson_chapter: "Bài học"
+      language:
+        name: "Tên"
+        display_name: "Tên in ra"
+        code: "Mã"
+
+  flash:
+    actions:
+      create:
+        notice: "%{model} được tạo nên."
+      update:
+        notice: "%{model} được cập nhật hóa."
+      destroy:
+        notice: "%{model} được xóa bỏ."
+        alert: "%{model} không thể được xóa bỏ."

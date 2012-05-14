@@ -1,11 +1,11 @@
-%h1 Listing languages
+%h1= Language.model_name.human(:count => 2)
 
 %table#language_data.table.data
   %thead
     %tr
-      %th Name
-      %th Display name
-      %th Code
+      %th= Language.human_attribute_name "name"
+      %th= Language.human_attribute_name "display_name"
+      %th= Language.human_attribute_name "code"
       %th
       %th
       %th
@@ -15,8 +15,8 @@
         %td= language.name
         %td= language.display_name
         %td= language.code
-        %td= link_to 'Show', language
-        %td= link_to 'Edit', edit_language_path(language)
-        %td= link_to 'Destroy', language, :confirm => 'Are you sure?', :method => :delete
+        %td= link_to t("record.show"), language
+        %td= link_to t("record.edit"), edit_language_path(language)
+        %td= link_to t("record.delete"), language, :confirm => t("record.confirm"), :method => :delete
 
-= link_to 'New Language', new_language_path
+= link_to t("record.create_model", :model => Language.model_name.human), new_language_path

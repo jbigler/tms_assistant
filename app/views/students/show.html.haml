@@ -19,25 +19,25 @@
         
         %h2= @student.display_name
       %p
-        %strong First name:
+        %strong= t 'activerecord.attributes.student.first_name'
         = @student.first_name
         %br/
-        %strong Middle name:
+        %strong= t 'activerecord.attributes.student.middle_name'
         = @student.middle_name
         %br/
-        %strong Last name:
+        %strong= t 'activerecord.attributes.student.last_name'
         = @student.last_name
       %p
-        %strong Telephone:
+        %strong= t 'activerecord.attributes.student.telephone'
         = @student.telephone
         %br/
-        %strong Email:
+        %strong= t 'activerecord.attributes.student.email'
         = @student.email
       %p
-        %strong Is advanced:
+        %strong= t 'activerecord.attributes.student.use_for_advanced'
         = @student.use_for_advanced
 
-      %h4 Schools 
+      %h4= School.model_name.human(:count => 2)
       %table.table
         %tr
           %th{:width => "50%"} Main

@@ -6,14 +6,14 @@ gem 'devise', '~> 2.0.0'
 gem "state_machine"
 gem "friendly_id", "~> 4.0.0"
 gem "haml"
-gem 'calendar_helper'
+gem 'calendar_helper', :git => 'git://github.com/topfunky/calendar_helper.git'
 gem 'acts_as_list'
 gem 'kaminari'
 gem "yard"
 gem "bluecloth"
 gem 'prawn'
 gem 'rails-i18n'
-gem 'foundation_rails_helper', :git => 'git://github.com/sgruhier/foundation_rails_helper.git'
+gem 'foundation_rails_helper', :git => 'git://github.com/jbigler/foundation_rails_helper.git'
 
 group :assets do
   gem "haml-rails"

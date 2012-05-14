@@ -1,14 +1,14 @@
-%h1 #{@language.name} Lesson Sources 
+%h2= LessonSource.model_name.human + ": " + @language.display_name
 
 %table#lesson_source_data.table.data
   %thead
     %tr
-      %th Chapter
-      %th Description
-      %th Page
-      %th Reading
-      %th Demo
-      %th Discourse
+      %th= LessonSource.human_attribute_name "chapter"
+      %th= LessonSource.human_attribute_name "description"
+      %th= LessonSource.human_attribute_name "page_number"
+      %th= LessonSource.human_attribute_name "use_for_reading"
+      %th= LessonSource.human_attribute_name "use_for_demonstration"
+      %th= LessonSource.human_attribute_name "use_for_discourse"
       %th
       %th
   %tbody
@@ -17,8 +17,8 @@
         %td= lesson_source.chapter
         %td= lesson_source.description
         %td= lesson_source.page_number
-        %td= lesson_source.use_for_reading
-        %td= lesson_source.use_for_demonstration
-        %td= lesson_source.use_for_discourse
-        %td= link_to 'Show', language_lesson_source_path( @language, lesson_source )
-        %td= link_to 'Edit', edit_language_lesson_source_path( lesson_source.language_id, lesson_source )
+        %td= b lesson_source.use_for_reading
+        %td= b lesson_source.use_for_demonstration
+        %td= b lesson_source.use_for_discourse
+        %td= link_to t("record.show"), language_lesson_source_path( @language, lesson_source )
+        %td= link_to t("record.edit"), edit_language_lesson_source_path( lesson_source.language_id, lesson_source )

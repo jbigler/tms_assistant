@@ -1,16 +1,7 @@
 = form_for @congregation do |f|
-  = render "shared/error_messages", :target => @congregation
-  .field
-    = f.label :name
+  %fieldset
     = f.text_field :name
-  .field
-    = f.label :number_of_schools
     = f.select(:number_of_schools, options_for_select([1,2,3], @congregation.number_of_schools))
-  .field
-    = f.label :language_id
     = f.select( "language_id", Language.all.collect {|r| [ r.display_name, r.id ] }, { :include_blank => false })
-  .field
-    = f.label :meeting_day
     = f.select( :meeting_day, I18n.t( 'date.day_names' ).collect { |d| [d, I18n.t( 'date.day_names' ).index(d)] } )
-  .actions
     = f.submit

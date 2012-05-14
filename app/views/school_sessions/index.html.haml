@@ -2,14 +2,13 @@
   #calendar
     = render :partial => 'shared/calendar'
 
-#schedule
-  %h1 Listing School Sessions
-  %table.table
+%h2= SchoolSession.model_name.human(:count => 2)
+%table.table
+  %tr
+    %th= SchoolSession.human_attribute_name "week_of"
+  - @school_sessions.each do |school_session|
     %tr
-      %th Week of
-    - @school_sessions.each do |school_session|
-      %tr
-        %td= h school_session.week_of
-        %td= link_to 'Show', congregation_school_session_path( @congregation, school_session )
-        %td= link_to 'Edit', edit_congregation_school_session_url( @congregation, school_session )
-  %br/
+      %td= l school_session.week_of
+      %td= link_to t("record.show"), congregation_school_session_path( @congregation, school_session )
+      %td= link_to t("record.edit"), edit_congregation_school_session_url( @congregation, school_session )
+%br/

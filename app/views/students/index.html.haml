@@ -1,23 +1,21 @@
-%h1 Students
+%h2= Student.model_name.human(:count => 2)
 
 %table#student_data.table.data
   %thead
     %tr
-      %th Last name
-      %th First name
-      %th Family
-      %th Sex
+      %th= Student.human_attribute_name "display_name"
+      %th= Student.human_attribute_name "family_id"
+      %th= t("sex.title")
       %th
       %th
   %tbody
     - @students.each do |student|
       %tr
-        %td= student.last_name
-        %td= link_to student.first_name, congregation_student_path( @congregation, student )
+        %td= link_to student.display_name, congregation_student_path( @congregation, student )
         %td= link_to student.family.name, congregation_family_path( @congregation, student.family ) if student.family
-        %td= student.type == "Brother" ? "M" : "F"
-        %td= link_to 'Edit', edit_congregation_student_url( @congregation, student )
-        %td= link_to 'Delete', congregation_student_url( @congregation, student ), :confirm => 'Are you sure?', :method => :delete
-%p
-  = link_to 'Add brother', :controller => "students", :action => "new", :type => "Brother"
-  = link_to 'Add sister', :controller => "students", :action => "new", :type => "Sister"
+        %td= student.type == "Brother" ? t("sex.male") : t("sex.female")
+        %td= link_to t("record.edit"), edit_congregation_student_url( @congregation, student )
+        %td= link_to t("record.delete"), congregation_student_url( @congregation, student ), :confirm => t("record.confirm"), :method => :delete
+= link_to t("record.create_brother"), :controller => "students", :action => "new", :type => "Brother"
+\|
+= link_to t("record.create_sister"), :controller => "students", :action => "new", :type => "Sister"

@@ -1,7 +1,8 @@
 - if @congregation
-  %h1= @congregation.name
-  %h2= t 'dashboard.title'
-  %h3= t 'dashboard.pending_completion'
-  %ul
-  - @school_sessions.each do |school_session|
-    %li= link_to school_session.week_of.to_s, congregation_school_session_path(@congregation, school_session)
+  %h2= @congregation.name
+  %h3= t 'dashboard.title'
+  .panel
+    %h4= t 'dashboard.pending_completion'
+    %ul
+    - @school_sessions.each do |school_session|
+      %li= link_to l(school_session.week_of, :format => :short), congregation_school_session_path(@congregation, school_session)
