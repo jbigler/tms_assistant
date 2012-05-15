@@ -3,6 +3,12 @@ include FoundationRailsHelper::FlashHelper
 
 module ApplicationHelper
 
+  def congregation_name
+    if @congregation and @congregation.name
+      ": " + @congregation.name
+    end
+  end
+
   def calendar_back_path
     url_for( :action => :index, :controller => request.symbolized_path_parameters[:controller] ) + "/update_calendar?calendar_date=" +
       ( @calendar_date << 1 ).to_s +

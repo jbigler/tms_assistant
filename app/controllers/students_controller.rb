@@ -63,12 +63,15 @@ class StudentsController < ApplicationController
   # POST /students
   # POST /students.xml
   def create
-    if params.has_key?( :brother )
-      @student = Brother.new( params[:brother] )
-    elsif params.has_key?( :sister )
-      @student = Sister.new( params[:sister] )
+    if params[:student_type]
+      case params[:student_type]
+      when "brother"
+        @student = Brother.new( params[:student] )
+      when "sister"
+        @student = Sister.new( params[:student] )
+      end
     else
-      flash[:notice] = "Unable to determine if student is a brother or sister."
+      flash[:error] = t "flash.actions.create.error", :model => Student.model_name.human
       redirect_to congregation_students_url( @congregation )
       return
     end
@@ -82,7 +85,7 @@ class StudentsController < ApplicationController
 
     respond_to do |format|
       if @student.save
-        format.html { redirect_to congregation_student_path( @congregation, @student ), :notice => 'Student was successfully created.' }
+        format.html { redirect_to congregation_student_path( @congregation, @student ), :notice => t("flash.actions.create.notice", :model => Student.model_name.human) }
         format.xml  { render :xml => @student, :status => :created, :location => @student }
       else
         format.html { redirect_to :action => "new" }
@@ -104,7 +107,7 @@ class StudentsController < ApplicationController
 
     respond_to do |format|
       if @student.update_attributes(params[:student])
-        format.html { redirect_to congregation_student_path( @congregation, @student ), :notice => 'Student was successfully updated.' }
+        format.html { redirect_to congregation_student_path( @congregation, @student ), :notice => t("flash.actions.create.notice", :model => Student.model_name.human) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -129,7 +132,7 @@ class StudentsController < ApplicationController
 
   def validate_student_type
     if not params[:type]
-      flash[:notice] = "Invalid parameters given."
+      flash[:alert] = t "flash.invalid_parameters"
       redirect_to :back
     end
   end

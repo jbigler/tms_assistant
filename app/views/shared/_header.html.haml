@@ -1,16 +1,16 @@
 %header.container
   .row
-    .four.columns
+    .seven.columns
       %h1
-        %a{:href => "/"} TMS Assistant
-    .eight.columns
+        %a{:href => "/"}= "TMS Assistant#{ congregation_name }"
+    .five.columns
       #user-nav
         = render 'devise/menu/login_items'
   .row
     .twelve.columns
       - if current_user
         %ul.nav-bar
-          %li= link_to t('dashboard.title'), root_path
+          %li= link_to t('dashboard.index.title'), root_path
           - if session[:congregation_id]
             - cong = current_user.congregations.find(session[:congregation_id])
             %li= link_to t('menu.sessions'), congregation_school_sessions_path(cong) 

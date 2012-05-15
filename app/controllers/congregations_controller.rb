@@ -37,6 +37,10 @@ class CongregationsController < ApplicationController
     @congregation = current_user.congregations.build( params[:congregation] )
     if @congregation.valid? and current_user.save
       flash[:notice] = t("flash.actions.update.notice", :model => Congregation.model_name.human)
+      unless current_user.default_congregation
+        current_user.default_congregation = @congregation
+        current_user.save
+      end
       redirect_to @congregation
     else
       render :action => 'new'
@@ -63,7 +67,7 @@ class CongregationsController < ApplicationController
     else
       @congregation = current_user.congregations.find( params[:id] )
     end
-    if current_user.default_congregation == @congregation.id
+    if @congregation and (current_user.default_congregation == @congregation)
       current_user.default_congregation = nil
       current_user.save
     end

@@ -9,3 +9,17 @@ div.field_with_errors {
     margin-bottom: 5px;
   }
 }
+
+form {
+  fieldset {
+    border: 1px solid black;
+    legend {
+      background: #45648c;
+      padding: 0.2em 0.5em;
+      border: 1px solid black;
+      color: white;
+      font-weight: bold;
+      text-align: center;
+    }
+  }
+}

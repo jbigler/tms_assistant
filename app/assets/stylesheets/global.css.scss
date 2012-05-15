@@ -1,7 +1,7 @@
 body {
-  background: #F0F0EE;
+  background: #cccccc;
   font-family:Verdana,Geneva,'DejaVu Sans',sans-serif;
-  color: black;
+  color: #2e2e2e;
 
   h1 {
     font-size: 2em;
@@ -54,4 +54,23 @@ body {
     }
   }
 }
+a {
+  &:link {
+    color: #022859;
+  }
+  &:visited {
+    color: #022859;
+  }
+  &:hover {
+    color: #45648c;
+  }
+  &:active {
+    color: #022859;
+  }
+}
 
+table {
+  td.controls {
+    text-align: right;
+  }
+}

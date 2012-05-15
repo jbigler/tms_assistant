@@ -1,6 +1,7 @@
-- student_type = @student.kind_of?( Brother ) ? :brother : :sister
-%h2= t 'record.create_' + student_type.to_s
-= form_for [:congregation, @student], :as => student_type, :validate => true do |f|
+- student_type = @student.kind_of?( Brother ) ? "brother" : "sister"
+%h2= t 'record.create_' + student_type
+= form_for [:congregation, @student], :validate => true do |f|
+  = hidden_field_tag "student_type", student_type
   = render :partial => "form_all", :locals => { :f => f }
   = f.submit
 %p= link_to t('nav.back'), congregation_students_path( @congregation )

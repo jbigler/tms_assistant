@@ -1,12 +1,13 @@
-%h2= t 'dashboard.title'
+%h2= t '.title'
 - if @congregation
   %h3= @congregation.name
   - if @school_sessions.count > 0
     .panel
-      %h4= t 'dashboard.pending_completion'
+      %h4= t '.pending_completion'
       %ul
       - @school_sessions.each do |school_session|
         %li= link_to l(school_session.week_of, :format => :short), congregation_school_session_path(@congregation, school_session)
+  = link_to t("record.manage_model", :model => Congregation.model_name.human(:count => 2)), congregations_path
 - else
-  %h3= t "dashboard.no_congregation"
+  %h3= t ".no_congregation"
   = link_to t("record.create_model", :model => Congregation.model_name.human), new_congregation_path

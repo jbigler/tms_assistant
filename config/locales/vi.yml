@@ -20,9 +20,10 @@ vi:
     languages: "Ngôn ngữ được ủng hộ"
 
   dashboard:
-    title: "Bàn quản lý"
-    pending_completion: "Kỳ họp trường chưa được hoàn thành"
-    no_congregation: "Chưa có hội thánh"
+    index:
+      title: "Bàn quản lý"
+      pending_completion: "Kỳ họp trường chưa được hoàn thành"
+      no_congregation: "Chưa có hội thánh"
 
   record:
     make_default: "Làm đương nhiên"
@@ -35,6 +36,7 @@ vi:
     delete: "Xóa bỏ"
     confirm: "Có chắc chắn không?"
     manage: "Quản lý"
+    manage_model: "Quản lý %{model}"
     show: "Xem"
 
   menu:
@@ -216,9 +218,11 @@ vi:
         code: "Mã"
 
   flash:
+    invalid_parameters: "Thông số sai lầm được cung cấp."
     actions:
       create:
-        notice: "%{model} được tạo nên."
+        notice: "%{model} mới được tạo nên."
+        error: "%{model} mới không được tạo nên vì lỗi lầm."
       update:
         notice: "%{model} được cập nhật hóa."
       destroy:
