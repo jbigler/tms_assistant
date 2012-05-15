@@ -2,6 +2,6 @@
   %fieldset
     = f.text_field :name
     = f.select(:number_of_schools, options_for_select([1,2,3], @congregation.number_of_schools))
-    = f.select( "language_id", Language.all.collect {|r| [ r.display_name, r.id ] }, { :include_blank => false })
+    = f.select( "language_id", Language.all.collect {|r| [ r.display_name, r.id ] }, { :include_blank => false, :selected => Language.where(:code => current_user.locale).first.id })
     = f.select( :meeting_day, I18n.t( 'date.day_names' ).collect { |d| [d, I18n.t( 'date.day_names' ).index(d)] } )
     = f.submit

@@ -1,0 +1,11 @@
+div.field_with_errors {
+  padding: 0px;
+  margin: 0px;
+  color: red;
+  input[type="text"] {
+    border: solid 1px red;
+  }
+  label {
+    margin-bottom: 5px;
+  }
+}

@@ -40,6 +40,7 @@ group :development do
   gem "ruby_parser"
   gem 'rails-footnotes', '>= 3.7.5.rc4'
   gem 'rails_best_practices'
+  gem 'ruby-graphviz'
 end
 
 group :development, :test do

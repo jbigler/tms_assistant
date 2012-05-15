@@ -36,7 +36,7 @@ class SchoolSession < ActiveRecord::Base
     end
 
     event :cancel do
-      transition any - :completed => :cancelled
+      transition any - [:completed, :cancelled] => :cancelled
     end
 
     event :reactivate do

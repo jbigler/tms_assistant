@@ -2,12 +2,11 @@
   #calendar
     = render :partial => 'shared/calendar'
 
-#schedule
-  - if @school_session.cancelled?
-    %h2= t ".cancelled"
-  - else
-    %h2= t ".title", :week_of => l(@school_session.week_of)
-    = form_for [@congregation, @school_session] do |f|
-      = render :partial => "form", :locals => { :f => f }
-      = hidden_field_tag "step_2", "1"
-      = f.submit t("nav.continue")
+- if @school_session.cancelled?
+  %h2= t ".cancelled"
+- else
+  %h2= t ".title", :week_of => l(@school_session.week_of)
+  = form_for [@congregation, @school_session] do |f|
+    = render :partial => "form", :locals => { :f => f }
+    = hidden_field_tag "step_2", "1"
+    = f.submit t("nav.continue")

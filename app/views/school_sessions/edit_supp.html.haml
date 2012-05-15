@@ -2,8 +2,7 @@
   #calendar
     = render :partial => 'shared/calendar'
 
-#schedule
-  %h2= t ".title", :week_of => l(@school_session.week_of)
-  = form_for [@congregation, @school_session] do |f|
-    = render :partial => "supp_form", :locals => { :f => f }
-    = f.submit
+%h2= t ".title", :week_of => l(@school_session.week_of)
+= form_for [@congregation, @school_session] do |f|
+  = render :partial => "supp_form", :locals => { :f => f }
+  = f.submit

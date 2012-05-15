@@ -5,10 +5,10 @@
         %legend= t 'student.info'
         = f.check_box :is_active
         %br/
-        = f.text_field :first_name, :class => "text"
-        = f.text_field :middle_name, :class => "text"
-        = f.text_field :last_name, :class => "text"
-        = f.text_field :display_name, :class => "text"
+        = f.text_field :first_name
+        = f.text_field :middle_name
+        = f.text_field :last_name
+        = f.text_field :display_name
         - unless @student.family
           %label.checkbox{ :for => "new_family" }
             = check_box_tag "new_family", "1", false

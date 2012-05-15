@@ -42,7 +42,7 @@ class School < ActiveRecord::Base
     end
 
     event :cancel do
-      transition any => :cancelled
+      transition any - [:cancelled, :completed] => :cancelled
     end
 
     event :reactivate do

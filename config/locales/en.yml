@@ -51,6 +51,7 @@ en:
   nav:
     back: Back
     show: Show
+    continue: "Continue"
 
   calendar:
     previous: "Previous"
@@ -65,6 +66,21 @@ en:
       make_default: "Make default"
     show:
       meeting_day: "Meeting Day"
+
+  school_sessions:
+    edit: &session_edit
+      title: "Edit School Session: %{week_of}"
+      cancelled: "Cancelled"
+    form: &session_form
+      school_no: "School %{no}"
+      view_source: "View source"
+      last_assignment: "Last: "
+      last_used: "Last: "
+      last_assisted: "With: "
+    edit_supp:
+      <<: *session_edit
+    supp_form:
+      <<: *session_form
 
   schedules:
     title: "School Schedule"

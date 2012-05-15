@@ -17,14 +17,23 @@ module ApplicationHelper
 
   def render_calendar_cell( d )
     if d.wday == 1
-      if ( @school_session && d === @school_session.week_of ) ||
-          ( @schedule && d === @schedule.week_of ) ||
-          ( @special_date && d === @special_date.week_of ) ||
-          ( @selected_week && d === @selected_week )
+      if ( @schedule && d == @schedule.week_of ) ||
+         ( @special_date && d == @special_date.week_of )
         [ d.mday, { :class => "selectedDate" } ]
-      else
-        [ link_to( d.mday.to_s, url_for( :action => :new, :controller => request.symbolized_path_parameters[:controller] ) + "?edit_date=" + d.to_s ), { :class => "monday" } ]
+      elsif (@school_session)
+        state = @calendar_states[d]
+        case state
+        when "assigned"
+          [ d.mday, { :class => "assignedDate" } ]
+        when "completed"
+          [ d.mday, { :class => "completedDate" } ]
+        when "cancelled"
+          [ d.mday, { :class => "cancelledDate" } ]
+        end
+      #elsif @selected_week && d == @selected_week
+        #[ d.mday, { :class => "selectedDate" } ]
       end
+      [ link_to( d.mday.to_s, url_for( :action => :new, :controller => request.symbolized_path_parameters[:controller] ) + "?edit_date=" + d.to_s ) ]
     end
   end
 

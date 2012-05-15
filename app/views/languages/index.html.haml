@@ -1,6 +1,6 @@
 %h1= Language.model_name.human(:count => 2)
 
-%table#language_data.table.data
+%table#language_data.table.data{ :data => { :locale => I18n.locale } }
   %thead
     %tr
       %th= Language.human_attribute_name "name"

@@ -1,3 +1,7 @@
+- content_for :sidebar do
+  #calendar
+    = render :partial => 'shared/calendar'
+
 %fieldset
   %legend= t "assignment.bh"
   = f.fields_for :bible_highlights do |bh|

@@ -4,7 +4,7 @@
 
 %h2= SpecialDate.model_name.human(:count => 2)
 
-%table#special_date_data.table.data
+%table#special_date_data.table.data{ :data => { :locale => I18n.locale } }
   %thead
     %tr
       %th= SpecialDate.human_attribute_name "week_of"

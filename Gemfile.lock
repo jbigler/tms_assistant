@@ -187,6 +187,7 @@ GEM
       activesupport (>= 3.0)
       railties (>= 3.0)
       rspec (~> 2.10.0)
+    ruby-graphviz (1.0.5)
     ruby-rc4 (0.1.5)
     ruby_parser (2.3.1)
       sexp_processor (~> 3.0)
@@ -269,6 +270,7 @@ DEPENDENCIES
   rails3-generators
   rails_best_practices
   rspec-rails
+  ruby-graphviz
   ruby_parser
   sass-rails (~> 3.2.3)
   shoulda-matchers

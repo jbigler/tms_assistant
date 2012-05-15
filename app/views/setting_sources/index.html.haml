@@ -1,6 +1,6 @@
 %h2= SettingSource.model_name.human + ": " + @language.display_name
 
-%table#setting_source_data.table.data
+%table#setting_source_data.table.data{ :data => { :locale => I18n.locale } }
   %thead
     %tr
       %th= SettingSource.human_attribute_name "number"

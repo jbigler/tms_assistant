@@ -1,8 +1,10 @@
 $dark: #2f427a;
 $light: #bbccff;
 $lighter: #ffffdd;
-
-/* TODO */
+$selected: #FF9900;
+$assigned: #FFFF00;
+$completed: #33CC66;
+$cancelled: #CC0000;
 
 table.calendar {
   margin: auto;
@@ -15,17 +17,6 @@ table.calendar {
     color: white;
     text-decoration: none;
   }
-
-  /*.monday {*/
-    /*color: white;*/
-    /*background-color: $dark;*/
-    /*border-bottom: 1px solid #111111;*/
-    /*&:hover {*/
-      /*color: black;*/
-      /*background-color: white; */
-      /*a { color: black; }*/
-    /*}*/
-  /*}*/
 
   thead tr.dayName {
     background-color: black;
@@ -82,6 +73,27 @@ table.calendar {
   .selectedDate {
     border-bottom: 1px solid #111111;
     background-color: green;
+    color: white;
+    font-weight: bold;
+  }
+
+  .assignedDate {
+    border-bottom: 1px solid #111111;
+    background-color: $assigned;
+    color: black;
+    font-weight: bold;
+  }
+
+  .completedDate {
+    border-bottom: 1px solid #111111;
+    background-color: $completed;
+    color: white;
+    font-weight: bold;
+  }
+
+  .cancelledDate {
+    border-bottom: 1px solid #111111;
+    background-color: $cancelled;
     color: white;
     font-weight: bold;
   }
