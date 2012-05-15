@@ -12,9 +12,9 @@
   %legend= t "assignment.no2"
   = f.fields_for :talk_no2 do |t|
     = t.text_field :title, :class => "expand"
-    %br/
     = t.text_field :source, :class => "expand"
     = t.check_box :for_adult_only
+    = t.check_box :for_advanced_only
 %fieldset
   %legend= t "assignment.no3"
   = f.fields_for :talk_no3 do |t|
@@ -22,3 +22,4 @@
     = t.text_field :source, :class => "expand"
     = t.check_box :for_brother_only
     = t.check_box :for_adult_only
+    = t.check_box :for_advanced_only
