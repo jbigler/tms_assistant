@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 
 gem "rails", "~> 3.2.0"
 gem "thin"
-gem 'devise', '~> 2.0.0'
+gem 'devise', '~> 2.1.0'
 gem "state_machine"
 gem "friendly_id", "~> 4.0.0"
 gem "haml"
