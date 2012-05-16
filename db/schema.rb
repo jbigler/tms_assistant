@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120508041605) do
+ActiveRecord::Schema.define(:version => 20120516034014) do
 
   create_table "assignments", :force => true do |t|
     t.integer  "student_id"
@@ -231,6 +231,18 @@ ActiveRecord::Schema.define(:version => 20120508041605) do
   end
 
   add_index "students", ["last_name"], :name => "index_students_on_last_name"
+
+  create_table "translations", :force => true do |t|
+    t.string   "locale"
+    t.string   "key"
+    t.text     "value"
+    t.text     "interpolations"
+    t.boolean  "is_proc",        :default => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
+  end
+
+  add_index "translations", ["locale", "key"], :name => "index_translations_on_locale_and_key", :unique => true
 
   create_table "unavailable_dates", :force => true do |t|
     t.date     "start_date"

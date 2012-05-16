@@ -48,6 +48,8 @@ TmsAssistant::Application.routes.draw do
     end
   end
 
+  resources :translations
+
   authenticated :user do
     root :to => 'dashboard#index'
   end

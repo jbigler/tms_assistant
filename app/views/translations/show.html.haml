@@ -1,0 +1,13 @@
+%p
+  %b Locale:
+  = @translation.locale
+%p
+  %b Key:
+  = @translation.key
+%p
+  %b Value:
+  = @translation.value
+
+= link_to 'Edit', edit_translation_path(@translation)
+\|
+= link_to 'Back', translations_path

@@ -1,0 +1,22 @@
+%h1 Listing translations
+
+%table.table.data{ :data => { :locale => "en" } }
+  %thead
+    %tr
+      %th Locale
+      %th Key
+      %th Value
+      %th
+      %th
+      %th
+  %tbody
+    - @translations.each do |translation|
+      %tr
+        %td= translation.locale
+        %td= translation.key
+        %td= translation.value
+        %td= link_to 'Show', translation
+        %td= link_to 'Edit', edit_translation_path(translation)
+        %td= link_to 'Destroy', translation, :confirm => 'Are you sure?', :method => :delete
+%br/
+= link_to 'New Translation', new_translation_path

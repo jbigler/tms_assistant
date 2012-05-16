@@ -14,6 +14,10 @@ gem "bluecloth"
 gem 'prawn'
 gem 'rails-i18n'
 gem 'foundation_rails_helper', :git => 'git://github.com/jbigler/foundation_rails_helper.git'
+gem 'i18n-active_record',
+    :git => 'git://github.com/svenfuchs/i18n-active_record.git',
+    :branch => 'rails-3.2',
+    :require => 'i18n/active_record'
 
 group :assets do
   gem "haml-rails"
