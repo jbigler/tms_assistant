@@ -1,0 +1,6 @@
+= form_for @translation, :validate => true do |f|
+  %fieldset
+    = f.text_field :locale
+    = f.text_field :key
+    = f.text_field :value
+  = f.submit 'Save'
