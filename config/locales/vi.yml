@@ -141,6 +141,7 @@ vi:
       school: "Trường"
       family: "Gia đình"
       lesson_source: "Nguồn bài học"
+      unavailable_date: "Ngày vắng mặt"
     attributes:
       congregation:
         name: "Tên"
@@ -216,6 +217,7 @@ vi:
         name: "Tên"
         display_name: "Tên in ra"
         code: "Mã"
+
 
   flash:
     invalid_parameters: "Thông số sai lầm được cung cấp."

@@ -154,3 +154,6 @@ en:
       lesson_source:
         one: Lesson Source
         other: Lesson Sources
+      unavailable_date:
+        one: Unavailable Date
+        other: Unavailable Dates

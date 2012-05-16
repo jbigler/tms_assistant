@@ -24,7 +24,10 @@ describe TranslationsController do
   # Translation. As you add validations to Translation, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    {}
+    {
+      :locale => "en",
+      :key => "test.key"
+    }
   end
   
   # This should return the minimal set of values that should be in the session
@@ -34,10 +37,15 @@ describe TranslationsController do
     {}
   end
 
+  before(:each) do
+    @user = @user ||=FactoryGirl.create(:member)
+    sign_in @user
+  end
+
   describe "GET index" do
     it "assigns all translations as @translations" do
       translation = Translation.create! valid_attributes
-      get :index, {}, valid_session
+      get :index, {}
       assigns(:translations).should eq([translation])
     end
   end
@@ -45,14 +53,14 @@ describe TranslationsController do
   describe "GET show" do
     it "assigns the requested translation as @translation" do
       translation = Translation.create! valid_attributes
-      get :show, {:id => translation.to_param}, valid_session
+      get :show, {:id => translation.to_param}
       assigns(:translation).should eq(translation)
     end
   end
 
   describe "GET new" do
     it "assigns a new translation as @translation" do
-      get :new, {}, valid_session
+      get :new, {}
       assigns(:translation).should be_a_new(Translation)
     end
   end
@@ -60,7 +68,7 @@ describe TranslationsController do
   describe "GET edit" do
     it "assigns the requested translation as @translation" do
       translation = Translation.create! valid_attributes
-      get :edit, {:id => translation.to_param}, valid_session
+      get :edit, {:id => translation.to_param}
       assigns(:translation).should eq(translation)
     end
   end
@@ -69,18 +77,18 @@ describe TranslationsController do
     describe "with valid params" do
       it "creates a new Translation" do
         expect {
-          post :create, {:translation => valid_attributes}, valid_session
+          post :create, {:translation => valid_attributes}
         }.to change(Translation, :count).by(1)
       end
 
       it "assigns a newly created translation as @translation" do
-        post :create, {:translation => valid_attributes}, valid_session
+        post :create, {:translation => valid_attributes}
         assigns(:translation).should be_a(Translation)
         assigns(:translation).should be_persisted
       end
 
       it "redirects to the created translation" do
-        post :create, {:translation => valid_attributes}, valid_session
+        post :create, {:translation => valid_attributes}
         response.should redirect_to(Translation.last)
       end
     end
@@ -89,14 +97,14 @@ describe TranslationsController do
       it "assigns a newly created but unsaved translation as @translation" do
         # Trigger the behavior that occurs when invalid params are submitted
         Translation.any_instance.stub(:save).and_return(false)
-        post :create, {:translation => {}}, valid_session
+        post :create, {:translation => {}}
         assigns(:translation).should be_a_new(Translation)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Translation.any_instance.stub(:save).and_return(false)
-        post :create, {:translation => {}}, valid_session
+        post :create, {:translation => {}}
         response.should render_template("new")
       end
     end
@@ -111,18 +119,18 @@ describe TranslationsController do
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
         Translation.any_instance.should_receive(:update_attributes).with({'these' => 'params'})
-        put :update, {:id => translation.to_param, :translation => {'these' => 'params'}}, valid_session
+        put :update, {:id => translation.to_param, :translation => {'these' => 'params'}}
       end
 
       it "assigns the requested translation as @translation" do
         translation = Translation.create! valid_attributes
-        put :update, {:id => translation.to_param, :translation => valid_attributes}, valid_session
+        put :update, {:id => translation.to_param, :translation => valid_attributes}
         assigns(:translation).should eq(translation)
       end
 
       it "redirects to the translation" do
         translation = Translation.create! valid_attributes
-        put :update, {:id => translation.to_param, :translation => valid_attributes}, valid_session
+        put :update, {:id => translation.to_param, :translation => valid_attributes}
         response.should redirect_to(translation)
       end
     end
@@ -132,7 +140,7 @@ describe TranslationsController do
         translation = Translation.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Translation.any_instance.stub(:save).and_return(false)
-        put :update, {:id => translation.to_param, :translation => {}}, valid_session
+        put :update, {:id => translation.to_param, :translation => {}}
         assigns(:translation).should eq(translation)
       end
 
@@ -140,7 +148,7 @@ describe TranslationsController do
         translation = Translation.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Translation.any_instance.stub(:save).and_return(false)
-        put :update, {:id => translation.to_param, :translation => {}}, valid_session
+        put :update, {:id => translation.to_param, :translation => {}}
         response.should render_template("edit")
       end
     end
@@ -150,13 +158,13 @@ describe TranslationsController do
     it "destroys the requested translation" do
       translation = Translation.create! valid_attributes
       expect {
-        delete :destroy, {:id => translation.to_param}, valid_session
+        delete :destroy, {:id => translation.to_param}
       }.to change(Translation, :count).by(-1)
     end
 
     it "redirects to the translations list" do
       translation = Translation.create! valid_attributes
-      delete :destroy, {:id => translation.to_param}, valid_session
+      delete :destroy, {:id => translation.to_param}
       response.should redirect_to(translations_url)
     end
   end

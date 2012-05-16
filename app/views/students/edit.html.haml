@@ -1,7 +1,6 @@
 %h2= t 'record.edit_model', :model => Student.model_name.human
 = form_for [:congregation, @student], :validate => true do |f|
   = render :partial => "form_all", :locals => { :f => f }
-  = f.submit
 %p
   = link_to t("nav.show"), congregation_student_path( @congregation, @student )
   |

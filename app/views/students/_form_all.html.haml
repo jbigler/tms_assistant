@@ -33,3 +33,4 @@
           = render :partial => "form_brother", :locals => { :f => f }
         - if @student.kind_of?(Sister)
           = render :partial => "form_sister", :locals => { :f => f }
+      = f.submit
