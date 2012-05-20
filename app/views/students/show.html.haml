@@ -17,8 +17,8 @@
           - else
             = image_tag "child_female.png", :style => "float:left;"
         
-        %h2= @student.display_name
-      %p
+      %section
+        %header= @student.display_name
         %strong= t 'activerecord.attributes.student.first_name'
         = @student.first_name
         %br/
@@ -27,49 +27,51 @@
         %br/
         %strong= t 'activerecord.attributes.student.last_name'
         = @student.last_name
-      %p
+        %br/
         %strong= t 'activerecord.attributes.student.telephone'
         = @student.telephone
         %br/
         %strong= t 'activerecord.attributes.student.email'
         = @student.email
-      %h4= t "student.use_as"
-      %strong= t 'activerecord.attributes.student.use_for_adult'
-      = b @student.use_for_adult
-      %br/
-      %strong= t 'activerecord.attributes.student.use_for_advanced'
-      = b @student.use_for_advanced
-      %h4= t "student.use_in"
-      %strong= t 'activerecord.attributes.student.use_in_main_school'
-      = b @student.use_in_main_school
-      %br/
-      %strong= t 'activerecord.attributes.student.use_in_secondary_school'
-      = b @student.use_in_secondary_school
-
-      %h4= t "student.use_for"
-      - if @student.type == "Brother"
-        %strong= t 'activerecord.attributes.student.use_for_bh'
-        = b @student.use_for_bh
+      %section
+        %header= t "student.use_as"
+        %strong= t 'activerecord.attributes.student.use_for_adult'
+        = b @student.use_for_adult
         %br/
-        %strong= t 'activerecord.attributes.student.use_for_reader'
-        = b @student.use_for_reader
+        %strong= t 'activerecord.attributes.student.use_for_advanced'
+        = b @student.use_for_advanced
+      %section
+        %header= t "student.use_in"
+        %strong= t 'activerecord.attributes.student.use_in_main_school'
+        = b @student.use_in_main_school
         %br/
-        %strong= t 'activerecord.attributes.student.use_for_no1'
-        = b @student.use_for_no1
-        %br/
-        %strong= t 'activerecord.attributes.student.use_for_no3'
-        = b @student.use_for_no3
-      - else
-        %strong= t 'activerecord.attributes.student.use_for_no2'
-        = b @student.use_for_no2
-        %br/
-        %strong= t 'activerecord.attributes.student.use_for_no3'
-        = b @student.use_for_no3
-        %br/
-        %strong= t 'activerecord.attributes.student.use_for_assistant'
-        = b @student.use_for_assistant
-      %p
-        %strong Notes:
+        %strong= t 'activerecord.attributes.student.use_in_secondary_school'
+        = b @student.use_in_secondary_school
+      %section
+        %header= t "student.use_for"
+        - if @student.type == "Brother"
+          %strong= t 'activerecord.attributes.student.use_for_bh'
+          = b @student.use_for_bh
+          %br/
+          %strong= t 'activerecord.attributes.student.use_for_reader'
+          = b @student.use_for_reader
+          %br/
+          %strong= t 'activerecord.attributes.student.use_for_no1'
+          = b @student.use_for_no1
+          %br/
+          %strong= t 'activerecord.attributes.student.use_for_no3'
+          = b @student.use_for_no3
+        - else
+          %strong= t 'activerecord.attributes.student.use_for_no2'
+          = b @student.use_for_no2
+          %br/
+          %strong= t 'activerecord.attributes.student.use_for_no3'
+          = b @student.use_for_no3
+          %br/
+          %strong= t 'activerecord.attributes.student.use_for_assistant'
+          = b @student.use_for_assistant
+      %section
+        %header= t 'activerecord.attributes.student.notes'
         = @student.notes
       %p
         = link_to t("record.edit"), edit_congregation_student_path( @congregation, @student )
@@ -87,8 +89,9 @@
           %h4 Assignments
         #lessons-tab
           %h4 Lessons
-        #settings-tab
-          %h4 Settings
+        - if @student.type == "Sister"
+          #settings-tab
+            %h4 Settings
         #availability-tab
           %h4 Availability
           = link_to UnavailableDate.model_name.human(:count => 2), congregation_student_unavailable_dates_path( @congregation, @student )
