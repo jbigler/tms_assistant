@@ -4,10 +4,10 @@
       %h1
         %a{:href => "/"}= "TMS Assistant#{ congregation_name }"
     .five.columns
-      #user-nav
+      %nav#user-nav
         = render 'devise/menu/login_items'
   .row
-    .twelve.columns
+    %nav.twelve.columns
       - if current_user
         %ul.nav-bar
           %li= link_to t('dashboard.index.title'), root_path

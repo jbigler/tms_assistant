@@ -3,7 +3,7 @@
     .five.columns
       #student_header
         - if @student.is_active?
-          = image_tag "active.png", :style => "float:left;"
+          = image_tag "active.png", :style => "float:right;"
         - else
           = image_tag "inactive.png", :style => "float:left;"
         - if @student.kind_of?(Brother)
@@ -17,8 +17,8 @@
           - else
             = image_tag "child_female.png", :style => "float:left;"
         
-        %h2= @student.display_name
-      %p
+      %section
+        %header= @student.display_name
         %strong= t 'activerecord.attributes.student.first_name'
         = @student.first_name
         %br/
@@ -27,58 +27,71 @@
         %br/
         %strong= t 'activerecord.attributes.student.last_name'
         = @student.last_name
-      %p
+        %br/
         %strong= t 'activerecord.attributes.student.telephone'
         = @student.telephone
         %br/
         %strong= t 'activerecord.attributes.student.email'
         = @student.email
-      %p
+      %section
+        %header= t "student.use_as"
+        %strong= t 'activerecord.attributes.student.use_for_adult'
+        = b @student.use_for_adult
+        %br/
         %strong= t 'activerecord.attributes.student.use_for_advanced'
-        = @student.use_for_advanced
-
-      %h4= School.model_name.human(:count => 2)
-      %table.table
-        %tr
-          %th{:width => "50%"} Main
-          %th{:width => "50%"} Secondary
-        %tr
-          %td= active_icon(@student.use_in_main_school?)
-          %td= active_icon(@student.use_in_secondary_school?)
-
-      %h4 Assignments
-      %table.table
-        %tr
-          %th{:width => "25%"} Highlights
-          %th{:width => "25%"} Review Reader
-          %th{:width => "25%"} No. 1
-          %th{:width => "25%"} No. 3
-        %tr
-          %td= active_icon(@student.use_for_bh?)
-          %td= active_icon(@student.use_for_reader?)
-          %td= active_icon(@student.use_for_no1?)
-          %td= active_icon(@student.use_for_no3?)
-      %p
-        %strong Notes:
+        = b @student.use_for_advanced
+      %section
+        %header= t "student.use_in"
+        %strong= t 'activerecord.attributes.student.use_in_main_school'
+        = b @student.use_in_main_school
+        %br/
+        %strong= t 'activerecord.attributes.student.use_in_secondary_school'
+        = b @student.use_in_secondary_school
+      %section
+        %header= t "student.use_for"
+        - if @student.type == "Brother"
+          %strong= t 'activerecord.attributes.student.use_for_bh'
+          = b @student.use_for_bh
+          %br/
+          %strong= t 'activerecord.attributes.student.use_for_reader'
+          = b @student.use_for_reader
+          %br/
+          %strong= t 'activerecord.attributes.student.use_for_no1'
+          = b @student.use_for_no1
+          %br/
+          %strong= t 'activerecord.attributes.student.use_for_no3'
+          = b @student.use_for_no3
+        - else
+          %strong= t 'activerecord.attributes.student.use_for_no2'
+          = b @student.use_for_no2
+          %br/
+          %strong= t 'activerecord.attributes.student.use_for_no3'
+          = b @student.use_for_no3
+          %br/
+          %strong= t 'activerecord.attributes.student.use_for_assistant'
+          = b @student.use_for_assistant
+      %section
+        %header= t 'activerecord.attributes.student.notes'
         = @student.notes
       %p
-        = link_to "Unavailable Dates", congregation_student_unavailable_dates_path( @congregation, @student )
+        = link_to t("record.edit"), edit_congregation_student_path( @congregation, @student )
         \|
-        = link_to 'Edit', edit_congregation_student_path( @congregation, @student )
-        \|
-        = link_to 'Back', congregation_students_path( @congregation )
+        = link_to t("nav.back"), congregation_students_path( @congregation )
     .seven.columns
       #student_supp_data
         %ul
-          %li= link_to "Assignments", "#assignments-tab"
-          %li= link_to "Lessons", "#lessons-tab"
-          %li= link_to "Settings", "#settings-tab"
-          %li= link_to "Availability", "#availability-tab"
+          %li= link_to Assignment.model_name.human(:count => 2), "#assignments-tab"
+          %li= link_to Lesson.model_name.human(:count => 2), "#lessons-tab"
+          - if @student.type == "Sister"
+            %li= link_to Setting.model_name.human(:count => 2), "#settings-tab"
+          %li= link_to UnavailableDate.model_name.human(:count => 2), "#availability-tab"
         #assignments-tab
           %h4 Assignments
         #lessons-tab
           %h4 Lessons
-        #settings-tab
-          %h4 Settings
+        - if @student.type == "Sister"
+          #settings-tab
+            %h4 Settings
         #availability-tab
           %h4 Availability
+          = link_to UnavailableDate.model_name.human(:count => 2), congregation_student_unavailable_dates_path( @congregation, @student )
