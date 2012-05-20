@@ -37,6 +37,7 @@ module TmsAssistant
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
     config.i18n.default_locale = :en
+    i18n.locale = :en
 
     config.generators do |g|
       g.test_framework :rspec, :fixture => true, :views => false
