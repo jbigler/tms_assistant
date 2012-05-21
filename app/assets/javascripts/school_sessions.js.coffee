@@ -1,5 +1,5 @@
 jQuery ->
   $( "#schools" ).tabs()
-  $( "details.source p" ).hide()
+  $( "details.source section" ).hide()
   $( "summary.sourceLink" ).click ->
-    $(this).closest( "fieldset" ).find( "details.source p" ).slideToggle( "fast" )
+    $(this).closest( "fieldset" ).find( "details.source section" ).slideToggle( "fast" )

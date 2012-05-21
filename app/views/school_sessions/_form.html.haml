@@ -1,12 +1,15 @@
+- language = @school_session.congregation.language
 %fieldset
   %legend= t "assignment.bh"
   = f.fields_for :bible_highlights do |bh|
     = select_eligible_students( bh )
     %details.source[bh.object]
       %summary.sourceLink{ :href => "#" }= t ".view_source"
-      %p
-        %strong Source: 
-        = @school_session.bible_highlights.source
+      %section.data
+        %p
+          %strong Source: 
+          = @school_session.bible_highlights.source
+        = link_to t("record.edit_model", :model => Schedule.model_name.human), edit_language_schedule_path(language, language.schedules.where(:week_of => @school_session.week_of).first)
 - if @school_session.reader
   %fieldset
     %legend= t :reader
@@ -26,10 +29,11 @@
             = a.check_box :is_cancelled
             %details.source[a.object]
               %summary.sourceLink= t ".view_source"
-              %p
-                %strong Source: 
-                = a.object.source
-                = link_to t("record.edit"), edit_language_schedule_path( @school_session.congregation.language )
+              %section.data
+                %p
+                  %strong Source: 
+                  = a.object.source
+                = link_to t("record.edit_model", :model => Schedule.model_name.human), edit_language_schedule_path(language, language.schedules.where(:week_of => @school_session.week_of).first)
         = school_form.fields_for :talk_no2 do |a|
           %fieldset
             %legend= t "assignment.no2"
@@ -37,12 +41,14 @@
             = a.check_box :is_cancelled
             %details.source[a.object]
               %summary.sourceLink{ :href => "#" }= t ".view_source"
-              %p
-                %strong Title: 
-                = a.object.title
-              %p
-                %strong Source: 
-                = a.object.source
+              %section.data
+                %p
+                  %strong Title: 
+                  = a.object.title
+                %p
+                  %strong Source: 
+                  = a.object.source
+                = link_to t("record.edit_model", :model => Schedule.model_name.human), edit_language_schedule_path(language, language.schedules.where(:week_of => @school_session.week_of).first)
         = school_form.fields_for :talk_no3 do |a|
           %fieldset
             %legend= t "assignment.no3"
@@ -50,9 +56,11 @@
             = a.check_box :is_cancelled
             %details.source[a.object]
               %summary.sourceLink{ :href => "#" }= t ".view_source"
-              %p
-                %strong Title: 
-                = a.object.title
-              %p
-                %strong Source: 
-                = a.object.source
+              %section.data
+                %p
+                  %strong Title: 
+                  = a.object.title
+                %p
+                  %strong Source: 
+                  = a.object.source
+                = link_to t("record.edit_model", :model => Schedule.model_name.human), edit_language_schedule_path(language, language.schedules.where(:week_of => @school_session.week_of).first)
