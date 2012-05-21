@@ -91,6 +91,19 @@ en:
       <<: *session_edit
     supp_form:
       <<: *session_form
+    complete:
+      assigned_to: "Assigned to"
+      student: "Student"
+      substitute: "Substitute"
+      completed_by: "Completed by"
+      cancelled: "Cancelled"
+      lesson_status: "Lesson status"
+      complete: Complete
+      incomplete: Incomplete
+    show:
+      session_for: "School Session for %{week_of}"
+      status: Status
+      assigned_to: "Assigned to"
 
   special_dates:
     new:
@@ -104,6 +117,10 @@ en:
     use_as: "Use as"
     use_in: "Use in"
     use_for: "Use for"
+
+  students:
+    show:
+      contact_info: "Contact Information"
 
   assignment:
     bh: "Bible Highlights"

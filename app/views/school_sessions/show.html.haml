@@ -2,65 +2,64 @@
   #calendar
     = render :partial => 'shared/calendar'
 
-#schedule
-  #summary
-    %h2= h "Schedule for " + @school_session.week_of.to_s
-    #status{ :class => "#{@school_session.state}" }
-      %strong Status:
-      = h @school_session.state
-  - unless @school_session.cancelled?
-    .assignment
-      .type Bible Highlights
-      .student
-        %strong Assigned to:
-        = h @school_session.bible_highlights.student.display_name if @school_session.bible_highlights.student
-    - if @school_session.reader
-      .assignment
-        .type Review Reader
-        .student= h @school_session.reader.student.display_name if @school_session.reader.student
-    - else
-      #schools
-        %ul
-          - @school_session.schools.each do |school|
-            %li= link_to "School " + school.position.to_s, "#school_" + school.position.to_s
+%section
+  %h2= t(".session_for", :week_of => @school_session.week_of)
+  %section.status
+    %strong= t ".status" 
+    = t "status." + @school_session.state
+- unless @school_session.cancelled?
+  %section.data
+    %header= t "assignment.bh"
+    %strong= t ".assigned_to"
+    = h @school_session.bible_highlights.student.display_name if @school_session.bible_highlights.student
+  - if @school_session.reader
+    %section.data
+      %header= t "assignment.reader"
+      %strong= t ".assigned_to"
+      = h @school_session.reader.student.display_name if @school_session.reader.student
+  - else
+    #schools
+      %ul
         - @school_session.schools.each do |school|
-          %div{ :id => "school_" + "#{school.position.to_s}", :class => "school"}
-            %h4= h "School " + school.position.to_s
-            .assignment
-              .type Talk No 1
-              .student
-                %strong Student:
-                = school.talk_no1.student.display_name if school.talk_no1.student
-              .lesson
-                %strong Lesson:
-                = school.talk_no1.lesson.display
-            .assignment
-              .type Talk No 2
-              .student
-                %strong Student:
-                = school.talk_no2.student.display_name if school.talk_no2.student
-              .lesson
-                %strong Lesson:
-                = school.talk_no2.lesson.display
+          %li= link_to "School " + school.position.to_s, "#school_" + school.position.to_s
+      - @school_session.schools.each do |school|
+        %div{ :id => "school_" + "#{school.position.to_s}", :class => "school"}
+          %h4= h "School " + school.position.to_s
+          .assignment
+            .type Talk No 1
+            .student
+              %strong Student:
+              = school.talk_no1.student.display_name if school.talk_no1.student
+            .lesson
+              %strong Lesson:
+              = school.talk_no1.lesson.display
+          .assignment
+            .type Talk No 2
+            .student
+              %strong Student:
+              = school.talk_no2.student.display_name if school.talk_no2.student
+            .lesson
+              %strong Lesson:
+              = school.talk_no2.lesson.display
+            .student
+              %strong Assistant:
+              = school.talk_no2.assistant.display_name if school.talk_no2.assistant
+          .assignment
+            .type Talk No 3
+            .student
+              %strong Student:
+              = school.talk_no3.student.display_name if school.talk_no3.student
+            .lesson
+              %strong Lesson:
+              = school.talk_no3.lesson.display
+            -if school.talk_no3.assistant
               .student
                 %strong Assistant:
-                = school.talk_no2.assistant.display_name if school.talk_no2.assistant
-            .assignment
-              .type Talk No 3
-              .student
-                %strong Student:
-                = school.talk_no3.student.display_name if school.talk_no3.student
-              .lesson
-                %strong Lesson:
-                = school.talk_no3.lesson.display
-              -if school.talk_no3.assistant
-                .student
-                  %strong Assistant:
-                  = school.talk_no3.assistant.display_name
-  - if @school_session.assigned?
-    %p= link_to "Print Assignment Slips", congregation_reports_show_path(@congregation, :week_of => @school_session.week_of)
-  = link_to 'Edit', edit_congregation_school_session_path( @congregation, @school_session )
-  |
-  = link_to 'Cancel School', new_congregation_special_date_path( @congregation, :edit_date => @school_session.week_of )
-  |
-  = link_to( 'Complete', complete_congregation_school_session_path( @congregation, @school_session ) ) if @school_session.assigned?
+                = school.talk_no3.assistant.display_name
+- if @school_session.assigned?
+  %p= link_to "Print Assignment Slips", congregation_reports_show_path(@congregation, :week_of => @school_session.week_of)
+= link_to 'Edit', edit_congregation_school_session_path( @congregation, @school_session )
+|
+= link_to 'Cancel School', new_congregation_special_date_path( @congregation, :edit_date => @school_session.week_of )
+|
+= link_to( 'Complete', complete_congregation_school_session_path( @congregation, @school_session ) ) if @school_session.assigned?

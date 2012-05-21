@@ -91,6 +91,19 @@ vi:
       <<: *session_edit
     supp_form:
       <<: *session_form
+    complete:
+      assigned_to: "Giao cho"
+      student: "Học viên"
+      substitute: "Người tình nguyện"
+      completed_by: "Hoàn thành do"
+      cancelled: "Xóa bỏ"
+      lesson_status: "Tình trạng bài học"
+      complete: "Hoàn thành"
+      incomplete: "Chưa được hoàn thành"
+    show:
+      session_for: "Kỳ họp ngày %{week_of}"
+      status: "Tình trạng"
+      assigned_to: "Giao cho"
 
   special_dates:
     new:
@@ -104,6 +117,10 @@ vi:
     use_as: "Dùng với tư cách là"
     use_in: "Dùng ở"
     use_for: "Dùng làm"
+
+  students:
+    show:
+      contact_info: "Tài liệu liên lạc"
 
   assignment:
     bh: "Các điểm Kính Thánh nổi bật"
@@ -213,6 +230,7 @@ vi:
         is_cancelled: "Xóa bỏ"
         setting_number: "Khung cảnh"
         lesson_chapter: "Bài học"
+        lesson_next: "Bài tiếp sau"
       language:
         name: "Tên"
         display_name: "Tên in ra"

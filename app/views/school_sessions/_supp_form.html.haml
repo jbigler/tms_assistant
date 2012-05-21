@@ -37,7 +37,7 @@
                 = a.label :student_id
                 = a.object.student.display_name
               %div
-                = a.select( :lesson_chapter, prepare_lesson_select( a.object.student.find_eligible_lessons( a.object ) ) )
+                = a.select( :lesson_chapter, prepare_lesson_select( a.object.student.find_eligible_lessons( a.object ) ), {:selected => a.object.student.next_lesson } )
             - else
               = t "status.unassigned"
             %details.source[a.object]
@@ -54,7 +54,7 @@
                 = a.label :student_id
                 = a.object.student.display_name
               %div
-                = a.select( :lesson_chapter, prepare_lesson_select( a.object.student.find_eligible_lessons( a.object ) ) )
+                = a.select( :lesson_chapter, prepare_lesson_select( a.object.student.find_eligible_lessons( a.object ) ), {:selected => a.object.student.next_lesson } )
               - if a.object.student.type == "Sister"
                 %div
                   = select_eligible_assistants( a )
@@ -79,7 +79,7 @@
                 = a.label :student_id
                 = a.object.student.display_name
               %div
-                = a.select( :lesson_chapter, prepare_lesson_select( a.object.student.find_eligible_lessons( a.object ) ) )
+                = a.select( :lesson_chapter, prepare_lesson_select( a.object.student.find_eligible_lessons( a.object ) ), {:selected => a.object.student.next_lesson } )
               - if a.object.student.type == "Sister"
                 %div
                   = select_eligible_assistants( a )

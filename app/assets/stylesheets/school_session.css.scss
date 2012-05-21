@@ -18,3 +18,11 @@
     font-weight: bold;
   }
 }
+
+form {
+  li {
+    .completed_by, .lesson_status {
+      display: inline;
+    }
+  }
+}

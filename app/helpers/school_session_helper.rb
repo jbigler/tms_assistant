@@ -3,9 +3,11 @@ module SchoolSessionHelper
   def prepare_lesson_select( lessons )
     lessons.all.collect do |lesson|
       if lesson.date_completed
-        [lesson.chapter.to_s + " - " + lesson.description + " - " +  Lesson.human_attribute_name("date_completed") + ": " + lesson.date_completed, lesson.chapter]
+        [lesson.chapter.to_s + " - " + lesson.description + " - " +
+         Lesson.human_attribute_name("date_completed") + ": " + lesson.date_completed, lesson.chapter]
       elsif lesson.date_started
-        [lesson.chapter.to_s + " - " + lesson.description + " - " +  Lesson.human_attribute_name("date_started") + ": " + lesson.date_started, lesson.chapter]
+        [lesson.chapter.to_s + " - " + lesson.description + " - " +
+         Lesson.human_attribute_name("date_started") + ": " + lesson.date_started, lesson.chapter]
       else
         [lesson.chapter.to_s + " - " + lesson.description, lesson.chapter]
       end
