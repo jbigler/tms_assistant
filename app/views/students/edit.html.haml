@@ -2,6 +2,6 @@
 = form_for [:congregation, @student], :validate => true do |f|
   = render :partial => "form_all", :locals => { :f => f }
 %p
-  = link_to t("nav.show"), congregation_student_path( @congregation, @student )
+  = link_to t("record.show"), congregation_student_path( @congregation, @student )
   |
   = link_to t("nav.back"), congregation_students_url( @congregation )
