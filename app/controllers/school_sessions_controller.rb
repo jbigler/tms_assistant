@@ -43,12 +43,10 @@ class SchoolSessionsController < ApplicationController
 
   def edit
     @school_session = @congregation.school_sessions.find( params[:id] )
-    if @school_session.assigned?
-      @school_session.unassign
-    end
-    if @school_session.completed?
+    if @school_session.assigned? || @school_session.completed?
       @school_session.undo
     end
+
     @selected_week = @school_session.week_of
     if params[:step_2] == "1"
       render 'edit_supp'

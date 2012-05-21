@@ -85,6 +85,12 @@ class StudentAssignment < Assignment
       on assignments.id = la.assignment_id
     ) las
     on students.id = las.assistant_id
+    left outer join 
+    (
+      select student_id, reason from unavailable_dates
+      where '#{week_of.to_s}' between start_date and end_date
+    ) ud
+    on students.id = ud.student_id
     left outer join students stu
     on las.student_id = stu.id
     }
@@ -92,6 +98,7 @@ class StudentAssignment < Assignment
     results = school_session.congregation.students.
       select( "students.id, students.display_name, students.last_name, students.first_name, las.week_of as latest_date, stu.display_name as last_assisted_name")
     results = results.where( "students.id <> ?", student.id.to_s ) if student
+    results = results.where("ud.reason is null")
     results = results.where( :is_active => true, :use_for_assistant => true ).
       joins( join ).
       order( "las.week_of, students.last_name, students.first_name")

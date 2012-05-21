@@ -29,7 +29,7 @@
               %p
                 %strong Source: 
                 = a.object.source
-                = link_to "Edit", edit_language_schedule_path( @school_session.congregation.language )
+                = link_to t("record.edit"), edit_language_schedule_path( @school_session.congregation.language )
         = school_form.fields_for :talk_no2 do |a|
           %fieldset
             %legend= t "assignment.no2"

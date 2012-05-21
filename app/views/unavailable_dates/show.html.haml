@@ -2,7 +2,17 @@
   #calendar
     = render :partial => 'shared/calendar'
 
-#unavailable_date
-  %p= "Start Date: #{ @unavailable_date.start_date }"
-  %p= "End Date: #{ @unavailable_date.end_date }"
-  %p= "Reason: #{ @unavailable_date.reason }"
+%h2= @student.display_name
+%h4= UnavailableDate.model_name.human
+%section.data
+  %ul
+    %li
+      %strong= UnavailableDate.human_attribute_name("start_date")
+      = l @unavailable_date.start_date
+    %li
+      %strong= UnavailableDate.human_attribute_name("end_date")
+      = l @unavailable_date.end_date
+    %li
+      %strong= UnavailableDate.human_attribute_name("reason")
+      = @unavailable_date.reason
+= link_to t("record.edit"), edit_congregation_student_unavailable_date_path(@student.congregation, @student, @unavailable_date)

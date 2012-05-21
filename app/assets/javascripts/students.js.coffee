@@ -1,2 +1,2 @@
 jQuery ->
-  $( "#student_supp_data" ).tabs()
+  $( "section.supp_data" ).tabs()

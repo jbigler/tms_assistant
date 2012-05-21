@@ -78,3 +78,35 @@ span.translation_missing {
   font-size: larger;
   color: red;
 }
+
+header.student {
+  padding-bottom: 1em;
+  h2 {
+    text-align: center;
+  }
+}
+
+section.data {
+  border: solid 1px black;
+  padding: 0.5em;
+  margin-top: 2em;
+
+  header {
+    position: relative;
+    border: 1px solid black;
+    margin-left:auto;
+    margin-right:auto;
+    padding: 0.2em 0.5em;
+    text-align: center;
+    top: -1.25em;
+    max-width: 50%;
+    background: #45648c;
+    color: white;
+    font-weight: bold;
+    font-size: 1.25em;
+  }
+}
+
+select.datetime {
+  display: inline;
+}

@@ -20,8 +20,10 @@ en:
     languages: "Supported Languages"
 
   dashboard:
-    title: Dashboard
-    pending_completion: Sessions pending completion
+    index:
+      title: Dashboard
+      pending_completion: Sessions pending completion
+      no_congregation: No congregation
 
   record:
     make_default: Make default
@@ -34,6 +36,7 @@ en:
     delete: Delete
     confirm: "Are you sure?"
     manage: Manage
+    manage_model: "Manage %{model}"
     show: Show
 
   menu:
@@ -50,7 +53,6 @@ en:
 
   nav:
     back: Back
-    show: Show
     continue: "Continue"
 
   calendar:
@@ -67,6 +69,14 @@ en:
     show:
       meeting_day: "Meeting Day"
 
+  schedules:
+    title: "School Schedule"
+    index:
+      week_of: "Week of"
+      has_review: "Has review"
+    edit:
+      source: Source material
+
   school_sessions:
     edit: &session_edit
       title: "Edit School Session: %{week_of}"
@@ -81,14 +91,6 @@ en:
       <<: *session_edit
     supp_form:
       <<: *session_form
-
-  schedules:
-    title: "School Schedule"
-    index:
-      week_of: "Week of"
-      has_review: "Has review"
-    edit:
-      source: "Source"
 
   special_dates:
     new:

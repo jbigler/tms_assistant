@@ -1,0 +1,12 @@
+%table
+  %thead
+    %tr
+      %th= Assignment.human_attribute_name("week_of")
+      %th= Assignment.human_attribute_name("type")
+      %th= Assignment.human_attribute_name("state")
+  %tbody
+    - @student.assignments.each do |assignment|
+      %tr
+        %td= link_to l(assignment.week_of), congregation_school_session_path(@congregation, @congregation.school_sessions.where(:week_of => assignment.week_of).first.id)
+        %td= assignment.type
+        %td= assignment.state

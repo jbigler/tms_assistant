@@ -6,3 +6,6 @@ jQuery ->
     href = $(this).find("a").attr("href")
     if href
       location.href = href
+
+jQuery ->
+  $(".datepicker").datepicker

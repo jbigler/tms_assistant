@@ -55,7 +55,7 @@ class UnavailableDatesController < ApplicationController
         format.html { redirect_to( [@congregation, @student, @unavailable_date], :notice => 'unavailable date was successfully created.') }
         format.xml  { render :xml => @unavailable_date, :status => :created, :location => @unavailable_date }
       else
-        format.html { render :action => "new" }
+        format.html { render :action => "new", :alert => "Unable to create Unavailable date." }
         format.xml  { render :xml => @unavailable_date.errors, :status => :unprocessable_entity }
       end
     end

@@ -2,11 +2,10 @@
   #calendar
     = render :partial => 'shared/calendar'
 
-#schedule
-  %h1 Editing Unavailable Date
-
+%section
+  %h2= @student.display_name
+  %h4= t "record.edit_model", :model => UnavailableDate.model_name.human
   = render 'form'
-
   %p
     = link_to 'Show', [@congregation, @student, @unavailable_date]
     \|

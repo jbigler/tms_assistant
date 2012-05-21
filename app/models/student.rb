@@ -34,6 +34,14 @@ class Student < ActiveRecord::Base
     :use_for_assistant,
     :type
 
+  def display_name
+    if read_attribute(:display_name) == ""
+      [read_attribute(:first_name), read_attribute(:last_name)].join(" ")
+    else
+      super
+    end
+  end
+
   #Returns a collection of lessons applicable for
   #this student on the provided assignment.
   #Only returns chapter, description, date_started, and date_completed
