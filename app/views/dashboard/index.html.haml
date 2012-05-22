@@ -1,13 +1,13 @@
-- content_for :sidebar do
-  %dl.nice.vertical.tabs
-    - @congregations.each do |congregation|
-      %dd= link_to congregation.name, "#"
-  = link_to "New Congregation", new_congregation_path
-
+%h2= t '.title'
 - if @congregation
-  %h1 #{@congregation.name} Dashboard
-  %h3 School Sessions Pending Completion
-  - @school_sessions = @congregation.school_sessions.incomplete
-  %ul
-  - @school_sessions.each do |school_session|
-    %li= link_to school_session.week_of.to_s, congregation_school_session_path(@congregation, school_session)
+  %h3= @congregation.name
+  - if @school_sessions.count > 0
+    .panel
+      %h4= t '.pending_completion'
+      %ul
+      - @school_sessions.each do |school_session|
+        %li= link_to l(school_session.week_of, :format => :short), congregation_school_session_path(@congregation, school_session)
+  = link_to t("record.manage_model", :model => Congregation.model_name.human(:count => 2)), congregations_path
+- else
+  %h3= t ".no_congregation"
+  = link_to t("record.create_model", :model => Congregation.model_name.human), new_congregation_path

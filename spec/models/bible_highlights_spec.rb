@@ -49,8 +49,8 @@ describe BibleHighlights do
         bh.should be_assigned
       end
 
-      it "should be able to be unassigned" do
-        bh.can_unassign?.should be_true
+      it "should be able to be undone" do
+        bh.can_undo?.should be_true
       end
 
       it "should be able to be completed" do

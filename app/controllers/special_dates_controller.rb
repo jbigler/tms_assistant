@@ -1,6 +1,7 @@
 class SpecialDatesController < ApplicationController
 
-  before_filter :authenticate_user!, :require_congregation, :prepare_calendar
+  before_filter :require_congregation, :prepare_calendar
+  layout "application-double"
 
   # GET /special_dates
   # GET /special_dates.xml
@@ -61,7 +62,7 @@ class SpecialDatesController < ApplicationController
 
     respond_to do |format|
       if @special_date.save
-        format.html { redirect_to( [@congregation, @special_date], :notice => 'Special date was successfully created.') }
+        format.html { redirect_to( [@congregation, @special_date], :notice => t("flash.actions.create.notice", :model => SpecialDate.model_name.human)) }
         format.xml  { render :xml => @special_date, :status => :created, :location => @special_date }
       else
         format.html { render :action => "new" }
@@ -77,7 +78,7 @@ class SpecialDatesController < ApplicationController
 
     respond_to do |format|
       if @special_date.update_attributes( params[:special_date] )
-        format.html { redirect_to( [@congregation, @special_date], :notice => 'Special date was successfully updated.') }
+        format.html { redirect_to( [@congregation, @special_date], :notice => t("flash.actions.update.notice", :model => SpecialDate.model_name.human)) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -93,7 +94,7 @@ class SpecialDatesController < ApplicationController
     @special_date.destroy
 
     respond_to do |format|
-      format.html { redirect_to( congregation_special_dates_path( @congregation ) ) }
+      format.html { redirect_to(congregation_special_dates_path(@congregation), :notice => t("flash.actions.destroy.notice", :model => SpecialDate.model_name.human)) }
       format.xml  { head :ok }
     end
   end

@@ -1,6 +1,7 @@
 class SchoolSessionsController < ApplicationController
 
-  before_filter :authenticate_user!, :require_congregation, :prepare_calendar
+  before_filter :require_congregation, :prepare_calendar
+  layout "application-double"
 
   def index
     next_month = @calendar_date >> 1
@@ -42,12 +43,10 @@ class SchoolSessionsController < ApplicationController
 
   def edit
     @school_session = @congregation.school_sessions.find( params[:id] )
-    if @school_session.assigned?
-      @school_session.unassign
-    end
-    if @school_session.completed?
+    if @school_session.assigned? || @school_session.completed?
       @school_session.undo
     end
+
     @selected_week = @school_session.week_of
     if params[:step_2] == "1"
       render 'edit_supp'
@@ -137,6 +136,16 @@ class SchoolSessionsController < ApplicationController
       @calendar_date = Date.today
     end
     @calendar_date = Date.civil( @calendar_date.year, @calendar_date.month, 1 )
+    @calendar_states = calendar_states_hash
     @selected_week = Date.parse( params[:selected_week] ) if params[:selected_week]
+  end
+
+  def calendar_states_hash
+    calendar_states = {}
+    weeks = @congregation.school_sessions.select("week_of, state").where(:week_of => @calendar_date..(@calendar_date >> 2))
+    weeks.each do |week|
+      calendar_states[week.week_of] = week.state
+    end
+    return calendar_states
   end
 end

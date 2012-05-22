@@ -1,0 +1,31 @@
+!!! 5
+!= cc_html(:lang => 'en') do
+  %head
+    %meta{:charset => "utf-8"}/
+    / Uncomment to make IE8 render like IE7
+    / <meta http-equiv="X-UA-Compatible" content="IE=7" />
+    / Set the viewport width to device width for mobile
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    %title= content_for?(:title) ? yield(:title) : "TMS Assistant#{ congregation_name }"
+    / Included CSS Files
+    = stylesheet_link_tag    "application"
+    / Included JS Files
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+    = yield :head
+  %body
+    .wrapper
+      = render :partial => "shared/header"
+      #content.container
+        .row
+          #sidebar.four.columns
+            = yield :sidebar
+          #main.eight.columns
+            #flash.flash
+              = display_flash_messages
+            = yield
+      .push
+    %footer.container
+      .row
+        .four.columns.centered
+          = render :partial => "shared/footer"

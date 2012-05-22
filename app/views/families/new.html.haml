@@ -1,7 +1,5 @@
-%h2 New Family
+%h2= t 'record.create_model', :model => Family.model_name.human
 = form_for [@congregation, @family] do |f|
-  = render "shared/error_messages", :target => @family
   = render :partial => "form", :locals => { :f => f }
-  = f.submit "Create"
 = link_to "Back", congregation_families_path( @congregation )
 

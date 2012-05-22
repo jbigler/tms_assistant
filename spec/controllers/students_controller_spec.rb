@@ -54,13 +54,13 @@ describe StudentsController do
     describe "with valid params" do
       it "assigns a newly created student as @student" do
         Brother.stub(:new).with({'these' => 'params'}) { mock_student(:save => true) }
-        post :create, :congregation_id => "1", :brother => {'these' => 'params'}
+        post :create, :congregation_id => "1", :student_type => "brother", :student => {'these' => 'params'}
         assigns(:student).should be(mock_student)
       end
 
       it "redirects to the created student" do
         Brother.stub(:new).with({'these' => 'params'}) { mock_student(:save => true) }
-        post :create, :congregation_id => "1", :brother => {'these' => 'params'}
+        post :create, :congregation_id => "1", :student_type => "brother", :student => {'these' => 'params'}
         response.should redirect_to( congregation_student_url( @congregation.id, mock_student ) )
       end
     end
@@ -68,13 +68,13 @@ describe StudentsController do
     describe "with invalid params" do
       it "assigns a newly created but unsaved student as @student" do
         Brother.stub(:new).with({'these' => 'params'}) { mock_student(:save => false) }
-        post :create, :congregation_id => "1", :brother => {'these' => 'params'}
+        post :create, :congregation_id => "1", :student_type => "brother", :student => {'these' => 'params'}
         assigns(:student).should be(mock_student)
       end
 
       it "redirects to the 'new' action" do
         Brother.stub(:new).with({'these' => 'params'}) { mock_student(:save => false) }
-        post :create, :congregation_id => "1", :brother => {'these' => 'params'}
+        post :create, :congregation_id => "1", :student_type => "brother", :student => {'these' => 'params'}
         response.should redirect_to( :action => 'new' )
       end
     end

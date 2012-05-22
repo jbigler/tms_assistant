@@ -16,6 +16,9 @@ div.dataTables_info {
 
 div.dataTables_paginate {
   float: right;
+  a {
+    padding: 0 0.5em 0 0.5em;
+  }
 }
 
 div.dataTables_length,

@@ -1,6 +1,8 @@
 class SchedulesController < ApplicationController
 
-  before_filter :authenticate_user!, :initialize_language, :prepare_calendar
+  before_filter :initialize_language, :prepare_calendar
+
+  layout "application-double"
 
   # GET /languages/1/schedules
   # GET /languages/1/schedules.xml
@@ -59,7 +61,7 @@ class SchedulesController < ApplicationController
 
     respond_to do |format|
       if @schedule.update_attributes(params[:schedule])
-        format.html { redirect_to( [@language, @schedule], :notice => 'Schedule was successfully updated.') }
+        format.html { redirect_to( [@language, @schedule], :notice => t("flash.actions.update.notice", :model => Schedule.model_name.human)) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

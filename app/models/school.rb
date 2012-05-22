@@ -21,19 +21,15 @@ class School < ActiveRecord::Base
   accepts_nested_attributes_for :talk_no1, :talk_no2, :talk_no3
 
   state_machine :initial => :unassigned do
-    before_transition :completed  => :assigned,   :do => :undo_completion
     after_transition  any         => :cancelled,  :do => :clear_assignments
     after_transition  :cancelled  => :unassigned, :do => :create_assignments
     after_transition  :unassigned => :assigned,   :do => :assign_all_assignments
-    after_transition  :assigned   => :unassigned, :do => :unassign_all_assignments
+    after_transition  :assigned   => :unassigned, :do => :undo_all_assignments
     after_transition  :assigned   => :completed,  :do => :complete_all_assignments
+    before_transition :completed  => :assigned,   :do => :undo_completion
 
     event :assign do
       transition :unassigned => :assigned, :if => :assignable?
-    end
-
-    event :unassign do
-      transition :assigned => :unassigned
     end
 
     event :complete do
@@ -42,16 +38,16 @@ class School < ActiveRecord::Base
 
     event :undo do
       transition :completed => :assigned
+      transition :assigned => :unassigned
     end
 
     event :cancel do
-      transition any => :cancelled
+      transition any - [:cancelled, :completed] => :cancelled
     end
 
     event :reactivate do
       transition :cancelled => :unassigned
     end
-
   end
 
   private
@@ -68,10 +64,10 @@ class School < ActiveRecord::Base
       talk_no3.is_cancelled? ? talk_no3.cancel : talk_no3.assign
     end
 
-    def unassign_all_assignments
-      talk_no1.is_cancelled? ? talk_no1.restore : talk_no1.unassign
-      talk_no2.is_cancelled? ? talk_no2.restore : talk_no2.unassign
-      talk_no3.is_cancelled? ? talk_no3.restore : talk_no3.unassign
+    def undo_all_assignments
+      talk_no1.undo
+      talk_no2.undo
+      talk_no3.undo
     end
 
     def assignable?
@@ -81,15 +77,27 @@ class School < ActiveRecord::Base
     end
 
     def complete_all_assignments
-      talk_no1.complete unless talk_no1.cancelled?
-      talk_no2.complete unless talk_no2.cancelled?
-      talk_no3.complete unless talk_no3.cancelled?
+      if talk_no1.is_cancelled? and talk_no1.assigned?
+        talk_no1.cancel
+      else
+        talk_no1.complete unless talk_no1.cancelled?
+      end
+      if talk_no2.is_cancelled? and talk_no2.assigned?
+        talk_no2.cancel
+      else
+        talk_no2.complete unless talk_no2.cancelled?
+      end
+      if talk_no3.is_cancelled? and talk_no3.assigned?
+        talk_no3.cancel
+      else
+        talk_no3.complete unless talk_no3.cancelled?
+      end
     end
 
     def undo_completion
-      talk_no1.undo unless talk_no1.cancelled?
-      talk_no2.undo unless talk_no2.cancelled?
-      talk_no3.undo unless talk_no3.cancelled?
+      talk_no1.undo
+      talk_no2.undo
+      talk_no3.undo
     end
 
     def create_assignments

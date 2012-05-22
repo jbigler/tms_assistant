@@ -1,10 +1,10 @@
-%h1 #{@language.name} Setting Sources
+%h2= SettingSource.model_name.human + ": " + @language.display_name
 
-%table#setting_source_data.table.data
+%table#setting_source_data.table.data{ :data => { :locale => I18n.locale } }
   %thead
     %tr
-      %th Number
-      %th Description
+      %th= SettingSource.human_attribute_name "number"
+      %th= SettingSource.human_attribute_name "description"
       %th
       %th
   %tbody
@@ -12,5 +12,5 @@
       %tr
         %td= setting_source.number
         %td= setting_source.description
-        %td= link_to 'Show', [@language, setting_source]
-        %td= link_to 'Edit', edit_language_setting_source_path( @language, setting_source )
+        %td= link_to t("record.show"), [@language, setting_source]
+        %td= link_to t("record.edit"), edit_language_setting_source_path( @language, setting_source )

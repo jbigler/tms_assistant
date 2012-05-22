@@ -6,10 +6,8 @@
     / <meta http-equiv="X-UA-Compatible" content="IE=7" />
     / Set the viewport width to device width for mobile
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
-    %title= content_for?(:title) ? yield(:title) : "Untitled"
-    / Included CSS Files
+    %title= content_for?(:title) ? yield(:title) : "TMS Assistant#{ congregation_name }"
     = stylesheet_link_tag    "application"
-    / Included JS Files
     = javascript_include_tag "application"
     = csrf_meta_tags
     = yield :head
@@ -18,19 +16,12 @@
       = render :partial => "shared/header"
       #content.container
         .row
-          #sidebar.four.columns
-            = yield :sidebar
-          #main.eight.columns
+          #main.twelve.columns.centered
             #flash.flash
-              - if flash[:alert]
-                .message.error
-                  %p= flash[:alert]
-              - if flash[:notice]
-                .message.notice
-                  %p= flash[:notice]
+              = display_flash_messages
             = yield
       .push
-    #footer.container
+    %footer.container
       .row
         .four.columns.centered
           = render :partial => "shared/footer"

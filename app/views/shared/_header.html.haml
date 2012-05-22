@@ -1,26 +1,27 @@
-#header.container
+%header.container
   .row
-    .four.columns
+    .seven.columns
       %h1
-        %a{:href => "/"} TMS Assistant
-    .eight.columns
-      #user-nav
+        %a{:href => "/"}= "TMS Assistant#{ congregation_name }"
+    .five.columns
+      %nav#user-nav
         = render 'devise/menu/login_items'
   .row
-    .twelve.columns
+    %nav.twelve.columns
       - if current_user
         %ul.nav-bar
-          %li= link_to 'Dashboard', root_path
+          %li= link_to t('dashboard.index.title'), root_path
           - if session[:congregation_id]
             - cong = current_user.congregations.find(session[:congregation_id])
-            %li= link_to "Assignments", congregation_school_sessions_path(cong) 
-            %li= link_to "Students", congregation_students_path(cong) 
-            %li= link_to "Reports", "#"
+            %li= link_to t('menu.sessions'), congregation_school_sessions_path(cong) 
+            %li= link_to t('menu.students'), congregation_students_path(cong) 
+            %li= link_to t('menu.reports'), "#"
             %li.has-flyout
-              = link_to "Tools", "#"
+              = link_to t('menu.tools'), "#"
               .flyout.small
                 %ul
-                  %li= link_to "Edit Special Dates", congregation_special_dates_path(cong)
-                  %li= link_to "Edit Schedule", language_schedules_path(cong.language)
-                  %li= link_to "Edit Lessons", language_lesson_sources_path(cong.language)
-                  %li= link_to "Edit Settings", language_setting_sources_path(cong.language)
+                  %li= link_to t('record.edit') + ": " + SpecialDate.model_name.human(:count => 2), 
+                    congregation_special_dates_path(cong)
+                  %li= link_to t('record.edit') + ": " + Schedule.model_name.human, language_schedules_path(cong.language)
+                  %li= link_to t('record.edit') + ": " + LessonSource.model_name.human(:count => 2), language_lesson_sources_path(cong.language)
+                  %li= link_to t('record.edit') + ": " + SettingSource.model_name.human(:count => 2), language_setting_sources_path(cong.language)

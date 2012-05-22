@@ -1,5 +1,182 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 en:
-  bh: Bible Highlights
 
+  boolean:
+    positive: "Yes"
+    negative: "No"
+
+  status:
+    assigned: "Assigned"
+    unassigned: "Unassigned"
+    cancelled: "Cancelled"
+    completed: "Completed"
+
+  sex:
+    title: "Sex"
+    male: "M"
+    female: "F"
+
+  home:
+    welcome: "Welcome to TMS Assistant"
+    languages: "Supported Languages"
+
+  dashboard:
+    index:
+      title: Dashboard
+      pending_completion: Sessions pending completion
+      no_congregation: No congregation
+
+  record:
+    make_default: Make default
+    edit: Edit
+    edit_model: "Edit %{model}"
+    create: Create
+    create_model: "New %{model}"
+    create_brother: "Add brother"
+    create_sister: "Add sister"
+    delete: Delete
+    confirm: "Are you sure?"
+    manage: Manage
+    manage_model: "Manage %{model}"
+    show: Show
+
+  menu:
+    login: Login
+    logout: Logout
+    register: Register
+    user: User
+    not_logged_in: not logged in
+    admin: Admin
+    reports: Reports
+    tools: Tools
+    sessions: Sessions
+    students: Students
+
+  nav:
+    back: Back
+    continue: "Continue"
+
+  calendar:
+    previous: "Previous"
+    next: "Next"
+
+  congregations:
+    index:
+      name: "Name"
+      number_of_schools: "Number of schools"
+      add: "Add Congregation"
+      default: "Default"
+      make_default: "Make default"
+    show:
+      meeting_day: "Meeting Day"
+
+  schedules:
+    title: "School Schedule"
+    index:
+      week_of: "Week of"
+      has_review: "Has review"
+    edit:
+      source: Source material
+
+  school_sessions:
+    edit: &session_edit
+      title: "Edit School Session: %{week_of}"
+      cancelled: "Cancelled"
+    form: &session_form
+      school_no: "School %{no}"
+      view_source: "View source"
+      last_assignment: "Last: "
+      last_used: "Last: "
+      last_assisted: "With: "
+    edit_supp:
+      <<: *session_edit
+    supp_form:
+      <<: *session_form
+    complete:
+      assigned_to: "Assigned to"
+      student: "Student"
+      substitute: "Substitute"
+      completed_by: "Completed by"
+      cancelled: "Cancelled"
+      lesson_status: "Lesson status"
+      complete: Complete
+      incomplete: Incomplete
+    show:
+      session_for: "School Session for %{week_of}"
+      status: Status
+      assigned_to: "Assigned to"
+      complete: "Complete"
+      cancel: "Cancel School Session"
+      print_slips: "Print Assignment Slips"
+      assistant: "Assistant"
+
+  special_dates:
+    new:
+      title: "New Special Date"
+
+  student:
+    brother: "Brother"
+    sister: "Sister"
+    create_family: "Create family"
+    info: "Student Information"
+    use_as: "Use as"
+    use_in: "Use in"
+    use_for: "Use for"
+
+  students:
+    show:
+      contact_info: "Contact Information"
+
+  assignment:
+    bh: "Bible Highlights"
+    no1: "Talk No 1"
+    no2: "Talk No 2"
+    no3: "Talk No 3"
+
+  footer:
+    copyright: Copyright
+
+  helpers:
+    submit:
+      create: "Create %{model}"
+      update: "Update %{model}"
+
+  date:
+    formats:
+      month_year: "%B %Y"
+      week_of: "Week of %m/%d/%Y"
+
+  activerecord:
+    models:
+      assignment:
+        one: Assignment
+        other: Assignments
+      student:
+        one: Student
+        other: Students
+      lesson:
+        one: Lesson
+        other: Lessons
+      setting:
+        one: Setting
+        other: Settings
+      setting_source:
+        one: Setting Source
+        other: Setting Sources
+      special_date:
+        one: Special Date
+        other: Special Dates
+      congregation:
+        one: Congregation
+        other: Congregations
+      school_session:
+        one: School Session
+        other: School Sessions
+      family:
+        one: Family
+        other: Families
+      lesson_source:
+        one: Lesson Source
+        other: Lesson Sources
+      unavailable_date:
+        one: Unavailable Date
+        other: Unavailable Dates

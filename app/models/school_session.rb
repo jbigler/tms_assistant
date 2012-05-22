@@ -31,16 +31,12 @@ class SchoolSession < ActiveRecord::Base
       transition :unassigned => :assigned, :if => :assignable?
     end
 
-    event :unassign do
-      transition :assigned => :unassigned
-    end
-
     event :complete do
       transition :assigned => :completed, :if => :completable?
     end
 
     event :cancel do
-      transition any - :completed => :cancelled
+      transition any - [:completed, :cancelled] => :cancelled
     end
 
     event :reactivate do
@@ -48,6 +44,7 @@ class SchoolSession < ActiveRecord::Base
     end
 
     event :undo do
+      transition :assigned => :unassigned
       transition :completed => :assigned
     end
 
@@ -150,10 +147,10 @@ class SchoolSession < ActiveRecord::Base
   end
 
   def unassign_all_assignments
-    bible_highlights.unassign
-    reader.unassign if reader
+    bible_highlights.undo
+    reader.undo if reader
     schools.each do |school|
-      school.unassign
+      school.undo
     end
   end
 

@@ -1,7 +1,6 @@
 class LessonSourcesController < ApplicationController
 
-  before_filter :authenticate_user!, :initialize_language
-  layout "application-single"
+  before_filter :initialize_language
 
   # GET /lesson_sources
   # GET /lesson_sources.xml

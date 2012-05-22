@@ -1,7 +1,5 @@
 class Admin::UsersController < Admin::BaseController
 
-  layout "application-single"
-  
   before_filter :find_user, :only => [:edit, :update, :destroy, :set_default_congregation]
   
   def index

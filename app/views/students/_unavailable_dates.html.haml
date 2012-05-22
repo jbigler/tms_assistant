@@ -1,0 +1,14 @@
+%table
+  %thead
+    %tr
+      %th= UnavailableDate.human_attribute_name("start_date")
+      %th= UnavailableDate.human_attribute_name("end_date")
+      %th= UnavailableDate.human_attribute_name("reason")
+  %tbody
+    - @student.unavailable_dates.each do |ud|
+      %tr
+        %td= l ud.start_date
+        %td= l ud.end_date
+        %td= ud.reason
+= link_to t("record.manage_model", :model => UnavailableDate.model_name.human(:count => 2)), congregation_student_unavailable_dates_path( @congregation, @student )
+

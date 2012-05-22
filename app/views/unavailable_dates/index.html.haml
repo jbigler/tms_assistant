@@ -2,10 +2,11 @@
   #calendar
     = render :partial => 'shared/calendar'
 
-#unavailable_dates
-  %h1= "Unavailable Dates for #{ @student.display_name }"
+%section
+  %h2= @student.display_name
+  %h4= UnavailableDate.model_name.human(:count => 2)
 
-  %table#unavailable_dates_data.table.data
+  %table#unavailable_dates_data.table.data{ :data => { :locale => I18n.locale } }
     %thead
       %tr
         %th Start Date
@@ -16,8 +17,8 @@
     %tbody
       - @unavailable_dates.each do |ud|
         %tr
-          %td= ud.start_date.to_s
-          %td= ud.end_date.to_s
+          %td= l ud.start_date
+          %td= l ud.end_date
           %td= ud.reason
-          %td= link_to 'Show', congregation_student_unavailable_date_path( @student.congregation, @student, ud )
-          %td= link_to 'Edit', edit_congregation_student_unavailable_date_path( @student.congregation, @student, ud )
+          %td= link_to t("nav.show"), congregation_student_unavailable_date_path( @student.congregation, @student, ud )
+          %td= link_to t("record.edit"), edit_congregation_student_unavailable_date_path( @student.congregation, @student, ud )

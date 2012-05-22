@@ -1,9 +1,9 @@
-%h1 Listing congregations
+%h2= Congregation.model_name.human(:count => 2)
 
 %table.table
   %tr
-    %th.first Name
-    %th Number of schools
+    %th.first= t '.name'
+    %th= t '.number_of_schools'
     %th
     %th
     %th
@@ -13,13 +13,13 @@
     %tr
       %td= congregation.name
       %td= congregation.number_of_schools
-      %td= link_to 'Manage', congregation
-      %td= link_to 'Edit', edit_congregation_path(congregation)
-      %td= link_to 'Destroy', congregation, :confirm => 'Are you sure?', :method => :delete
+      %td= link_to t('record.manage'), congregation
+      %td= link_to t('record.edit'), edit_congregation_path(congregation)
+      %td= link_to t('record.delete'), congregation, :confirm => 'Are you sure?', :method => :delete
       %td
         - if congregation == @current_user.default_congregation
-          Default
+          = t '.default'
         - else
-          = link_to 'Make default', set_default_congregation_user_path( @current_user, :default_congregation => congregation )
+          = link_to t('.make_default'), set_default_congregation_user_path( @current_user, :default_congregation => congregation )
 
-%p= link_to 'Add Congregation', new_congregation_path
+%p= link_to t('.add'), new_congregation_path

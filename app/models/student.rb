@@ -31,7 +31,16 @@ class Student < ActiveRecord::Base
     :use_for_no1,            
     :use_for_no2,            
     :use_for_no3,            
-    :use_for_assistant      
+    :use_for_assistant,
+    :type
+
+  def display_name
+    if read_attribute(:display_name) == ""
+      [read_attribute(:first_name), read_attribute(:last_name)].join(" ")
+    else
+      super
+    end
+  end
 
   #Returns a collection of lessons applicable for
   #this student on the provided assignment.

@@ -4,127 +4,152 @@
 
 #schedule
   %h2 Completing Session for #{@school_session.week_of.to_s}
-  = form_for [@congregation, @school_session], :url => { :action => "finalize" }, :html => { :class => "bp" }  do |f|
-    = render "shared/error_messages", :target => @school_session
+  = form_for [@congregation, @school_session], :url => { :action => "finalize" }  do |f|
     %fieldset
-      %legend= t :bh
+      %legend= t "assignment.bh"
       = f.fields_for :bible_highlights do |bh|
-        %div
-          = bh.label :student_id
-          .text= bh.object.student.display_name
-        %div
-          = bh.radio_button :completed_by, 'student', :checked => true
-          = bh.label :completed_by_student
-        %div
-          = bh.radio_button :completed_by, 'substitute'
-          = bh.label :completed_by_substitute
-          = bh.select( :substitute_id, bh.object.find_eligible_substitutes.collect {|i| [i.display_name, i.id] }, { :include_blank => true } )
+        %ul
+          %li
+            %strong= "Assigned to: "
+            = bh.object.student.display_name
+          %li
+            %strong= "Completed by: "
+            %label{ :for => "school_session_bible_highlights_attributes_completed_by_student", :class => "completed_by" }
+              = radio_button_tag "school_session[bible_highlights_attributes][completed_by]", "student", true, :class => "completed_by"
+              = t ".student"
+            %label{ :for => "school_session_bible_highlights_attributes_completed_by_substitute", :class => "completed_by" }
+              = radio_button_tag "school_session[bible_highlights_attributes][completed_by]", "substitute", false, :class => "completed_by"
+              = t ".substitute"
+          %li#substitute
+            = bh.select( :substitute_id, bh.object.find_eligible_substitutes.collect {|i| [i.display_name, i.id] }, { :include_blank => true } )
     - if @school_session.reader
       = f.fields_for :reader do |a|
-        %div
-          = a.label :student_id
-          .text= a.object.student.display_name
-        %div
-          = a.radio_button :completed_by, 'student', :checked => true
-          = a.label :completed_by_student
-        %div
-          = a.radio_button :completed_by, 'substitute'
-          = a.label :completed_by_substitute
-          = a.select( :substitute_id, a.object.find_eligible_substitutes.collect {|i| [i.display_name, i.id] }, { :include_blank => true } )
+        %ul
+          %li
+            %strong= "Assigned to: "
+            = a.object.student.display_name
+          %li
+            %strong= "Completed by: "
+            %label{ :for => "school_session_reader_attributes_completed_by_student", :class => "completed_by" }
+              = radio_button_tag "school_session[reader_attributes][completed_by]", "student", true, :class => "completed_by"
+              = t ".student"
+            %label{ :for => "school_session_reader_attributes_completed_by_substitute", :class => "completed_by" }
+              = radio_button_tag "school_session[reader_attributes][completed_by]", "substitute", false, :class => "completed_by"
+              = t ".substitute"
+          %li#substitute
+            = a.select( :substitute_id, a.object.find_eligible_substitutes.collect {|i| [i.display_name, i.id] }, { :include_blank => true } )
     - else
       #schools
         %ul
-          - @school_session.schools.each do |school|
+          - @school_session.schools.each_with_index do |school|
             %li= link_to "School " + school.position.to_s, "#school_" + school.position.to_s
         = f.fields_for :schools do |school_form|
+          - index = (school_form.object.position - 1)
           %div{ :id => "school_" + school_form.object.position.to_s }
             = school_form.fields_for :talk_no1 do |a|
               %fieldset
-                %legend Talk No 1
-                - if a.object.cancelled?
-                  Cancelled
-                - else
-                  %div
-                    = a.label :student_id
-                    .text= a.object.student.display_name
-                  %div
-                    = a.radio_button :completed_by, 'student', :checked => true
-                    = a.label :completed_by_student
-                  %div
-                    = a.radio_button :completed_by, 'substitute'
-                    = a.label :completed_by_substitute
+                %legend= t "assignment.no1"
+                %ul
+                  %li
+                  - if a.object.cancelled?
+                    = t ".cancelled"
+                  - else
+                    = a.check_box :is_cancelled
+                  %li
+                    %strong= t(".assigned_to") + ": "
+                    = a.object.student.display_name
+                  %li
+                    %strong= t(".completed_by") + ": "
+                    %label{ :for => "school_session_schools_attributes_#{index}_talk_no1_attributes_completed_by_student", :class => "completed_by" }
+                      = radio_button_tag "school_session[schools_attributes][#{index}][talk_no1_attributes][completed_by]", "student", true, :class => "completed_by"
+                      = t ".student"
+                    %label{ :for => "school_session_schools_attributes_#{index}_talk_no1_attributes_completed_by_substitute", :class => "completed_by" }
+                      = radio_button_tag "school_session[schools_attributes][#{index}][talk_no1_attributes][completed_by]", "substitute", false, :class => "completed_by"
+                      = t ".substitute"
+                  %li#substitute
                     = a.select( :substitute_id, a.object.find_eligible_substitutes.collect {|i| [i.display_name, i.id] }, { :include_blank => true } )
-                  %div
-                    = a.radio_button :lesson_status, 'complete', :checked => true
-                    = a.label :lesson_status_complete
-                  %div
-                    = a.label :lesson_next
+                  %li
+                    %strong= t(".lesson_status") + ": "
+                    %label{ :for => "school_session_schools_attributes_#{index}_talk_no1_attributes_lesson_status_complete", :class => "lesson_status" }
+                      = radio_button_tag "school_session[schools_attributes][#{index}][talk_no1_attributes][lesson_status]", "complete", true, :class => "lesson_status"
+                      = t ".complete"
+                    %label{ :for => "school_session_schools_attributes_#{index}_talk_no1_attributes_lesson_status_incomplete", :class => "lesson_status" }
+                      = radio_button_tag "school_session[schools_attributes][#{index}][talk_no1_attributes][lesson_status]", "incomplete", false, :class => "lesson_status"
+                      = t ".incomplete"
+                  %li#lesson_next
                     = a.select( :lesson_next, prepare_lesson_select( a.object.student.find_eligible_lessons( a.object ) ) )
-                  %div
-                    = a.radio_button :lesson_status, 'incomplete'
-                    = a.label :lesson_status_incomplete
+            = school_form.fields_for :talk_no2 do |a|
               %fieldset
-                %legend Talk No 2
-                = school_form.fields_for :talk_no2 do |a|
+                %legend= t "assignment.no2"
+                %ul
+                  %li
                   - if a.object.cancelled?
-                    Cancelled
+                    = t ".cancelled"
                   - else
-                    %div
-                      = a.label :student_id
-                      .text= a.object.student.display_name
-                    %div
-                      = a.radio_button :completed_by, 'student', :checked => true
-                      = a.label :completed_by_student
-                    %div
-                      = a.radio_button :completed_by, 'substitute'
-                      = a.label :completed_by_substitute
-                      = a.select( :substitute_id, a.object.find_eligible_substitutes.collect {|i| [i.display_name, i.id] }, { :include_blank => true } )
-                    %div
-                      = a.radio_button :lesson_status, 'complete', :checked => true
-                      = a.label :lesson_status_complete
-                    %div
-                      = a.label :lesson_next
-                      = a.select( :lesson_next, prepare_lesson_select( a.object.student.find_eligible_lessons( a.object ) ) )
-                    %div
-                      = a.radio_button :lesson_status, 'incomplete'
-                      = a.label :lesson_status_incomplete
-                    - if a.object.student.type == "Sister"
-                      %div
-                        = a.label :assistant_id
-                        = a.select( :assistant_id, a.object.find_eligible_assistants.collect { |i| [i.display_name, i.id] }, { :include_blank => true } )
-                      %div
-                        = a.label :setting_number
-                        = a.select( :setting_number, prepare_setting_select( a.object.student.find_eligible_settings ), { :include_blank => true } )
+                    = a.check_box :is_cancelled
+                  %li
+                    %strong= t(".assigned_to") + ": "
+                    = a.object.student.display_name
+                  %li
+                    %strong= t(".completed_by") + ": "
+                    %label{ :for => "school_session_schools_attributes_#{index}_talk_no2_attributes_completed_by_student", :class => "completed_by" }
+                      = radio_button_tag "school_session[schools_attributes][#{index}][talk_no2_attributes][completed_by]", "student", true, :class => "completed_by"
+                      = t ".student"
+                    %label{ :for => "school_session_schools_attributes_#{index}_talk_no2_attributes_completed_by_substitute", :class => "completed_by" }
+                      = radio_button_tag "school_session[schools_attributes][#{index}][talk_no2_attributes][completed_by]", "substitute", false, :class => "completed_by"
+                      = t ".substitute"
+                  %li#substitute
+                    = a.select( :substitute_id, a.object.find_eligible_substitutes.collect {|i| [i.display_name, i.id] }, { :include_blank => true } )
+                  %li
+                    %strong= t(".lesson_status") + ": "
+                    %label{ :for => "school_session_schools_attributes_#{index}_talk_no2_attributes_lesson_status_complete", :class => "lesson_status" }
+                      = radio_button_tag "school_session[schools_attributes][#{index}][talk_no2_attributes][lesson_status]", "complete", true, :class => "lesson_status"
+                      = t ".complete"
+                    %label{ :for => "school_session_schools_attributes_#{index}_talk_no2_attributes_lesson_status_incomplete", :class => "lesson_status" }
+                      = radio_button_tag "school_session[schools_attributes][#{index}][talk_no2_attributes][lesson_status]", "incomplete", false, :class => "lesson_status"
+                      = t ".incomplete"
+                  %li#lesson_next
+                    = a.select( :lesson_next, prepare_lesson_select( a.object.student.find_eligible_lessons( a.object ) ) )
+                  - if a.object.student.type == "Sister"
+                    %li
+                      = a.select( :assistant_id, a.object.find_eligible_assistants.collect { |i| [i.display_name, i.id] }, { :include_blank => true } )
+                    %li
+                      = a.select( :setting_number, prepare_setting_select( a.object.student.find_eligible_settings ), { :include_blank => true } )
+            = school_form.fields_for :talk_no3 do |a|
               %fieldset
-                %legend Talk No 3
-                = school_form.fields_for :talk_no3 do |a|
+                %legend= t "assignment.no3"
+                %ul
+                  %li
                   - if a.object.cancelled?
-                    Cancelled
+                    = t ".cancelled"
                   - else
-                    %div
-                      = a.label :student_id
-                      .text= a.object.student.display_name
-                    %div
-                      = a.radio_button :completed_by, 'student', :checked => true
-                      = a.label :completed_by_student
-                    %div
-                      = a.radio_button :completed_by, 'substitute'
-                      = a.label :completed_by_substitute
-                      = a.select( :substitute_id, a.object.find_eligible_substitutes.collect {|i| [i.display_name, i.id] }, { :include_blank => true } )
-                    %div
-                      = a.radio_button :lesson_status, 'complete', :checked => true
-                      = a.label :lesson_status_complete
-                    %div
-                      = a.label :lesson_next
-                      = a.select( :lesson_next, prepare_lesson_select( a.object.student.find_eligible_lessons( a.object ) ) )
-                    %div
-                      = a.radio_button :lesson_status, 'incomplete'
-                      = a.label :lesson_status_incomplete
-                    - if a.object.student.type == "Sister"
-                      %div
-                        = a.label :assistant_id
-                        = a.select( :assistant_id, a.object.find_eligible_assistants.collect { |i| [i.display_name, i.id] }, { :include_blank => true } )
-                      %div
-                        = a.label :setting_number
-                        = a.select( :setting_number, prepare_setting_select( a.object.student.find_eligible_settings ), { :include_blank => true } )
-    .submit= submit_tag "Complete"
+                    = a.check_box :is_cancelled
+                  %li
+                    %strong= t(".assigned_to") + ": "
+                    = a.object.student.display_name
+                  %li
+                    %strong= t(".completed_by") + ": "
+                    %label{ :for => "school_session_schools_attributes_#{index}_talk_no3_attributes_completed_by_student", :class => "completed_by" }
+                      = radio_button_tag "school_session[schools_attributes][#{index}][talk_no3_attributes][completed_by]", "student", true, :class => "completed_by"
+                      = t ".student"
+                    %label{ :for => "school_session_schools_attributes_#{index}_talk_no3_attributes_completed_by_substitute", :class => "completed_by" }
+                      = radio_button_tag "school_session[schools_attributes][#{index}][talk_no3_attributes][completed_by]", "substitute", false, :class => "completed_by"
+                      = t ".substitute"
+                  %li#substitute
+                    = a.select( :substitute_id, a.object.find_eligible_substitutes.collect {|i| [i.display_name, i.id] }, { :include_blank => true } )
+                  %li
+                    %strong= t(".lesson_status") + ": "
+                    %label{ :for => "school_session_schools_attributes_#{index}_talk_no3_attributes_lesson_status_complete", :class => "lesson_status" }
+                      = radio_button_tag "school_session[schools_attributes][#{index}][talk_no3_attributes][lesson_status]", "complete", true, :class => "lesson_status"
+                      = t ".complete"
+                    %label{ :for => "school_session_schools_attributes_#{index}_talk_no3_attributes_lesson_status_incomplete", :class => "lesson_status" }
+                      = radio_button_tag "school_session[schools_attributes][#{index}][talk_no3_attributes][lesson_status]", "incomplete", false, :class => "lesson_status"
+                      = t ".incomplete"
+                  %li#lesson_next
+                    = a.select( :lesson_next, prepare_lesson_select( a.object.student.find_eligible_lessons( a.object ) ) )
+                  - if a.object.student.type == "Sister"
+                    %li
+                      = a.select( :assistant_id, a.object.find_eligible_assistants.collect { |i| [i.display_name, i.id] }, { :include_blank => true } )
+                    %li
+                      = a.select( :setting_number, prepare_setting_select( a.object.student.find_eligible_settings ), { :include_blank => true } )
+    = f.submit

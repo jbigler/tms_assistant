@@ -1,10 +1,4 @@
-.checkbox_pair
-  = f.label :use_for_assistant, "Assistant"
-  = f.check_box :use_for_assistant
-.checkbox_pair
-  = f.label :use_for_no2, "Talk 2"
-  = f.check_box :use_for_no2
-.checkbox_pair
-  = f.label :use_for_no3, "Talk 3"
-  = f.check_box :use_for_no3
+= f.check_box :use_for_assistant
+= f.check_box :use_for_no2
+= f.check_box :use_for_no3
 = f.hidden_field :type, :value => "Sister"

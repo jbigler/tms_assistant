@@ -1,7 +1,7 @@
 body {
-  background: #F0F0EE;
+  background: #cccccc;
   font-family:Verdana,Geneva,'DejaVu Sans',sans-serif;
-  color: black;
+  color: #2e2e2e;
 
   h1 {
     font-size: 2em;
@@ -55,3 +55,79 @@ body {
   }
 }
 
+a {
+  &:link {
+    color: #022859;
+  }
+  &:visited {
+    color: #022859;
+  }
+  &:hover {
+    color: #45648c;
+  }
+  &:active {
+    color: #022859;
+  }
+}
+
+table {
+  td.controls {
+    text-align: right;
+  }
+}
+span.translation_missing {
+  font-size: larger;
+  color: red;
+}
+
+header.student {
+  padding-bottom: 1em;
+  h2 {
+    text-align: center;
+  }
+}
+
+section.data {
+  border: solid 1px black;
+  padding: 0em 0.5em;
+  margin-top: 2em;
+  margin-bottom: 1em;
+
+  header {
+    position: relative;
+    border: 1px solid black;
+    margin-left:auto;
+    margin-right:auto;
+    padding: 0.2em 0.5em;
+    text-align: center;
+    top: -1em;
+    max-width: 50%;
+    background: #45648c;
+    color: white;
+    font-weight: bold;
+    font-size: 1em;
+  }
+}
+
+select.datetime {
+  display: inline;
+}
+
+section#schools {
+  font-size: 1em;
+}
+
+a.nice {
+  &:link {
+    color: white;
+  }
+  &:visited {
+    color: white;
+  }
+  &:hover {
+    color: white;
+  }
+  &:active {
+    color: white;
+  }
+}

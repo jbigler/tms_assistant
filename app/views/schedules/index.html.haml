@@ -1,20 +1,16 @@
-- content_for :title do
-  Schedule Management
-
 - content_for :sidebar do
   #calendar
     = render :partial => 'shared/calendar'
 
-#schedule
-  %h1 #{@language.name} Schedule
-  %h3= Date::MONTHNAMES[ @calendar_date.month ] + " " + @calendar_date.year.to_s
-  %table.table
+%h2= t 'schedules.title'
+%h3= l @calendar_date, :format => :month_year
+%table.table
+  %tr
+    %th= t '.week_of'
+    %th= t '.has_review'
+  - @schedules.each do |schedule|
     %tr
-      %th Week of
-      %th Has review
-    - @schedules.each do |schedule|
-      %tr
-        %td= h schedule.week_of
-        %td= h schedule.has_review
-        %td= link_to 'Edit', edit_language_schedule_url( @language, schedule )
-  %br/
+      %td= h schedule.week_of
+      %td= b schedule.has_review
+      %td= link_to t("record.edit"), edit_language_schedule_path(@language, schedule)
+      %td= link_to t("record.show"), language_schedule_path(@language, schedule)

@@ -1,12 +1,11 @@
-%p#notice= notice
-%h2 #{@language.name} Setting Source
+%h2= SettingSource.model_name.human + ": " + @language.display_name
 %p
-  %b Number:
+  %strong= SettingSource.human_attribute_name("number") + ": "
   = @setting_source.number
 %p
-  %b Description:
+  %strong= SettingSource.human_attribute_name("description") + ": "
   = @setting_source.description
 
-= link_to 'Edit', edit_language_setting_source_path( @language, @setting_source )
+= link_to t("record.edit"), edit_language_setting_source_path( @language, @setting_source )
 \|
-= link_to 'Back', language_setting_sources_path( @language )
+= link_to t("nav.back"), language_setting_sources_path( @language )

@@ -1,2 +1,4 @@
 jQuery ->
-  $( "#student_supp_data" ).tabs()
+  $( "section.supp_data" ).tabs()
+  $("#new_family").change ->
+    $("#student_family_id").toggle()

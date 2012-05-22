@@ -1,7 +1,6 @@
 class Admin::BaseController < ApplicationController
 
   layout 'application'
-  before_filter :authenticate_user!  
   before_filter :verify_admin
 
 private

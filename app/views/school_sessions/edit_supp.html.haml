@@ -2,9 +2,7 @@
   #calendar
     = render :partial => 'shared/calendar'
 
-#schedule
-  %h2 Editing Session for #{@school_session.week_of.to_s}
-  = render "shared/error_messages", :target => @school_session
-  = form_for @school_session, :url => congregation_school_session_url( @congregation ), :html => { :class => "form" } do |f|
-    = render :partial => "supp_form", :locals => { :f => f }
-    .submit= submit_tag "Save Changes"
+%h2= t ".title", :week_of => l(@school_session.week_of)
+= form_for [@congregation, @school_session] do |f|
+  = render :partial => "supp_form", :locals => { :f => f }
+  = f.submit

@@ -17,26 +17,25 @@ class Assignment < ActiveRecord::Base
 
   scope :latest, order( "assignments.week_of DESC" ).limit(2)
 
+  attr_accessor :is_cancelled, :completed_by
+
+  def is_cancelled?
+    true if is_cancelled == 1
+  end
+  
   state_machine :initial => :unassigned do
     before_transition :assigned    => :substituted, :do => :prep_substitution
     before_transition :substituted => :assigned,    :do => :prep_substitution_undo
     before_transition :completed   => :assigned,    :do => :prep_completion_undo
+    after_transition  :cancelled   => :unassigned,  :do => :process_cancellation_undo
     after_transition  any          => :cancelled,   :do => :process_cancellation
 
     event :cancel do
-      transition any => :cancelled
-    end
-
-    event :restore do
-      transition :cancelled => :unassigned
+      transition [:unassigned, :assigned] => :cancelled
     end
 
     event :assign do
       transition :unassigned => :assigned, :if => :assignable?
-    end
-
-    event :unassign do
-      transition :assigned => :unassigned
     end
 
     event :complete do
@@ -45,9 +44,9 @@ class Assignment < ActiveRecord::Base
     end
 
     event :undo do
+      transition [:assigned, :cancelled] => :unassigned
       transition [:completed, :substituted] => :assigned
     end
-
   end
 
   def display
@@ -67,7 +66,7 @@ class Assignment < ActiveRecord::Base
       when Reader          then "use_for_reader"
     end
 
-    join = %Q{
+    join = %Q[
       left outer join
       (
         select assignments.* 
@@ -79,7 +78,6 @@ class Assignment < ActiveRecord::Base
           (
             select x.student_id, max(x.week_of) as latest_date
             from assignments x
-            where completed_by = 'student' or completed_by is null
             group by x.student_id
           ) a
           join assignments b
@@ -89,11 +87,17 @@ class Assignment < ActiveRecord::Base
         on assignments.id = la.assignment_id
       ) las
       on students.id = las.student_id
+      left outer join 
+      (
+        select student_id, reason from unavailable_dates
+        where '#{week_of.to_s}' between start_date and end_date
+      ) ud
+      on students.id = ud.student_id
       left outer join schools
       on las.id = schools.talk_no1_id
       or las.id = schools.talk_no2_id
       or las.id = schools.talk_no3_id
-    }
+    ]
 
     results = school_session.congregation.students.
       select( "students.id, students.display_name, students.first_name, students.last_name, las.type, las.week_of as latest_date, schools.position as school_no" ).
@@ -105,6 +109,7 @@ class Assignment < ActiveRecord::Base
       results = results.where( :use_for_adult => true ) if schedule_item.for_adult_only
       results = results.where( :type => "Brother" ) if schedule_item.for_brother_only
     end
+    results = results.where("ud.reason is null")
     results.order( "las.week_of, students.last_name, students.first_name" ).all
   end
 
@@ -148,10 +153,6 @@ class Assignment < ActiveRecord::Base
     return false
   end
 
-  def validate_schedule_item
-    true
-  end
-
   def prep_substitution
     true
   end
@@ -170,7 +171,7 @@ class Assignment < ActiveRecord::Base
     self.lesson_notes = nil
     self.completed_by = nil
   end
-
+  
   def process_cancellation
     self.student = nil
     self.substitute = nil
@@ -178,10 +179,16 @@ class Assignment < ActiveRecord::Base
     self.lesson_next = nil
     self.lesson_notes = nil
     self.completed_by = nil
-    if lesson.date_started == week_of
+    if lesson and lesson.date_started == week_of
       self.lesson.destroy
+      self.lesson = nil
     end
-    self.lesson = nil
+    save
+  end
+
+  def process_cancellation_undo
+    self.is_cancelled = false
+    save
   end
 
   def state_requires_student

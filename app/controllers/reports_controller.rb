@@ -1,6 +1,6 @@
 class ReportsController < ApplicationController
 
-  before_filter :authenticate_user!, :require_congregation
+  before_filter :require_congregation
 
   def show
     @report = Report.new("assignment_slips", @congregation, params)

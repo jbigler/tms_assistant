@@ -1,11 +1,7 @@
+#calendar_back.calendar_update= link_to t('calendar.previous'), calendar_back_path, :remote => true
+#calendar_forward.calendar_update= link_to t('calendar.next'), calendar_forward_path, :remote => true
 %br/
-#calendar_back.calendar_update= link_to 'Back', calendar_back_path, :remote => true
-#calendar_forward.calendar_update= link_to 'Forward', calendar_forward_path, :remote => true
-%br/
-!= calendar( :year => @calendar_date.year, :month => @calendar_date.month, :first_day_of_week => 1 ) do |d|
+!= calendar( :year => @calendar_date.year, :month => @calendar_date.month, :first_day_of_week => 1, :abbrev => true ) do |d|
   - render_calendar_cell( d )
-%br/
-- next_month = @calendar_date >> 1
-!= calendar( :year => next_month.year , :month => next_month.month, :first_day_of_week => 1 ) do |d|
+!= calendar( :year => @calendar_date.next_month.year , :month => @calendar_date.next_month.month, :first_day_of_week => 1, :abbrev => true ) do |d|
   - render_calendar_cell( d )
-

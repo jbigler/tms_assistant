@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
 
   after_save :assign_default_congregation, :if => "default_congregation_id.nil?"
 
-  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :admin
+  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :admin, :locale
 
   def destroy
     self.update_attribute(:deleted_at, Time.now.utc)

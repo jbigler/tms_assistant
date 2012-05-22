@@ -1,18 +1,15 @@
-%p#notice= notice
-
 %p
-  %b Name:
+  %b= Language.human_attribute_name("name") + ": "
   = @language.name
 %p
-  %b Display name:
+  %b= Language.human_attribute_name("display_name") + ": "
   = @language.display_name
 %p
-  %b Code:
+  %b= Language.human_attribute_name("code") + ": "
   = @language.code
 
-= link_to 'Edit', edit_language_path(@language)
-\|
-= link_to 'Back', languages_path
-%p= link_to "Edit Lessons", language_lesson_sources_path(@language)
-%p= link_to "Edit Settings", language_setting_sources_path(@language)
-%p= link_to "Edit Schedule", language_schedules_path(@language)
+%p= link_to t("record.edit_model", :model => LessonSource.model_name.human(:count => 2)), language_lesson_sources_path(@language)
+%p= link_to t("record.edit_model", :model => SettingSource.model_name.human(:count => 2)), language_setting_sources_path(@language)
+%p= link_to t("record.edit_model", :model => Schedule.model_name.human), language_schedules_path(@language)
+%br/
+= link_to t("nav.back"), languages_path

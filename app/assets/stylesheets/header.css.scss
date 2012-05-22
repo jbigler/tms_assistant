@@ -1,5 +1,5 @@
-#header.container {
-  background: #2F427A;
+header.container {
+  background: #022859;
   color: white;
   margin-bottom: 1.5em;
   a {
@@ -29,10 +29,12 @@
   }
 
   ul.nav-bar {
-    background: #262626;
+    background: #2e2e2e;
     margin: 0px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    border-color: #cccccc;
+    border-bottom: 0px;
 
     li {
       padding: 0em 1em;
@@ -40,7 +42,7 @@
     }
 
     .flyout {
-      background: #262626;
+      background: #2e2e2e;
       border-radius: 10px;
     }
   }

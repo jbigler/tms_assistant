@@ -1,40 +1,26 @@
-%p
-  %fieldset
-    .checkbox_pair
-      %label{:for => "schedule_has_review"} Has Review
-      = f.check_box :has_review
 %fieldset
-  %legend= t :bh
+  = f.check_box :has_review
+%fieldset
+  %legend= t "assignment.bh"
   = f.fields_for :bible_highlights do |bh|
-    = bh.label :source
-    = bh.text_field :source, :class => "text"
-%fieldset
-  %legend= t :no1
-  = f.fields_for :talk_no1 do |t|
-    = t.label :source
-    = t.text_field :source, :class => "text"
-%fieldset
-  %legend Talk Number 2 (hardcoded)
-  = f.fields_for :talk_no2 do |t|
-    = t.label :title
-    = t.text_field :title, :class => "text"
-    %br/
-    = t.label :source
-    = t.text_field :source, :class => "text"
-    .checkbox_pair
-      = t.label :for_adult_only, "Adult Only"
+    = bh.text_field :source, :class => "expand"
+#student_assignments
+  %fieldset
+    %legend= t "assignment.no1"
+    = f.fields_for :talk_no1 do |t|
+      = t.text_field :source, :class => "expand"
+  %fieldset
+    %legend= t "assignment.no2"
+    = f.fields_for :talk_no2 do |t|
+      = t.text_field :title, :class => "expand"
+      = t.text_field :source, :class => "expand"
       = t.check_box :for_adult_only
-%fieldset
-  %legend= t :no3
-  = f.fields_for :talk_no3 do |t|
-    = t.label :title
-    = t.text_field :title, :class => "text"
-    %br/
-    = t.label :source
-    = t.text_field :source, :class => "text"
-    .checkbox_pair
-      = t.label :for_adult_only, "Adult Only"
-      = t.check_box :for_adult_only
-    .checkbox_pair
-      = t.label :for_brother_only, "Brother Only"
+      = t.check_box :for_advanced_only
+  %fieldset
+    %legend= t "assignment.no3"
+    = f.fields_for :talk_no3 do |t|
+      = t.text_field :title, :class => "expand"
+      = t.text_field :source, :class => "expand"
       = t.check_box :for_brother_only
+      = t.check_box :for_adult_only
+      = t.check_box :for_advanced_only

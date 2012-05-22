@@ -1,7 +1,6 @@
 class CongregationsController < ApplicationController 
 
-  before_filter :authenticate_user!  
-  layout "application-single"
+  respond_to :html
 
   def index
     @congregations = current_user.congregations
@@ -37,8 +36,12 @@ class CongregationsController < ApplicationController
   def create
     @congregation = current_user.congregations.build( params[:congregation] )
     if @congregation.valid? and current_user.save
-      flash[:notice] = "Congregation created."
-      redirect_to congregation_url( @congregation )
+      flash[:notice] = t("flash.actions.update.notice", :model => Congregation.model_name.human)
+      unless current_user.default_congregation
+        current_user.default_congregation = @congregation
+        current_user.save
+      end
+      redirect_to @congregation
     else
       render :action => 'new'
     end
@@ -51,8 +54,8 @@ class CongregationsController < ApplicationController
       @congregation = current_user.congregations.find( params[:id] )
     end
     if @congregation and @congregation.update_attributes(params[:congregation])
-      flash[:notice] = "Successfully updated congregation."
-      redirect_to congregation_url( @congregation )
+      flash[:notice] = t("flash.actions.update.notice", :model => Congregation.model_name.human)
+      redirect_to @congregation
     else
       render :action => 'edit'
     end
@@ -64,11 +67,18 @@ class CongregationsController < ApplicationController
     else
       @congregation = current_user.congregations.find( params[:id] )
     end
-    if @congregation and @congregation.destroy
-      flash[:notice] = "Congregation deleted."
-    else
-      flash[:error] = "Unable to delete congregation."
+    if @congregation and (current_user.default_congregation == @congregation)
+      current_user.default_congregation = nil
+      current_user.save
     end
+
+    if @congregation and @congregation.destroy
+      session[:congregation_id] = nil
+      flash[:notice] = t "flash.actions.destroy.notice", :model => Congregation.model_name.human
+    else
+      flash[:error] = t "flash.actions.destroy.alert", :model => Congregation.model_name.human
+    end
+
     redirect_to congregations_url
   end
 end
