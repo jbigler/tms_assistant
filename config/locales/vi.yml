@@ -104,6 +104,10 @@ vi:
       session_for: "Kỳ họp ngày %{week_of}"
       status: "Tình trạng"
       assigned_to: "Giao cho"
+      complete: "Hoàn thành"
+      cancel: "Xóa bỏ kỳ họp"
+      print_slips: "In ra phiếu bài giảng"
+      assistant: "Người phụ tá"
 
   special_dates:
     new:

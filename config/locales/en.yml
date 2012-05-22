@@ -104,6 +104,10 @@ en:
       session_for: "School Session for %{week_of}"
       status: Status
       assigned_to: "Assigned to"
+      complete: "Complete"
+      cancel: "Cancel School Session"
+      print_slips: "Print Assignment Slips"
+      assistant: "Assistant"
 
   special_dates:
     new:
