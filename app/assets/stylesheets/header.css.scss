@@ -39,12 +39,21 @@ header.container {
     li {
       padding: 0em 1em;
       vertical-align: middle;
+      a {
+        font-size: 1.1em;
+      }
     }
 
-    .flyout {
-      background: #2e2e2e;
-      border-radius: 10px;
+    li.has-flyout {
+      .flyout {
+        background: #2e2e2e;
+        border-radius: 10px;
+      }
+
+      a.flyout-toggle span {
+        border-top: 4px solid white;
+      }
+
     }
   }
 }
-

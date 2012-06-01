@@ -10,18 +10,19 @@
     %nav.twelve.columns
       - if current_user
         %ul.nav-bar
-          %li= link_to t('dashboard.index.title'), root_path
+          %li= link_to t('dashboard.index.title'), root_path, :class => "main"
           - if session[:congregation_id]
             - cong = current_user.congregations.find(session[:congregation_id])
-            %li= link_to t('menu.sessions'), congregation_school_sessions_path(cong) 
-            %li= link_to t('menu.students'), congregation_students_path(cong) 
-            %li= link_to t('menu.reports'), "#"
+            %li= link_to t('menu.sessions'), congregation_school_sessions_path(cong), :class => "main"
+            %li= link_to t('menu.students'), congregation_students_path(cong), :class => "main"
+            %li= link_to t('menu.reports'), "#", :class => "main"
             %li.has-flyout
-              = link_to t('menu.tools'), "#"
+              = link_to t('menu.tools'), "#", :class => "main"
+              %a.flyout-toggle{ :href => "#" }
+                %span
               .flyout.small
                 %ul
-                  %li= link_to t('record.edit') + ": " + SpecialDate.model_name.human(:count => 2), 
-                    congregation_special_dates_path(cong)
+                  %li= link_to t('record.edit') + ": " + SpecialDate.model_name.human(:count => 2), congregation_special_dates_path(cong)
                   %li= link_to t('record.edit') + ": " + Schedule.model_name.human, language_schedules_path(cong.language)
                   %li= link_to t('record.edit') + ": " + LessonSource.model_name.human(:count => 2), language_lesson_sources_path(cong.language)
                   %li= link_to t('record.edit') + ": " + SettingSource.model_name.human(:count => 2), language_setting_sources_path(cong.language)
